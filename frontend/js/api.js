@@ -9,11 +9,38 @@ async function api(path, opts) {
   return r.json();
 }
 
+/* Деректерді таңдалған тілге ауыстыру (атаулар, қалалар, пәндер, салалар) */
+function translateData(d, lang) {
+  const i = lang === 'ru' ? 0 : lang === 'en' ? 1 : -1;
+  const T = d.i18n || {};
+  // ЖОО-ның қазақша атауын (іздеу мен AI үшін) сақтап қоямыз
+  d.universities.forEach(u => { u.name_kk = u.name; });
+  d.majors.forEach(m => { m.name_kk = m.name; });
+  if (i < 0) return;
+  d.majors.forEach(m => {
+    const t = (T.majors || {})[m.code]; if (t) m.name = t[i];
+    const c = (T.combo || {})[m.combo]; if (c) m.combo = c[i];
+  });
+  d.universities.forEach(u => {
+    const t = (T.universities || {})[u.code]; if (t) u.name = t[i];
+    const c = (T.cities || {})[u.city]; if (c) u.city = c[i];
+    if (window.BZ_T) { u.type = BZ_T(u.type); u.grantScore = BZ_T(u.grantScore); }
+  });
+  for (const k in d.fields) { const f = (T.fields || {})[k]; if (f) d.fields[k] = f[i]; }
+  d.foreign.forEach(f => {
+    const n = (T.foreign_names || {})[f.id]; if (n) f.kz = n[i];
+    if (i === 1) { const c = (T.foreign_cities_en || {})[f.city]; if (c) f.city = c; }
+    if (window.BZ_T) f.country = BZ_T(f.country);
+  });
+}
+
 (async () => {
   const count = document.getElementById('count');
   if (count) count.textContent = 'Мәліметтер жүктелуде…';
   try {
     const d = await api('/api/bootstrap');
+    translateData(d, window.BZ_LANG || 'kk');
+    window.UX = d.university_extra;
     // app.js бұрынғыдай осы атаулармен жұмыс істейді
     Object.assign(window, {
       majors: d.majors, universities: d.universities, FIELDS: d.fields, SITES: d.sites,

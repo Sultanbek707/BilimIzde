@@ -129,12 +129,28 @@ def major_detail(m: dict) -> dict:
         },
         "passing_scores": load("passing_scores").get(code),
         "universities": load("major_universities").get(code),
+        "offered_by": offering_universities(code),
     }
+
+
+def uni_extra(code: str) -> dict:
+    return load("university_extra")["universities"].get(code, {})
 
 
 def uni_detail(u: dict) -> dict:
     code = u["code"]
-    return {**u, "site": sites().get(code), "other_sites": load("site_extra").get(code, [])}
+    ex = uni_extra(code)
+    return {**u, "site": sites().get(code), "other_sites": load("site_extra").get(code, []),
+            "programs": ex.get("programs", []), "programs_source": ex.get("programs_src"),
+            "dormitory": ex.get("dorm"), "dormitory_source": ex.get("dorm_src"),
+            "military_department": ex.get("military"), "military_source": ex.get("military_src")}
+
+
+def offering_universities(code: str) -> list[dict]:
+    """Мамандықты оқытатын ЖОО-лар (ЕПВО тізілімі бойынша)."""
+    ux = load("university_extra")["universities"]
+    return [{"code": u["code"], "name": u["name"], "city": u["city"]}
+            for u in universities() if code in ux.get(u["code"], {}).get("programs", [])]
 
 
 # ---------------- Клуб (SQLite) ----------------
@@ -249,7 +265,7 @@ def bootstrap():
     """Сайт ашылғанда керек барлық мәлімет бір сұраныспен."""
     names = ["majors", "universities", "fields", "sites", "site_extra", "grants_2025", "grants_other_years",
              "grants_2026", "quotas_2026", "quota_names_2026", "passing_scores", "major_universities",
-             "foreign", "foreign_wiki", "foreign_history", "faq"]
+             "foreign", "foreign_wiki", "foreign_history", "faq", "university_extra", "i18n"]
     return {**{n: load(n) for n in names}, "ai_enabled": bool(ANTHROPIC_API_KEY), "club_count": club_count()}
 
 

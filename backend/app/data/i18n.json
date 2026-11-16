@@ -1,0 +1,1386 @@
+{
+ "majors": {
+  "B001": [
+   "Педагогика и психология",
+   "Pedagogy and Psychology"
+  ],
+  "B002": [
+   "Дошкольное обучение и воспитание",
+   "Preschool Education and Upbringing"
+  ],
+  "B003": [
+   "Педагогика и методика начального обучения",
+   "Pedagogy and Methods of Primary Education"
+  ],
+  "B004": [
+   "Подготовка учителей начальной военной подготовки",
+   "Teacher Training in Basic Military Training"
+  ],
+  "B005": [
+   "Подготовка учителей физической культуры",
+   "Physical Education Teacher Training"
+  ],
+  "B006": [
+   "Подготовка учителей музыки",
+   "Music Teacher Training"
+  ],
+  "B007": [
+   "Подготовка учителей художественного труда и черчения",
+   "Arts, Crafts and Drawing Teacher Training"
+  ],
+  "B008": [
+   "Подготовка учителей основы права и экономики",
+   "Law and Economics Teacher Training"
+  ],
+  "B009": [
+   "Подготовка учителей математики",
+   "Mathematics Teacher Training"
+  ],
+  "B010": [
+   "Подготовка учителей физики",
+   "Physics Teacher Training"
+  ],
+  "B011": [
+   "Подготовка учителей информатики",
+   "Computer Science Teacher Training"
+  ],
+  "B012": [
+   "Подготовка учителей химии",
+   "Chemistry Teacher Training"
+  ],
+  "B013": [
+   "Подготовка учителей биологии",
+   "Biology Teacher Training"
+  ],
+  "B014": [
+   "Подготовка учителей географии",
+   "Geography Teacher Training"
+  ],
+  "B015": [
+   "Подготовка учителей по гуманитарным предметам",
+   "Humanities Teacher Training"
+  ],
+  "B016": [
+   "Подготовка учителей казахского языка и литературы",
+   "Kazakh Language and Literature Teacher Training"
+  ],
+  "B017": [
+   "Подготовка учителей русского языка и литературы",
+   "Russian Language and Literature Teacher Training"
+  ],
+  "B018": [
+   "Подготовка учителей иностранного языка",
+   "Foreign Language Teacher Training"
+  ],
+  "B019": [
+   "Подготовка социальных педагогов",
+   "Social Pedagogy"
+  ],
+  "B020": [
+   "Специальная педагогика",
+   "Special Education"
+  ],
+  "B021": [
+   "Исполнительское искусство",
+   "Performing Arts"
+  ],
+  "B023": [
+   "Режиссура, арт-менеджмент",
+   "Directing, Arts Management"
+  ],
+  "B027": [
+   "Театральное искусство",
+   "Theatre Arts"
+  ],
+  "B028": [
+   "Хореография",
+   "Choreography"
+  ],
+  "B029": [
+   "Аудиовизуальные средства и медиа производство",
+   "Audiovisual Media and Production"
+  ],
+  "B030": [
+   "Изобразительное искусство",
+   "Fine Arts"
+  ],
+  "B031": [
+   "Мода, дизайн",
+   "Fashion, Design"
+  ],
+  "B032": [
+   "Философия и этика",
+   "Philosophy and Ethics"
+  ],
+  "B033": [
+   "Религия и теология",
+   "Religious Studies and Theology"
+  ],
+  "B034": [
+   "История",
+   "History"
+  ],
+  "B035": [
+   "Тюркология",
+   "Turkic Studies"
+  ],
+  "B036": [
+   "Переводческое дело",
+   "Translation Studies"
+  ],
+  "B037": [
+   "Филология",
+   "Philology"
+  ],
+  "B038": [
+   "Социология",
+   "Sociology"
+  ],
+  "B039": [
+   "Культурология",
+   "Cultural Studies"
+  ],
+  "B040": [
+   "Политология",
+   "Political Science"
+  ],
+  "B041": [
+   "Психология",
+   "Psychology"
+  ],
+  "B042": [
+   "Журналистика и репортерское дело",
+   "Journalism and Reporting"
+  ],
+  "B043": [
+   "Библиотечное дело, обработка информации и архивное дело",
+   "Library Science, Information Processing and Archiving"
+  ],
+  "B044": [
+   "Менеджмент и управление",
+   "Management and Administration"
+  ],
+  "B045": [
+   "Аудит и налогообложение",
+   "Audit and Taxation"
+  ],
+  "B046": [
+   "Финансы, экономика, банковское и страховое дело",
+   "Finance, Economics, Banking and Insurance"
+  ],
+  "B047": [
+   "Маркетинг и реклама",
+   "Marketing and Advertising"
+  ],
+  "B048": [
+   "Трудовые навыки",
+   "Vocational Skills"
+  ],
+  "B049": [
+   "Право (Юриспруденция)",
+   "Law"
+  ],
+  "B050": [
+   "Биологические и смежные науки",
+   "Biological and Related Sciences"
+  ],
+  "B051": [
+   "Окружающая среда",
+   "Environment"
+  ],
+  "B052": [
+   "Наука о земле",
+   "Earth Sciences"
+  ],
+  "B053": [
+   "Химия",
+   "Chemistry"
+  ],
+  "B054": [
+   "Физика",
+   "Physics"
+  ],
+  "B055": [
+   "Математика и статистика",
+   "Mathematics and Statistics"
+  ],
+  "B056": [
+   "Механика",
+   "Mechanics"
+  ],
+  "B057": [
+   "Информационные технологии",
+   "Information Technology"
+  ],
+  "B058": [
+   "Информационная безопасность",
+   "Information Security"
+  ],
+  "B059": [
+   "Коммуникации и коммуникационные технологии",
+   "Communications and Communication Technologies"
+  ],
+  "B060": [
+   "Химическая инженерия и процессы",
+   "Chemical Engineering and Processes"
+  ],
+  "B061": [
+   "Материаловедение и технологии",
+   "Materials Science and Technology"
+  ],
+  "B062": [
+   "Электротехника и электроэнергетика",
+   "Electrical Engineering and Power Engineering"
+  ],
+  "B063": [
+   "Электротехника и автоматизация",
+   "Electrical Engineering and Automation"
+  ],
+  "B064": [
+   "Механика и металлообработка",
+   "Mechanical Engineering and Metalworking"
+  ],
+  "B065": [
+   "Транспортная техника и технологии",
+   "Transport Equipment and Technology"
+  ],
+  "B066": [
+   "Морской транспорт и технологии",
+   "Maritime Transport and Technology"
+  ],
+  "B067": [
+   "Воздушный транспорт и технологии",
+   "Air Transport and Technology"
+  ],
+  "B068": [
+   "Производство продуктов питания",
+   "Food Production"
+  ],
+  "B069": [
+   "Производство материалов (стекло, бумага, пластик, дерево)",
+   "Materials Production (glass, paper, plastics, wood)"
+  ],
+  "B070": [
+   "Текстиль: одежда, обувь и кожаные изделия",
+   "Textiles: Clothing, Footwear and Leather Goods"
+  ],
+  "B071": [
+   "Горное дело и добыча полезных ископаемых",
+   "Mining and Mineral Extraction"
+  ],
+  "B072": [
+   "Технология фармацевтического производства",
+   "Pharmaceutical Production Technology"
+  ],
+  "B073": [
+   "Архитектура",
+   "Architecture"
+  ],
+  "B074": [
+   "Градостроительство, строительные работы и гражданское строительство",
+   "Urban Planning, Construction and Civil Engineering"
+  ],
+  "B075": [
+   "Кадастр и землеустройство",
+   "Cadastre and Land Management"
+  ],
+  "B076": [
+   "Стандартизация, сертификация и метрология (по отраслям)",
+   "Standardization, Certification and Metrology"
+  ],
+  "B077": [
+   "Растениеводство",
+   "Crop Production"
+  ],
+  "B078": [
+   "Животноводство",
+   "Livestock Farming"
+  ],
+  "B079": [
+   "Лесное хозяйство",
+   "Forestry"
+  ],
+  "B080": [
+   "Рыбное хозяйство",
+   "Fisheries"
+  ],
+  "B082": [
+   "Водные ресурсы и водопользование",
+   "Water Resources and Water Use"
+  ],
+  "B084": [
+   "Сестринское дело",
+   "Nursing"
+  ],
+  "B085": [
+   "Фармация",
+   "Pharmacy"
+  ],
+  "B090": [
+   "Социальная работа",
+   "Social Work"
+  ],
+  "B091": [
+   "Туризм",
+   "Tourism"
+  ],
+  "B092": [
+   "Досуг",
+   "Leisure"
+  ],
+  "B093": [
+   "Ресторанное дело и гостиничный бизнес",
+   "Restaurant and Hotel Business"
+  ],
+  "B094": [
+   "Санитарно-профилактические мероприятия",
+   "Sanitary and Preventive Measures"
+  ],
+  "B095": [
+   "Транспортные услуги",
+   "Transport Services"
+  ],
+  "B098": [
+   "Спорт",
+   "Sport"
+  ],
+  "B126": [
+   "Транспортное строительство",
+   "Transport Construction"
+  ],
+  "B134": [
+   "Археология и этнология",
+   "Archaeology and Ethnology"
+  ],
+  "B135": [
+   "Востоковедение",
+   "Oriental Studies"
+  ],
+  "B140": [
+   "Международные отношения и дипломатия",
+   "International Relations and Diplomacy"
+  ],
+  "B142": [
+   "Связь с общественностью (PR)",
+   "Public Relations (PR)"
+  ],
+  "B145": [
+   "Государственный аудит",
+   "Public Audit"
+  ],
+  "B157": [
+   "Математическое и компьютерное моделирование",
+   "Mathematical and Computer Modelling"
+  ],
+  "B158": [
+   "Криптология",
+   "Cryptology"
+  ],
+  "B162": [
+   "Теплоэнергетика",
+   "Thermal Power Engineering"
+  ],
+  "B165": [
+   "Магистральные сети и инфраструктура",
+   "Trunk Networks and Infrastructure"
+  ],
+  "B166": [
+   "Транспортные сооружения",
+   "Transport Structures"
+  ],
+  "B167": [
+   "Летная эксплуатация летательных аппаратов и двигателей",
+   "Flight Operation of Aircraft and Engines"
+  ],
+  "B171": [
+   "Металлургия",
+   "Metallurgy"
+  ],
+  "B172": [
+   "Обработка материалов давлением",
+   "Metal Forming"
+  ],
+  "B173": [
+   "Гидромелиорация",
+   "Hydraulic Land Reclamation"
+  ],
+  "B174": [
+   "Геодезия и картография",
+   "Geodesy and Cartography"
+  ],
+  "B175": [
+   "Водоснабжение и водоотведение",
+   "Water Supply and Sanitation"
+  ],
+  "B176": [
+   "Гидротехническое строительство и управление водными ресурсами",
+   "Hydraulic Engineering and Water Resources Management"
+  ],
+  "B183": [
+   "Агроинженерия",
+   "Agricultural Engineering"
+  ],
+  "B234": [
+   "Музейное дело и охрана памятников",
+   "Museum Studies and Heritage Protection"
+  ],
+  "B265": [
+   "Железнодорожный транспорт и технологии",
+   "Railway Transport and Technology"
+  ],
+  "B271": [
+   "Нефтегазовое дело",
+   "Petroleum Engineering"
+  ],
+  "B083": [
+   "Ветеринария",
+   "Veterinary Medicine"
+  ],
+  "B161": [
+   "Инжиниринг материалов",
+   "Materials Engineering"
+  ],
+  "BM086": [
+   "Медицина",
+   "Medicine"
+  ],
+  "BM088": [
+   "Педиатрия",
+   "Pediatrics"
+  ],
+  "BM089": [
+   "Медико-профилактическое дело",
+   "Preventive Medicine"
+  ]
+ },
+ "universities": {
+  "001": [
+   "Медицинский университет Астана",
+   "Astana Medical University"
+  ],
+  "002": [
+   "Казахский агротехнический исследовательский университет имени С. Сейфуллина",
+   "S. Seifullin Kazakh Agrotechnical Research University"
+  ],
+  "003": [
+   "Каспийский университет технологий и инжиниринга имени Ш. Есенова",
+   "Sh. Yessenov Caspian University of Technology and Engineering"
+  ],
+  "004": [
+   "Западно-Казахстанский медицинский университет имени Марата Оспанова",
+   "Marat Ospanov West Kazakhstan Medical University"
+  ],
+  "005": [
+   "Актюбинский региональный университет имени К. Жубанова",
+   "K. Zhubanov Aktobe Regional University"
+  ],
+  "006": [
+   "Казахская национальная консерватория имени Курмангазы",
+   "Kurmangazy Kazakh National Conservatory"
+  ],
+  "007": [
+   "Казахский национальный педагогический университет имени Абая",
+   "Abai Kazakh National Pedagogical University"
+  ],
+  "008": [
+   "Аркалыкский педагогический институт имени Ы. Алтынсарина",
+   "Y. Altynsarin Arkalyk Pedagogical Institute"
+  ],
+  "009": [
+   "Атырауский университет нефти и газа имени С. Утебаева",
+   "S. Utebayev Atyrau University of Oil and Gas"
+  ],
+  "010": [
+   "Атырауский университет имени Х. Досмухамедова",
+   "Kh. Dosmukhamedov Atyrau University"
+  ],
+  "011": [
+   "Восточно-Казахстанский университет имени С. Аманжолова",
+   "S. Amanzholov East Kazakhstan University"
+  ],
+  "012": [
+   "Восточно-Казахстанский технический университет имени Д. Серикбаева",
+   "D. Serikbayev East Kazakhstan Technical University"
+  ],
+  "013": [
+   "Евразийский национальный университет имени Л. Н. Гумилева",
+   "L. N. Gumilyov Eurasian National University"
+  ],
+  "014": [
+   "Жезказганский университет имени О. А. Байконурова",
+   "O. A. Baikonurov Zhezkazgan University"
+  ],
+  "015": [
+   "Жетысуский университет имени И. Жансугурова",
+   "I. Zhansugurov Zhetysu University"
+  ],
+  "016": [
+   "Западно-Казахстанский университет имени М. Утемисова",
+   "M. Utemisov West Kazakhstan University"
+  ],
+  "017": [
+   "Казахская национальная академия искусств имени Т. Жургенова",
+   "T. Zhurgenov Kazakh National Academy of Arts"
+  ],
+  "018": [
+   "Казахский национальный университет искусств имени К. Байсеитовой",
+   "K. Baiseitova Kazakh National University of Arts"
+  ],
+  "019": [
+   "ALT Университет имени М. Тынышпаева",
+   "M. Tynyshpayev ALT University"
+  ],
+  "020": [
+   "Казахская академия спорта и туризма",
+   "Kazakh Academy of Sport and Tourism"
+  ],
+  "021": [
+   "Университет Нархоз",
+   "Narxoz University"
+  ],
+  "022": [
+   "Международная образовательная корпорация",
+   "International Educational Corporation"
+  ],
+  "023": [
+   "Казахский университет международных отношений и мировых языков имени Абылай хана",
+   "Ablai Khan Kazakh University of International Relations and World Languages"
+  ],
+  "024": [
+   "Казахский национальный аграрный исследовательский университет",
+   "Kazakh National Agrarian Research University"
+  ],
+  "025": [
+   "Казахский национальный женский педагогический университет",
+   "Kazakh National Women's Teacher Training University"
+  ],
+  "026": [
+   "Казахский национальный медицинский университет имени С. Д. Асфендиярова",
+   "S. D. Asfendiyarov Kazakh National Medical University"
+  ],
+  "027": [
+   "Казахский национальный университет имени аль-Фараби",
+   "Al-Farabi Kazakh National University"
+  ],
+  "029": [
+   "Казахский национальный исследовательский технический университет имени К. И. Сатпаева",
+   "Satbayev University"
+  ],
+  "030": [
+   "Медицинский университет Караганды",
+   "Karaganda Medical University"
+  ],
+  "031": [
+   "Карагандинский национальный исследовательский университет имени академика Е. А. Букетова",
+   "Buketov Karaganda National Research University"
+  ],
+  "032": [
+   "Карагандинский технический университет имени А. Сагинова",
+   "Abylkas Saginov Karaganda Technical University"
+  ],
+  "033": [
+   "Карагандинский индустриальный университет",
+   "Karaganda Industrial University"
+  ],
+  "034": [
+   "Кызылординский университет имени Коркыт Ата",
+   "Korkyt Ata Kyzylorda University"
+  ],
+  "035": [
+   "Кокшетауский университет имени Ш. Уалиханова",
+   "Sh. Ualikhanov Kokshetau University"
+  ],
+  "036": [
+   "Костанайский региональный университет имени А. Байтурсынова",
+   "A. Baitursynov Kostanay Regional University"
+  ],
+  "037": [
+   "Международный казахско-турецкий университет имени Ходжи Ахмеда Ясави",
+   "Khoja Akhmet Yassawi International Kazakh-Turkish University"
+  ],
+  "038": [
+   "Торайгыров университет",
+   "Toraighyrov University"
+  ],
+  "039": [
+   "Рудненский индустриальный университет",
+   "Rudny Industrial University"
+  ],
+  "040": [
+   "Северо-Казахстанский университет имени М. Козыбаева",
+   "M. Kozybayev North Kazakhstan University"
+  ],
+  "041": [
+   "Медицинский университет Семей",
+   "Semey Medical University"
+  ],
+  "042": [
+   "Университет Шакарима",
+   "Shakarim University"
+  ],
+  "043": [
+   "Таразский университет имени М. Х. Дулати",
+   "M. Kh. Dulaty Taraz University"
+  ],
+  "044": [
+   "Южно-Казахстанская медицинская академия",
+   "South Kazakhstan Medical Academy"
+  ],
+  "045": [
+   "Южно-Казахстанский университет имени М. Ауэзова",
+   "M. Auezov South Kazakhstan University"
+  ],
+  "047": [
+   "Евразийский гуманитарный институт имени А. К. Кусаинова",
+   "A. K. Kussainov Eurasian Humanitarian Institute"
+  ],
+  "048": [
+   "Казахская академия труда и социальных отношений",
+   "Kazakh Academy of Labour and Social Relations"
+  ],
+  "049": [
+   "Международный инженерно-технологический университет",
+   "International Engineering and Technology University"
+  ],
+  "053": [
+   "Алматинский технологический университет",
+   "Almaty Technological University"
+  ],
+  "057": [
+   "Алматинский университет энергетики и связи имени Г. Даукеева",
+   "G. Daukeyev Almaty University of Power Engineering and Telecommunications"
+  ],
+  "069": [
+   "Университет международного бизнеса имени К. Сагадиева",
+   "K. Sagadiyev University of International Business"
+  ],
+  "079": [
+   "Каспийский общественный университет",
+   "Caspian Public University"
+  ],
+  "080": [
+   "Казахстанско-Российский медицинский университет",
+   "Kazakh-Russian Medical University"
+  ],
+  "082": [
+   "Казахстанско-Немецкий университет в Алматы",
+   "German-Kazakh University (DKU)"
+  ],
+  "083": [
+   "Алматы Менеджмент Университет",
+   "Almaty Management University"
+  ],
+  "093": [
+   "Университет «Туран»",
+   "Turan University"
+  ],
+  "103": [
+   "Казахско-русский международный университет",
+   "Kazakh-Russian International University"
+  ],
+  "116": [
+   "Академия «Bolashaq»",
+   "Bolashaq Academy"
+  ],
+  "133": [
+   "Университет «Мирас»",
+   "Miras University"
+  ],
+  "141": [
+   "Alikhan Bokeikhan University",
+   "Alikhan Bokeikhan University"
+  ],
+  "143": [
+   "Университет имени Жумабека Ташенова",
+   "Zhumabek Tashenov University"
+  ],
+  "157": [
+   "Академия гражданской авиации",
+   "Academy of Civil Aviation"
+  ],
+  "158": [
+   "Кокшетауский университет имени А. Мырзахметова",
+   "A. Myrzakhmetov Kokshetau University"
+  ],
+  "173": [
+   "Esil University",
+   "Esil University"
+  ],
+  "174": [
+   "Университет КАЗГЮУ имени М. С. Нарикбаева",
+   "Maqsut Narikbayev University (KAZGUU)"
+  ],
+  "184": [
+   "Университет «Туран-Астана»",
+   "Turan-Astana University"
+  ],
+  "185": [
+   "Международный университет Астана",
+   "Astana International University"
+  ],
+  "190": [
+   "Международный университет информационных технологий",
+   "International Information Technology University (IITU)"
+  ],
+  "196": [
+   "Южно-Казахстанский педагогический университет имени У. Жанибекова",
+   "U. Zhanibekov South Kazakhstan Pedagogical University"
+  ],
+  "202": [
+   "Университет Дружбы народов имени академика А. Куатбекова",
+   "Academician A. Kuatbekov University of Friendship of Peoples"
+  ],
+  "205": [
+   "Казахская национальная академия хореографии",
+   "Kazakh National Academy of Choreography"
+  ],
+  "302": [
+   "SDU University",
+   "SDU University"
+  ],
+  "305": [
+   "Кызылординский университет «Болашак»",
+   "Bolashak University of Kyzylorda"
+  ],
+  "414": [
+   "Шымкентский университет",
+   "Shymkent University"
+  ],
+  "416": [
+   "Баишев Университет",
+   "Baishev University"
+  ],
+  "421": [
+   "Казахстанско-Британский технический университет",
+   "Kazakh-British Technical University (KBTU)"
+  ],
+  "501": [
+   "Западно-Казахстанский аграрно-технический университет имени Жангир хана",
+   "Zhangir Khan West Kazakhstan Agrarian Technical University"
+  ],
+  "503": [
+   "Египетский университет исламской культуры «Нур-Мубарак»",
+   "Nur-Mubarak Egyptian University of Islamic Culture"
+  ],
+  "522": [
+   "Astana IT University",
+   "Astana IT University"
+  ],
+  "523": [
+   "Международный университет туризма и гостеприимства",
+   "International University of Tourism and Hospitality"
+  ],
+  "526": [
+   "Центрально-Азиатский инновационный университет",
+   "Central Asian Innovation University"
+  ],
+  "979": [
+   "Университет КИМЭП",
+   "KIMEP University"
+  ]
+ },
+ "cities": {
+  "Астана": [
+   "Астана",
+   "Astana"
+  ],
+  "Алматы": [
+   "Алматы",
+   "Almaty"
+  ],
+  "Шымкент": [
+   "Шымкент",
+   "Shymkent"
+  ],
+  "Қарағанды": [
+   "Караганда",
+   "Karaganda"
+  ],
+  "Ақтөбе": [
+   "Актобе",
+   "Aktobe"
+  ],
+  "Атырау": [
+   "Атырау",
+   "Atyrau"
+  ],
+  "Ақтау": [
+   "Актау",
+   "Aktau"
+  ],
+  "Орал": [
+   "Уральск",
+   "Oral"
+  ],
+  "Өскемен": [
+   "Усть-Каменогорск",
+   "Oskemen"
+  ],
+  "Семей": [
+   "Семей",
+   "Semey"
+  ],
+  "Павлодар": [
+   "Павлодар",
+   "Pavlodar"
+  ],
+  "Петропавл": [
+   "Петропавловск",
+   "Petropavl"
+  ],
+  "Көкшетау": [
+   "Кокшетау",
+   "Kokshetau"
+  ],
+  "Қостанай": [
+   "Костанай",
+   "Kostanay"
+  ],
+  "Қызылорда": [
+   "Кызылорда",
+   "Kyzylorda"
+  ],
+  "Тараз": [
+   "Тараз",
+   "Taraz"
+  ],
+  "Түркістан": [
+   "Туркестан",
+   "Turkistan"
+  ],
+  "Талдықорған": [
+   "Талдыкорган",
+   "Taldykorgan"
+  ],
+  "Жезқазған": [
+   "Жезказган",
+   "Zhezkazgan"
+  ],
+  "Арқалық": [
+   "Аркалык",
+   "Arkalyk"
+  ],
+  "Рудный": [
+   "Рудный",
+   "Rudny"
+  ],
+  "Екібастұз": [
+   "Экибастуз",
+   "Ekibastuz"
+  ],
+  "Қонаев": [
+   "Конаев",
+   "Konaev"
+  ],
+  "Теміртау": [
+   "Темиртау",
+   "Temirtau"
+  ],
+  "Қаскелең": [
+   "Каскелен",
+   "Kaskelen"
+  ]
+ },
+ "combo": {
+  "Биология + География": [
+   "Биология + География",
+   "Biology + Geography"
+  ],
+  "Шығармашылық емтихан (екі бейіндік пәннің орнына)": [
+   "Творческий экзамен (вместо двух профильных предметов)",
+   "Creative exam (instead of two profile subjects)"
+  ],
+  "Дүниежүзі тарихы + География": [
+   "Всемирная история + География",
+   "World History + Geography"
+  ],
+  "Математика + Физика": [
+   "Математика + Физика",
+   "Mathematics + Physics"
+  ],
+  "Математика + Информатика": [
+   "Математика + Информатика",
+   "Mathematics + Computer Science"
+  ],
+  "Биология + Химия": [
+   "Биология + Химия",
+   "Biology + Chemistry"
+  ],
+  "Қазақ тілі + Қазақ әдебиеті": [
+   "Казахский язык + Казахская литература",
+   "Kazakh Language + Kazakh Literature"
+  ],
+  "Орыс тілі + Орыс әдебиеті": [
+   "Русский язык + Русская литература",
+   "Russian Language + Russian Literature"
+  ],
+  "Шет тілі + Дүниежүзі тарихы": [
+   "Иностранный язык + Всемирная история",
+   "Foreign Language + World History"
+  ],
+  "Қазақ / орыс тілі + әдебиеті": [
+   "Казахский / русский язык + литература",
+   "Kazakh / Russian Language + literature"
+  ],
+  "Математика + География": [
+   "Математика + География",
+   "Mathematics + Geography"
+  ],
+  "Дүниежүзі тарихы + Құқық негіздері": [
+   "Всемирная история + Основы права",
+   "World History + Fundamentals of Law"
+  ],
+  "Химия + Физика": [
+   "Химия + Физика",
+   "Chemistry + Physics"
+  ],
+  "География + Шет тілі": [
+   "География + Иностранный язык",
+   "Geography + Foreign Language"
+  ]
+ },
+ "fields": {
+  "ped": [
+   [
+    "Педагогические науки",
+    "Подготовка учителей, воспитателей и специалистов сферы образования.",
+    "Школы, детские сады, колледжи, образовательные центры, методические службы."
+   ],
+   [
+    "Education",
+    "Training teachers, early-years educators and education specialists.",
+    "Schools, kindergartens, colleges, learning centres, curriculum services."
+   ]
+  ],
+  "art": [
+   [
+    "Искусство",
+    "Творческие специалисты в музыке, театре, кино, хореографии, изобразительном искусстве и дизайне.",
+    "Театры, филармонии, студии, учреждения культуры, дизайн-студии."
+   ],
+   [
+    "Arts",
+    "Creative professionals in music, theatre, film, dance, fine arts and design.",
+    "Theatres, concert halls, studios, cultural institutions, design studios."
+   ]
+  ],
+  "hum": [
+   [
+    "Гуманитарные науки",
+    "Языки, история, философия и культура: знания, исследования, перевод.",
+    "Научные институты, музеи, СМИ, бюро переводов, образование."
+   ],
+   [
+    "Humanities",
+    "Languages, history, philosophy and culture: study, research and translation.",
+    "Research institutes, museums, media, translation agencies, education."
+   ]
+  ],
+  "soc": [
+   [
+    "Социальные науки, журналистика и информация",
+    "Общество, политика, психология, международные отношения и медиа.",
+    "Госслужба, СМИ, PR, международные и некоммерческие организации."
+   ],
+   [
+    "Social sciences, journalism and information",
+    "Society, politics, psychology, international relations and media.",
+    "Civil service, media, PR, international organisations and NGOs."
+   ]
+  ],
+  "bus": [
+   [
+    "Бизнес, управление и право",
+    "Экономика, финансы, менеджмент, маркетинг, аудит и право.",
+    "Банки, компании, госорганы, консалтинг, правоохранительная и юридическая сфера."
+   ],
+   [
+    "Business, management and law",
+    "Economics, finance, management, marketing, audit and law.",
+    "Banks, companies, government bodies, consulting, law enforcement and legal services."
+   ]
+  ],
+  "nat": [
+   [
+    "Естественные науки, математика и статистика",
+    "Математика, физика, химия, биология и науки о Земле.",
+    "НИИ, лаборатории, промышленность, образование."
+   ],
+   [
+    "Natural sciences, mathematics and statistics",
+    "Mathematics, physics, chemistry, biology and earth sciences.",
+    "Research institutes, laboratories, industry, education."
+   ]
+  ],
+  "ict": [
+   [
+    "Информационно-коммуникационные технологии",
+    "Программирование, информационные системы, сети и кибербезопасность.",
+    "IT-компании, банки, госцифровые системы, стартапы."
+   ],
+   [
+    "Information and communication technologies",
+    "Programming, information systems, networks and cybersecurity.",
+    "IT companies, banks, government digital services, startups."
+   ]
+  ],
+  "eng": [
+   [
+    "Инженерия, обрабатывающие и строительные отрасли",
+    "Инженерия, производство, строительство, транспорт, энергетика и горное дело.",
+    "Промышленность, нефтегаз, строительство, транспорт, энергетика."
+   ],
+   [
+    "Engineering, manufacturing and construction",
+    "Engineering, production, construction, transport, energy and mining.",
+    "Industry, oil and gas, construction, transport, energy."
+   ]
+  ],
+  "agr": [
+   [
+    "Сельское хозяйство и биоресурсы",
+    "Растениеводство, животноводство, лесное и рыбное хозяйство, водные ресурсы.",
+    "Агропредприятия, фермерские хозяйства, лесное и рыбное хозяйство, научные центры."
+   ],
+   [
+    "Agriculture and bioresources",
+    "Crop and livestock farming, forestry, fisheries and water resources.",
+    "Agribusinesses, farms, forestry and fisheries, research centres."
+   ]
+  ],
+  "vet": [
+   [
+    "Ветеринария",
+    "Здоровье животных и ветеринарный контроль.",
+    "Ветклиники, государственная ветслужба, животноводство."
+   ],
+   [
+    "Veterinary science",
+    "Animal health and veterinary control.",
+    "Veterinary clinics, state veterinary service, livestock farming."
+   ]
+  ],
+  "health": [
+   [
+    "Здравоохранение",
+    "Медицина, фармация, сестринское дело и общественное здравоохранение.",
+    "Больницы, поликлиники, аптеки, научные центры."
+   ],
+   [
+    "Health care",
+    "Medicine, pharmacy, nursing and public health.",
+    "Hospitals, clinics, pharmacies, research centres."
+   ]
+  ],
+  "serv": [
+   [
+    "Услуги",
+    "Туризм, гостиничное дело, досуг и социальная работа.",
+    "Туркомпании, отели, социальные службы."
+   ],
+   [
+    "Services",
+    "Tourism, hospitality, leisure and social work.",
+    "Travel companies, hotels, social services."
+   ]
+  ]
+ },
+ "extra_groups": {
+  "B022": [
+   "Музыковедение",
+   "Musicology"
+  ],
+  "B024": [
+   "Искусствоведение",
+   "Art history"
+  ],
+  "B025": [
+   "Дирижирование",
+   "Conducting"
+  ],
+  "B026": [
+   "Композиция",
+   "Composition"
+  ],
+  "B087": [
+   "Стоматология",
+   "Dentistry"
+  ],
+  "B096": [
+   "Правоохранительная деятельность",
+   "Law enforcement"
+  ],
+  "B099": [
+   "Инструментальное исполнительство",
+   "Instrumental performance"
+  ],
+  "B100": [
+   "Вокальное искусство",
+   "Vocal art"
+  ],
+  "B101": [
+   "Традиционное музыкальное искусство",
+   "Traditional music"
+  ],
+  "B102": [
+   "Искусство эстрады",
+   "Variety art"
+  ],
+  "B103": [
+   "Режиссура кино и ТВ",
+   "Film and TV directing"
+  ],
+  "B104": [
+   "Режиссура сценических искусств и цирка",
+   "Stage and circus directing"
+  ],
+  "B105": [
+   "Режиссура анимации",
+   "Animation directing"
+  ],
+  "B106": [
+   "Операторское и фото искусство",
+   "Cinematography and photography"
+  ],
+  "B107": [
+   "Медиаискусство и цифровые технологии",
+   "Media art and digital technology"
+  ],
+  "B108": [
+   "Сценография",
+   "Scenography"
+  ],
+  "B109": [
+   "Декоративное искусство",
+   "Decorative art"
+  ],
+  "B110": [
+   "Фэшн дизайн",
+   "Fashion design"
+  ],
+  "B141": [
+   "Международные экономические отношения",
+   "International economic relations"
+  ],
+  "B164": [
+   "Приборостроение",
+   "Instrument engineering"
+  ]
+ },
+ "foreign_names": {
+  "mit": [
+   "Массачусетский технологический институт",
+   "Massachusetts Institute of Technology"
+  ],
+  "oxford": [
+   "Оксфордский университет",
+   "University of Oxford"
+  ],
+  "tum": [
+   "Мюнхенский технический университет",
+   "Technical University of Munich"
+  ],
+  "harvard": [
+   "Гарвардский университет",
+   "Harvard University"
+  ],
+  "stanford": [
+   "Стэнфордский университет",
+   "Stanford University"
+  ],
+  "cambridge": [
+   "Кембриджский университет",
+   "University of Cambridge"
+  ],
+  "imperial": [
+   "Имперский колледж Лондона",
+   "Imperial College London"
+  ],
+  "eth": [
+   "Швейцарская высшая техническая школа Цюриха",
+   "ETH Zurich"
+  ],
+  "caltech": [
+   "Калифорнийский технологический институт",
+   "California Institute of Technology"
+  ],
+  "princeton": [
+   "Принстонский университет",
+   "Princeton University"
+  ],
+  "yale": [
+   "Йельский университет",
+   "Yale University"
+  ],
+  "ucl": [
+   "Университетский колледж Лондона",
+   "University College London"
+  ],
+  "nus": [
+   "Национальный университет Сингапура",
+   "National University of Singapore"
+  ],
+  "tsinghua": [
+   "Университет Цинхуа",
+   "Tsinghua University"
+  ],
+  "toronto": [
+   "Университет Торонто",
+   "University of Toronto"
+  ],
+  "melbourne": [
+   "Мельбурнский университет",
+   "University of Melbourne"
+  ],
+  "epfl": [
+   "Федеральная политехническая школа Лозанны",
+   "EPFL"
+  ],
+  "tokyo": [
+   "Токийский университет",
+   "University of Tokyo"
+  ],
+  "edinburgh": [
+   "Эдинбургский университет",
+   "University of Edinburgh"
+  ],
+  "snu": [
+   "Сеульский национальный университет",
+   "Seoul National University"
+  ],
+  "columbia": [
+   "Колумбийский университет",
+   "Columbia University"
+  ],
+  "upenn": [
+   "Пенсильванский университет",
+   "University of Pennsylvania"
+  ],
+  "cornell": [
+   "Корнеллский университет",
+   "Cornell University"
+  ],
+  "mcgill": [
+   "Университет Макгилла",
+   "McGill University"
+  ],
+  "anu": [
+   "Австралийский национальный университет",
+   "Australian National University"
+  ],
+  "peking": [
+   "Пекинский университет",
+   "Peking University"
+  ],
+  "ntu": [
+   "Наньянский технологический университет",
+   "Nanyang Technological University"
+  ],
+  "kaist": [
+   "KAIST (Корейский институт науки и технологий)",
+   "KAIST (Korea Advanced Institute of Science and Technology)"
+  ],
+  "delft": [
+   "Делфтский технический университет",
+   "Delft University of Technology"
+  ],
+  "hku": [
+   "Гонконгский университет",
+   "The University of Hong Kong"
+  ],
+  "uchicago": [
+   "Чикагский университет",
+   "University of Chicago"
+  ],
+  "jhu": [
+   "Университет Джонса Хопкинса",
+   "Johns Hopkins University"
+  ],
+  "lse": [
+   "Лондонская школа экономики и политических наук",
+   "London School of Economics"
+  ],
+  "ubc": [
+   "Университет Британской Колумбии",
+   "University of British Columbia"
+  ],
+  "metu": [
+   "Ближневосточный технический университет",
+   "Middle East Technical University"
+  ],
+  "bilkent": [
+   "Университет Билкент",
+   "Bilkent University"
+  ],
+  "polimi": [
+   "Миланский политехнический университет",
+   "Politecnico di Milano"
+  ],
+  "uva": [
+   "Амстердамский университет",
+   "University of Amsterdam"
+  ],
+  "sydney": [
+   "Сиднейский университет",
+   "The University of Sydney"
+  ],
+  "yonsei": [
+   "Университет Ёнсе",
+   "Yonsei University"
+  ],
+  "kyoto": [
+   "Киотский университет",
+   "Kyoto University"
+  ],
+  "heidelberg": [
+   "Гейдельбергский университет",
+   "Heidelberg University"
+  ],
+  "lmu": [
+   "Мюнхенский университет Людвига-Максимилиана",
+   "Ludwig Maximilian University of Munich"
+  ],
+  "charles": [
+   "Карлов университет",
+   "Charles University"
+  ]
+ },
+ "foreign_cities_en": {
+  "Кембридж, Массачусетс": "Cambridge, Massachusetts",
+  "Оксфорд": "Oxford",
+  "Мюнхен": "Munich",
+  "Стэнфорд, Калифорния": "Stanford, California",
+  "Кембридж": "Cambridge",
+  "Лондон": "London",
+  "Цюрих": "Zurich",
+  "Пасадена, Калифорния": "Pasadena, California",
+  "Принстон, Нью-Джерси": "Princeton, New Jersey",
+  "Нью-Хейвен, Коннектикут": "New Haven, Connecticut",
+  "Сингапур": "Singapore",
+  "Пекин": "Beijing",
+  "Торонто": "Toronto",
+  "Мельбурн": "Melbourne",
+  "Лозанна": "Lausanne",
+  "Токио": "Tokyo",
+  "Эдинбург": "Edinburgh",
+  "Сеул": "Seoul",
+  "Нью-Йорк": "New York",
+  "Филадельфия": "Philadelphia",
+  "Итака, Нью-Йорк": "Ithaca, New York",
+  "Монреаль": "Montreal",
+  "Канберра": "Canberra",
+  "Тэджон": "Daejeon",
+  "Делфт": "Delft",
+  "Гонконг": "Hong Kong",
+  "Чикаго, Иллинойс": "Chicago, Illinois",
+  "Балтимор, Мэриленд": "Baltimore, Maryland",
+  "Ванкувер": "Vancouver",
+  "Анкара": "Ankara",
+  "Милан": "Milan",
+  "Амстердам": "Amsterdam",
+  "Сидней": "Sydney",
+  "Киото": "Kyoto",
+  "Гейдельберг": "Heidelberg",
+  "Прага": "Prague"
+ }
+}
