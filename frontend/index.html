@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%230B1A23' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 17 21 9l18 8-18 8z'/%3E%3Cpath d='M10 21.5V28c0 3.6 22 3.6 22 0v-6.5'/%3E%3Ccircle cx='30' cy='30' r='8.5' stroke='%2300708A' stroke-width='3.4'/%3E%3Cpath d='M36.5 36.5 44 44' stroke='%23D9A300' stroke-width='4.4'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BilimIzde — Қазақстанның барлық университеттері мен мамандықтар порталы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem('bz-theme')||'dark';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}</script>
+<meta name="description" content="BilimIzde: Қазақстан мен шетелдегі университеттер, мамандықтар, ҰБТ грант балдары, салыстыру, тест және AI кеңесші."><meta property="og:title" content="BilimIzde: университетіңді ізде, мамандығыңды тап"><meta property="og:type" content="website"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"BilimIzde","inLanguage":"kk","description":"Қазақстан мен шетелдегі университеттер мен мамандықтар порталы"}</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<header><div class="wrap">
+ <a class="logo" href="#/" aria-label="BilimIzde"><span class="lm"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17 21 9l18 8-18 8z"/><path d="M10 21.5V28c0 3.6 22 3.6 22 0v-6.5"/><path d="M39 17v8"/><circle cx="39" cy="27.5" r="1.5" fill="currentColor" stroke="none"/><g class="lupa"><circle cx="30" cy="30" r="8.5" stroke="var(--acc)" stroke-width="2.9" style="fill:var(--bg);fill-opacity:.6"/><path d="M36.5 36.5 44 44" stroke="var(--gold)" stroke-width="3.8"/></g></svg></span><span>Bilim<span class="grad">Izde</span></span></a>
+ <nav><a href="#/calc">Грант есептегіш</a><a href="#/majors">Мамандықтар</a><a href="#/universities">Университеттер</a><a href="#/abroad">Шетелдік ЖОО</a><a href="#/ai">AI кеңесші</a></nav>
+ <div class="tools"><span class="pill">Республикалық база, 2026</span>
+ <select id="lang" aria-label="Тіл"><option value="kk">ҚАЗ</option><option value="ru">РУС</option><option value="en">ENG</option></select><button id="theme" aria-label="Түнгі режимді қосу"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></button></div>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap hg"><div>
+ <span class="badge"><i></i> Қазақстан және шетелдік ЖОО</span>
+ <h1>Университетіңді ізде. Мамандығыңды тап.</h1>
+ <p>Қазақстандағы барлық жоғары оқу орындары мен мамандық шифрлары, сондай-ақ ресми деректен тексерілген шетелдік университеттер бір жүйеде.</p>
+ <div class="search" role="search"><input id="q" placeholder="Шифр (B057), мамандық, ЖОО коды немесе қала" aria-label="Іздеу" oninput="if(CUR!=='#/search')go('#/search');filterData()"><button class="btn" onclick="go('#/search');filterData()">Іздеу</button></div>
+ <div class="hints">Мысалы: <button onclick="hint('B057')">B057</button><button onclick="hint('Алматы')">Алматы</button><button onclick="hint('Медицина')">Медицина</button></div>
+ <div class="count" id="count"></div></div>
+ <div class="hr"><figure class="seek" id="seek" aria-label="Жасырын белгілерді лупамен іздеу"><svg viewBox="0 0 480 400" role="img" aria-label="Шоқжұлдыздан құралған студент қалпағы және жасырын белгілерді іздеп жүрген лупа"><defs><clipPath id="lc"><circle id="lcc" r="60" cx="240" cy="200"/></clipPath><radialGradient id="skg" cx="50%" cy="46%" r="55%"><stop offset="0" stop-color="#E9B36B" stop-opacity=".2"/><stop offset="1" stop-color="#E9B36B" stop-opacity="0"/></radialGradient></defs><circle cx="240" cy="190" r="196" fill="url(#skg)"/><g id="skBase" class="base"></g><g clip-path="url(#lc)"><rect class="lp" width="480" height="400"/><g id="skLit" class="lit"></g></g><g id="lensG"><circle class="ring" r="60"/><path class="hdl" d="M43 43 90 90"/><path class="gl" d="M-40 -28A49 49 0 0 1 -8 -49"/></g></svg><figcaption id="skCap"></figcaption></figure></div></div></section>
+
+<section class="block" id="tiles"><div class="wrap"><div class="tiles">
+<a class="tile" href="#/majors"><small>01</small><h3>Мамандықтар</h3><b id="tM"></b><span>шифр, пән және балл бойынша</span><i>→</i></a>
+<a class="tile" href="#/universities"><small>02</small><h3>Университеттер</h3><b id="tU"></b><span>код, қала және грант балдары</span><i>→</i></a>
+<a class="tile" href="#/abroad"><small>03</small><h3>Шетелдік ЖОО</h3><b id="tF"></b><span>талаптар, баға, тарих</span><i>→</i></a>
+<a class="tile" href="#/calc"><small>04</small><h3>Грант есептегіш</h3><b>140</b><span>ҰБТ балыңызды тексеріңіз</span><i>→</i></a>
+<a class="tile" href="#/ai"><small>05</small><h3>AI кеңесші</h3><b>?</b><span>ЖОО, мамандық және грант туралы сұрақтар</span><i>→</i></a></div></div></section>
+<section class="band" id="analyzer"><div class="wrap calc">
+ <div><h2>ҰБТ балыңызға қарай мүмкіндікті бағалаңыз</h2><p>Жалпы балыңызды енгізіңіз. Шектік балдан өтетін мамандықтарды, 2026 жылғы грант санын және белгілі болса өткен жылғы өту балын көрсетеміз.</p></div>
+ <div><div class="row"><input type="number" id="score" min="0" max="140" placeholder="ҰБТ балы, мысалы 110" aria-label="ҰБТ балы"><button class="btn" onclick="calc()">Тексеру</button></div><div id="calcOut" aria-live="polite"></div></div>
+</div></section>
+
+<section class="block" id="how"><div class="wrap"><div class="head"><h2>Түсудің бес қадамы</h2></div>
+<ol class="steps">
+<li><a href="#/calc"><b>01</b><h3 data-i="s1t">Балыңды тексер</h3><p data-i="s1p">ҰБТ балыңды енгіз: шектік балдан өтетін мамандықтар мен грант санын көр.</p></a></li>
+<li><a href="#/test"><b>02</b><h3 data-i="s2t">Мамандық таңда</h3><p data-i="s2p">Тест тапсыр немесе пәндер жұбы бойынша мамандық шифрын ізде.</p></a></li>
+<li><a href="#/universities"><b>03</b><h3 data-i="s3t">ЖОО тап</h3><p data-i="s3p">Қала, грант балы және оқу ақысы бойынша университеттерді салыстыр.</p></a></li>
+<li><a href="#/admit"><b>04</b><h3 data-i="s4t">Құжат тапсыр</h3><p data-i="s4p">Чек-парақ бойынша құжат жина. Грантқа өтінім eGov арқылы беріледі (2026 жылы 13–20 шілде).</p></a></li>
+<li><a href="#/abroad"><b>05</b><h3 data-i="s5t">Шетелді де қара</h3><p data-i="s5p">Шетелдік ЖОО талаптары, бағасы, мерзімдері және стипендиялар.</p></a></li>
+</ol></div></section>
+<section class="block" id="majors"><div class="wrap">
+ <div class="head"><h2>Барлық мамандықтар мен шифрлар</h2><span id="mCount"></span></div>
+ <div class="hints" id="mChips" style="margin:0 0 18px"></div><div class="grid" id="majorsGrid"></div>
+</div></section>
+
+<section class="block" id="universities"><div class="wrap">
+ <div class="head"><h2>Барлық университеттер мен кодтары</h2><span id="uCount"></span></div>
+ <div class="hints" id="uChips" style="margin:0 0 18px"></div><div class="uni" id="uniList"></div>
+</div></section>
+
+<section class="block" id="abroad"><div class="wrap"><div class="head"><h2>Шетелдік университеттер</h2><span id="fCount"></span></div>
+<p class="fnote">Бұл бөлім Қазақстан ЖОО тізімінен бөлек. Әр атаудың жанындағы белгі деректің қаншалықты тексерілгенін көрсетеді: толық нүкте — ресми беттен толық тексерілген, жарты нүкте — мерзім мен талаптар тексерілген, бос нүкте — нақтылау қажет. Дереккөздер әр университеттің терезесінде берілген. Суреттер Wikimedia Commons-тан алынады. Оқу ақысы мен талаптар жыл сайын өзгереді, сондықтан өтініш бермес бұрын ресми бетті тағы бір тексеріңіз.</p>
+<div class="hints" id="fChips" style="margin:0 0 18px"></div><div class="uni" id="foreignList"></div></div></section>
+<section class="block" id="ai-helper"><div class="wrap"><div class="head"><h2>BilimIzde AI көмекшісі</h2><span>Қазақша және орысша жаза беріңіз</span></div>
+<div class="aiw"><aside class="aiside"><h3>Көмекші не істей алады</h3><ul><li>Шетелдік ЖОО тарихын айтады және жалпы сұрақтарға жауап береді (виза, IELTS, UCAS, Common App, грант)</li><li>Мамандықты шифр немесе атау бойынша табады</li><li>ЖОО-ны код, атау және қала бойынша іздейді</li><li>ҰБТ балыңызға қарай мамандықтарды сүзеді</li><li>Пәндер жұбы бойынша мамандық ұсынады</li><li>Ең арзан және қымбат ЖОО-ны көрсетеді</li><li>Екі ЖОО-ны немесе екі мамандықты салыстырады</li><li>Шетелдік ЖОО-ны ел, баға және IELTS бойынша табады</li><li>Екі шетелдік университетті салыстырады</li><li>Тест арқылы саған сай мамандық таңдайды</li></ul><button class="btn" onclick="startQuiz()">Мамандық таңдау тесті</button><button class="ghost" onclick="clearChat()">Чатты тазалау</button></aside>
+<div class="chat2"><div class="chead"><span class="av">AI</span><div><b>BilimIzde AI</b><small>Базадағы мәліметтер бойынша жауап береді</small></div><span id="sbadge"></span></div><div id="msgs" aria-live="polite"></div><div class="qr" id="qr"></div>
+<div class="row"><input id="aiIn" placeholder="Сұрағыңызды жазыңыз..." aria-label="Сұрақ" onkeydown="if(event.key==='Enter')askAI()"><button id="mic" aria-label="Дауыспен жазу"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button class="btn" onclick="askAI()">Жіберу</button></div></div></div></div></section>
+<section class="block" id="detail" hidden><div class="wrap"><nav class="crumbs"><a href="#/">Басты бет</a><i>›</i><a id="detBack" href="#/">Бөлім</a><i>›</i><span id="detName"></span></nav><div class="detail" id="detBody"></div></div></section>
+<section class="block" id="x" hidden><div class="wrap"><div class="head"><h2 id="xT"></h2></div><div id="xB"></div></div></section>
+</main>
+<dialog id="uniDlg" aria-labelledby="dName"><button class="x" onclick="document.getElementById('uniDlg').close()" aria-label="Жабу">×</button><div id="dBody"></div></dialog>
+
+<dialog id="majDlg" aria-labelledby="mName"><button class="x" onclick="document.getElementById('majDlg').close()" aria-label="Жабу">×</button><div id="mBody"></div></dialog>
+<dialog id="forDlg" aria-labelledby="fName"><button class="x" onclick="document.getElementById('forDlg').close()" aria-label="Жабу">×</button><div id="fBody"></div></dialog>
+<footer><div class="wrap fw">
+<div class="fc"><span class="logo" style="font-size:18px">BilimIzde</span><p data-i="fAbout">Қазақстан мен шетелдегі ЖОО, мамандықтар және гранттар туралы ақпараттық портал. Мәліметтер анықтамалық сипатта: түсер алдында ресми дереккөзбен салыстырыңыз.</p></div>
+<div class="fc"><h4 data-i="fSec">Бөлімдер</h4><nav class="fnav"><a href="#/majors">Мамандықтар</a><a href="#/universities">Университеттер</a><a href="#/abroad">Шетелдік ЖОО</a><a href="#/calc">Грант есептегіш</a><a href="#/admit">Құжат</a><a href="#/grants">Грант</a><a href="#/faq">FAQ</a><a href="#/ai">AI кеңесші</a></nav></div>
+<div class="fc"><h4 data-i="fSrc">Ресми дереккөздер</h4><a href="https://testcenter.kz" target="_blank" rel="noopener noreferrer">testcenter.kz — ҰБТ</a><a href="https://egov.kz" target="_blank" rel="noopener noreferrer">egov.kz — грантқа өтінім</a><a href="https://univision.kz" target="_blank" rel="noopener noreferrer">univision.kz — өту балдары</a><a href="https://bolashak.gov.kz" target="_blank" rel="noopener noreferrer">bolashak.gov.kz — «Болашақ»</a></div>
+<div class="fc"><h4 data-i="fCon">Кері байланыс</h4><a href="#/club" data-i="fBug">Қате таптыңыз ба? Пікір қалдырыңыз</a><a href="#/faq" data-i="fFaq">Жиі қойылатын сұрақтар</a></div>
+</div><div class="wrap fb"><span>© 2026 BilimIzde</span><span data-i="fUpd">Деректер: univision.kz, ҚР Ғылым және жоғары білім министрлігі, ЖОО ресми сайттары · 2026</span></div></footer>
+
+<script src="js/api.js"></script>
+</body>
+</html>
