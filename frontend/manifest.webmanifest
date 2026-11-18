@@ -1,0 +1,15 @@
+{
+  "name": "BilimIzde — университеттер мен мамандықтар",
+  "short_name": "BilimIzde",
+  "description": "Қазақстан мен шетелдегі университеттер, мамандықтар, ҰБТ гранттары",
+  "lang": "kk",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#111418",
+  "theme_color": "#111418",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

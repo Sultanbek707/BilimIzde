@@ -1,0 +1,106 @@
+{
+ "sources": {
+  "qs_world_2026": "https://informburo.kz/novosti/20-vuzov-iz-kazaxstana-popali-v-novyi-reiting-qs-kto-na-kakix-mestax",
+  "qs_world_2027": "https://inbusiness.kz/ru/news/luchshie-vuzy-kazahstana-rasteryali-pozicii-v-mirovom-rejtinge",
+  "qs_asia_2027": "https://forbes.kz/articles/bolshinstvo-vuzov-kazahstana-poteryali-pozitsii-vreytinge-qsasia-2027",
+  "qs_asia_2027_b": "https://www.bilim.expert/post/%D0%BA%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD-%D0%BE%D1%81%D1%82%D0%B0%D1%91%D1%82%D1%81%D1%8F-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B0%D0%B7%D0%B8%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%BC-%D0%BB%D0%B8%D0%B4%D0%B5%D1%80%D0%BE%D0%BC-%D0%B2-qs-asia-2027"
+ },
+ "notes": {
+  "qs_world_2027": "QS World 2027 (2026 ж. маусым): Қазақстаннан 18 ЖОО. Тек ашық жарияланған орындар енгізілді; Қозыбаев пен Шәкәрім университеттері тізімнен шықты."
+ },
+ "checked": "2026-11-18",
+ "universities": {
+  "027": {
+   "qs_world_2026": "166",
+   "qs_world_2027": "177",
+   "qs_asia_2027": "46"
+  },
+  "013": {
+   "qs_world_2026": "317",
+   "qs_world_2027": "338",
+   "qs_asia_2027": "62"
+  },
+  "029": {
+   "qs_world_2026": "331",
+   "qs_world_2027": "351",
+   "qs_asia_2027": "89"
+  },
+  "007": {
+   "qs_world_2026": "628",
+   "qs_world_2027": "634"
+  },
+  "024": {
+   "qs_world_2026": "697"
+  },
+  "045": {
+   "qs_world_2026": "731–740"
+  },
+  "037": {
+   "qs_world_2026": "761–770"
+  },
+  "031": {
+   "qs_world_2026": "901–950"
+  },
+  "032": {
+   "qs_world_2026": "951–1000"
+  },
+  "053": {
+   "qs_world_2026": "1001–1200"
+  },
+  "026": {
+   "qs_world_2026": "1001–1200",
+   "qs_asia_2027": "337"
+  },
+  "012": {
+   "qs_world_2026": "1001–1200"
+  },
+  "421": {
+   "qs_world_2026": "1001–1200"
+  },
+  "021": {
+   "qs_world_2026": "1001–1200"
+  },
+  "023": {
+   "qs_world_2026": "1201–1400"
+  },
+  "002": {
+   "qs_world_2026": "1201–1400"
+  },
+  "003": {
+   "qs_world_2026": "1201–1400",
+   "qs_world_2027": "1401+"
+  },
+  "040": {
+   "qs_world_2026": "1401+",
+   "qs_world_2027": "—"
+  },
+  "042": {
+   "qs_world_2026": "1401+",
+   "qs_world_2027": "—"
+  },
+  "038": {
+   "qs_world_2026": "1401+"
+  },
+  "011": {
+   "qs_asia_2027": "618"
+  },
+  "302": {
+   "qs_asia_2027": "691"
+  },
+  "016": {
+   "qs_asia_2027": "1001–1100"
+  },
+  "010": {
+   "qs_asia_2027": "1001–1100"
+  },
+  "522": {
+   "qs_asia_2027": "1201–1300"
+  },
+  "022": {
+   "qs_asia_2027": "1501+"
+  },
+  "414": {
+   "qs_asia_2027": "1501+"
+  }
+ }
+}

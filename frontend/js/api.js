@@ -4,6 +4,11 @@
 const API_BASE = (window.BZ_API || '').replace(/\/$/, '');
 
 async function api(path, opts) {
+  opts = opts || {};
+  // Кірген қолданушы болса, токенді қосамыз (клуб, жоспар)
+  if (window.BZ_AUTH_HEADERS && !(opts.headers && opts.headers.Authorization)) {
+    try { opts.headers = Object.assign({}, opts.headers, await window.BZ_AUTH_HEADERS()); } catch (e) {}
+  }
   const r = await fetch(API_BASE + path, opts);
   if (!r.ok) { const e = new Error('API ' + r.status + ': ' + path); e.status = r.status; throw e; }
   return r.json();
@@ -30,7 +35,12 @@ function translateData(d, lang) {
   d.foreign.forEach(f => {
     const n = (T.foreign_names || {})[f.id]; if (n) f.kz = n[i];
     if (i === 1) { const c = (T.foreign_cities_en || {})[f.city]; if (c) f.city = c; }
-    if (window.BZ_T) f.country = BZ_T(f.country);
+    const o = (d.foreign_i18n || {})[f.id];
+    if (o) {
+      for (const k of ['country', 'city', 'address', 'status', 'tuition', 'tuition_note', 'deadlines', 'aid', 'entry', 'process']) if (o[k] != null) f[k] = o[k];
+      if (o.sources) f.sources = f.sources.map((s, j) => [o.sources[j] || s[0], s[1]]);
+      if (o.hist) d.foreign_history[f.id] = o.hist;
+    } else if (window.BZ_T) f.country = BZ_T(f.country);
   });
 }
 
@@ -38,7 +48,7 @@ function translateData(d, lang) {
   const count = document.getElementById('count');
   if (count) count.textContent = 'Мәліметтер жүктелуде…';
   try {
-    const d = await api('/api/bootstrap');
+    const d = await api('/api/bootstrap?lang=' + encodeURIComponent(window.BZ_LANG || 'kk'));
     translateData(d, window.BZ_LANG || 'kk');
     window.UX = d.university_extra;
     // app.js бұрынғыдай осы атаулармен жұмыс істейді
@@ -48,8 +58,9 @@ function translateData(d, lang) {
       Q26: d.quotas_2026, Q26N: d.quota_names_2026, PS: d.passing_scores, MU: d.major_universities,
       FOREIGN: d.foreign, WIKI: d.foreign_wiki, HIST: d.foreign_history, FAQ: d.faq,
       BZ_AI: d.ai_enabled, BZ_CLUB_N: d.club_count,
+      RANK: d.rankings, MAST: d.masters, SAL: d.salaries,
     });
-    for (const src of ['js/app.js', 'js/extras.js']) {
+    for (const src of ['js/plan.js', 'js/more.js', 'js/app.js', 'js/extras.js', 'js/auth.js', 'js/track.js']) {
       const s = document.createElement('script');
       s.src = src; s.async = false;
       document.body.appendChild(s);

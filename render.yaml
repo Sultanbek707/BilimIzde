@@ -9,5 +9,20 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.7
-      - key: ANTHROPIC_API_KEY   # міндетті емес: AI көмекшісіне тіл моделін қосу үшін
+      # Барлығы міндетті емес. Орнатылмаса, сол мүмкіндік жай өшік тұрады.
+      - key: BZ_SITE_URL            # сайт адресі, мысалы https://bilimizde.onrender.com (SEO, бот сілтемелері)
+        sync: false
+      - key: BZ_ADMIN_KEY           # /admin.html статистикасына кіру кілті
+        sync: false
+      - key: DATABASE_URL           # PostgreSQL (пікірлер мен қолданушылар өшпеуі үшін)
+        sync: false
+      - key: FIREBASE_PROJECT_ID    # Google / телефон арқылы тіркелу
+        sync: false
+      - key: FIREBASE_WEB_CONFIG
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN     # Telegram-бот
+        sync: false
+      - key: TELEGRAM_WEBHOOK_SECRET
+        sync: false
+      - key: ANTHROPIC_API_KEY      # AI кеңесшіге тіл моделі
         sync: false

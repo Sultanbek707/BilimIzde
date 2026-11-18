@@ -1,0 +1,1330 @@
+{
+ "year": "2026-2027",
+ "fields": [
+  {
+   "code": "7M01",
+   "kk": "Педагогикалық ғылымдар",
+   "ru": "Педагогические науки",
+   "en": "Education"
+  },
+  {
+   "code": "7M02",
+   "kk": "Өнер және гуманитарлық ғылымдар",
+   "ru": "Искусство и гуманитарные науки",
+   "en": "Arts and Humanities"
+  },
+  {
+   "code": "7M03",
+   "kk": "Әлеуметтік ғылымдар, журналистика және ақпарат",
+   "ru": "Социальные науки, журналистика и информация",
+   "en": "Social Sciences, Journalism and Information"
+  },
+  {
+   "code": "7M04",
+   "kk": "Бизнес, басқару және құқық",
+   "ru": "Бизнес, управление и право",
+   "en": "Business, Administration and Law"
+  },
+  {
+   "code": "7M05",
+   "kk": "Жаратылыстану ғылымдары, математика және статистика",
+   "ru": "Естественные науки, математика и статистика",
+   "en": "Natural Sciences, Mathematics and Statistics"
+  },
+  {
+   "code": "7M06",
+   "kk": "Ақпараттық-коммуникациялық технологиялар",
+   "ru": "Информационно-коммуникационные технологии",
+   "en": "Information and Communication Technologies"
+  },
+  {
+   "code": "7M07",
+   "kk": "Инженерлік, өңдеу және құрылыс салалары",
+   "ru": "Инженерные, обрабатывающие и строительные отрасли",
+   "en": "Engineering, Manufacturing and Construction"
+  },
+  {
+   "code": "7M08",
+   "kk": "Ауыл шаруашылығы және биоресурстар",
+   "ru": "Сельское хозяйство и биоресурсы",
+   "en": "Agriculture and Bioresources"
+  },
+  {
+   "code": "7M09",
+   "kk": "Ветеринария",
+   "ru": "Ветеринария",
+   "en": "Veterinary Medicine"
+  },
+  {
+   "code": "7M10",
+   "kk": "Денсаулық сақтау",
+   "ru": "Здравоохранение",
+   "en": "Healthcare"
+  },
+  {
+   "code": "7M11",
+   "kk": "Қызмет көрсету",
+   "ru": "Услуги",
+   "en": "Services"
+  }
+ ],
+ "groups": [
+  {
+   "code": "M001",
+   "kk": "Педагогика және психология",
+   "ru": "Педагогика и психология",
+   "en": "Pedagogy and Psychology",
+   "field": "7M01",
+   "np": 200,
+   "prof": 0
+  },
+  {
+   "code": "M002",
+   "kk": "Мектепке дейінгі оқыту және тәрбиелеу",
+   "ru": "Дошкольное обучение и воспитание",
+   "en": "Preschool Education and Upbringing",
+   "field": "7M01",
+   "np": 60,
+   "prof": 0
+  },
+  {
+   "code": "M003",
+   "kk": "Пәндік мамандандырусыз педагогтерді даярлау",
+   "ru": "Подготовка педагогов без предметной специализации",
+   "en": "Teacher Training without Subject Specialization",
+   "field": "7M01",
+   "np": 236,
+   "prof": 0
+  },
+  {
+   "code": "M004",
+   "kk": "Бастапқы әскери дайындық педагогтерін даярлау",
+   "ru": "Подготовка педагогов начальной военной подготовки",
+   "en": "Teacher Training in Basic Military Training",
+   "field": "7M01",
+   "np": 3,
+   "prof": 0
+  },
+  {
+   "code": "M005",
+   "kk": "Дене шынықтыру педагогтерін даярлау",
+   "ru": "Подготовка педагогов физической культуры",
+   "en": "Physical Education Teacher Training",
+   "field": "7M01",
+   "np": 44,
+   "prof": 0
+  },
+  {
+   "code": "M006",
+   "kk": "Музыка педагогтерін даярлау",
+   "ru": "Подготовка педагогов музыки",
+   "en": "Music Teacher Training",
+   "field": "7M01",
+   "np": 20,
+   "prof": 0
+  },
+  {
+   "code": "M007",
+   "kk": "Көркем еңбек, графика және жобалау педагогтерін даярлау",
+   "ru": "Подготовка педагогов художественного труда, графики и проектирования",
+   "en": "Teacher Training in Arts and Crafts, Graphics and Design",
+   "field": "7M01",
+   "np": 30,
+   "prof": 0
+  },
+  {
+   "code": "M010",
+   "kk": "Математика педагогтерін даярлау",
+   "ru": "Подготовка педагогов математики",
+   "en": "Mathematics Teacher Training",
+   "field": "7M01",
+   "np": 390,
+   "prof": 0
+  },
+  {
+   "code": "M011",
+   "kk": "Физика педагогтерін даярлау",
+   "ru": "Подготовка педагогов физики",
+   "en": "Physics Teacher Training",
+   "field": "7M01",
+   "np": 390,
+   "prof": 0
+  },
+  {
+   "code": "M012",
+   "kk": "Информатика педагогтерін даярлау",
+   "ru": "Подготовка педагогов информатики",
+   "en": "Computer Science Teacher Training",
+   "field": "7M01",
+   "np": 200,
+   "prof": 0
+  },
+  {
+   "code": "M013",
+   "kk": "Химия педагогтерін даярлау",
+   "ru": "Подготовка педагогов химии",
+   "en": "Chemistry Teacher Training",
+   "field": "7M01",
+   "np": 280,
+   "prof": 0
+  },
+  {
+   "code": "M014",
+   "kk": "Биология педагогтерін даярлау",
+   "ru": "Подготовка педагогов биологии",
+   "en": "Biology Teacher Training",
+   "field": "7M01",
+   "np": 280,
+   "prof": 0
+  },
+  {
+   "code": "M015",
+   "kk": "География педагогтерін даярлау",
+   "ru": "Подготовка педагогов географии",
+   "en": "Geography Teacher Training",
+   "field": "7M01",
+   "np": 100,
+   "prof": 0
+  },
+  {
+   "code": "M016",
+   "kk": "Тарих педагогтерін даярлау",
+   "ru": "Подготовка педагогов истории",
+   "en": "History Teacher Training",
+   "field": "7M01",
+   "np": 230,
+   "prof": 0
+  },
+  {
+   "code": "M017",
+   "kk": "Қазақ тілі мен әдебиеті педагогтерін даярлау",
+   "ru": "Подготовка педагогов казахского языка и литературы",
+   "en": "Kazakh Language and Literature Teacher Training",
+   "field": "7M01",
+   "np": 150,
+   "prof": 0
+  },
+  {
+   "code": "M018",
+   "kk": "Орыс тілі мен әдебиеті педагогтерін даярлау",
+   "ru": "Подготовка педагогов русского языка и литературы",
+   "en": "Russian Language and Literature Teacher Training",
+   "field": "7M01",
+   "np": 63,
+   "prof": 0
+  },
+  {
+   "code": "M019",
+   "kk": "Шет тілі педагогтерін даярлау",
+   "ru": "Подготовка педагогов иностранного языка",
+   "en": "Foreign Language Teacher Training",
+   "field": "7M01",
+   "np": 205,
+   "prof": 0
+  },
+  {
+   "code": "M020",
+   "kk": "Әлеуметтік педагогтерді даярлау",
+   "ru": "Подготовка социальных педагогов",
+   "en": "Social Pedagogue Training",
+   "field": "7M01",
+   "np": 28,
+   "prof": 0
+  },
+  {
+   "code": "M021",
+   "kk": "Арнайы педагогика",
+   "ru": "Специальная педагогика",
+   "en": "Special Education",
+   "field": "7M01",
+   "np": 150,
+   "prof": 0
+  },
+  {
+   "code": "M028",
+   "kk": "Режиссура",
+   "ru": "Режиссура",
+   "en": "Directing",
+   "field": "7M02",
+   "np": 5,
+   "prof": 0
+  },
+  {
+   "code": "M032",
+   "kk": "Аудиовизуалды құралдар және медиа өндіріс",
+   "ru": "Аудиовизуальные средства и медиа производство",
+   "en": "Audiovisual Media and Media Production",
+   "field": "7M02",
+   "np": 5,
+   "prof": 0
+  },
+  {
+   "code": "M035",
+   "kk": "Сән, дизайн",
+   "ru": "Мода, дизайн",
+   "en": "Fashion, Design",
+   "field": "7M02",
+   "np": 80,
+   "prof": 0
+  },
+  {
+   "code": "M036",
+   "kk": "Полиграфия",
+   "ru": "Полиграфия",
+   "en": "Printing",
+   "field": "7M02",
+   "np": 10,
+   "prof": 0
+  },
+  {
+   "code": "M050",
+   "kk": "Философия және этика",
+   "ru": "Философия и этика",
+   "en": "Philosophy and Ethics",
+   "field": "7M02",
+   "np": 35,
+   "prof": 0
+  },
+  {
+   "code": "M051",
+   "kk": "Дін және теология",
+   "ru": "Религия и теология",
+   "en": "Religion and Theology",
+   "field": "7M02",
+   "np": 50,
+   "prof": 0
+  },
+  {
+   "code": "M052",
+   "kk": "Исламтану",
+   "ru": "Исламоведение",
+   "en": "Islamic Studies",
+   "field": "7M02",
+   "np": 20,
+   "prof": 0
+  },
+  {
+   "code": "M053",
+   "kk": "Тарих",
+   "ru": "История",
+   "en": "History",
+   "field": "7M02",
+   "np": 50,
+   "prof": 0
+  },
+  {
+   "code": "M153",
+   "kk": "Археология және этнология",
+   "ru": "Археология и этнология",
+   "en": "Archaeology and Ethnology",
+   "field": "7M02",
+   "np": 13,
+   "prof": 0
+  },
+  {
+   "code": "M054",
+   "kk": "Түркітану",
+   "ru": "Тюркология",
+   "en": "Turkology",
+   "field": "7M02",
+   "np": 5,
+   "prof": 0
+  },
+  {
+   "code": "M055",
+   "kk": "Шығыстану",
+   "ru": "Востоковедение",
+   "en": "Oriental Studies",
+   "field": "7M02",
+   "np": 34,
+   "prof": 0
+  },
+  {
+   "code": "M056",
+   "kk": "Аударма ісі, ілеспе аударма",
+   "ru": "Переводческое дело, синхронный перевод",
+   "en": "Translation and Simultaneous Interpreting",
+   "field": "7M02",
+   "np": 60,
+   "prof": 10
+  },
+  {
+   "code": "M057",
+   "kk": "Лингвистика",
+   "ru": "Лингвистика",
+   "en": "Linguistics",
+   "field": "7M02",
+   "np": 9,
+   "prof": 0
+  },
+  {
+   "code": "M058",
+   "kk": "Әдебиет",
+   "ru": "Литература",
+   "en": "Literature",
+   "field": "7M02",
+   "np": 9,
+   "prof": 0
+  },
+  {
+   "code": "M059",
+   "kk": "Шетел филологиясы",
+   "ru": "Иностранная филология",
+   "en": "Foreign Philology",
+   "field": "7M02",
+   "np": 70,
+   "prof": 0
+  },
+  {
+   "code": "M060",
+   "kk": "Филология",
+   "ru": "Филология",
+   "en": "Philology",
+   "field": "7M02",
+   "np": 80,
+   "prof": 0
+  },
+  {
+   "code": "M061",
+   "kk": "Әлеуметтану",
+   "ru": "Социология",
+   "en": "Sociology",
+   "field": "7M03",
+   "np": 45,
+   "prof": 0
+  },
+  {
+   "code": "M062",
+   "kk": "Мәдениеттану",
+   "ru": "Культурология",
+   "en": "Cultural Studies",
+   "field": "7M03",
+   "np": 17,
+   "prof": 0
+  },
+  {
+   "code": "M063",
+   "kk": "Саясаттану және конфликтология",
+   "ru": "Политология и конфликтология",
+   "en": "Political Science and Conflict Studies",
+   "field": "7M03",
+   "np": 65,
+   "prof": 5
+  },
+  {
+   "code": "M064",
+   "kk": "Халықаралық қатынастар",
+   "ru": "Международные отношения",
+   "en": "International Relations",
+   "field": "7M03",
+   "np": 40,
+   "prof": 10
+  },
+  {
+   "code": "M065",
+   "kk": "Аймақтану",
+   "ru": "Регионоведение",
+   "en": "Regional Studies",
+   "field": "7M03",
+   "np": 20,
+   "prof": 0
+  },
+  {
+   "code": "M066",
+   "kk": "Психология",
+   "ru": "Психология",
+   "en": "Psychology",
+   "field": "7M03",
+   "np": 110,
+   "prof": 20
+  },
+  {
+   "code": "M067",
+   "kk": "Журналистика және репортерлік іс",
+   "ru": "Журналистика и репортерское дело",
+   "en": "Journalism and Reporting",
+   "field": "7M03",
+   "np": 85,
+   "prof": 0
+  },
+  {
+   "code": "M068",
+   "kk": "Қоғаммен байланыс",
+   "ru": "Связь с общественностью",
+   "en": "Public Relations",
+   "field": "7M03",
+   "np": 18,
+   "prof": 0
+  },
+  {
+   "code": "M069",
+   "kk": "Кітапхана ісі, ақпаратты өңдеу және мұрағат ісі",
+   "ru": "Библиотечное дело, обработка информации и архивное дело",
+   "en": "Library Science, Information Processing and Archiving",
+   "field": "7M03",
+   "np": 10,
+   "prof": 0
+  },
+  {
+   "code": "M070",
+   "kk": "Экономика",
+   "ru": "Экономика",
+   "en": "Economics",
+   "field": "7M04",
+   "np": 110,
+   "prof": 20
+  },
+  {
+   "code": "M071",
+   "kk": "Мемлекеттік және жергілікті басқару",
+   "ru": "Государственное и местное управление",
+   "en": "Public and Local Administration",
+   "field": "7M04",
+   "np": 38,
+   "prof": 7
+  },
+  {
+   "code": "M072",
+   "kk": "Менеджмент",
+   "ru": "Менеджмент",
+   "en": "Management",
+   "field": "7M04",
+   "np": 200,
+   "prof": 35
+  },
+  {
+   "code": "M073",
+   "kk": "Аудит және салық салу",
+   "ru": "Аудит и налогообложение",
+   "en": "Audit and Taxation",
+   "field": "7M04",
+   "np": 100,
+   "prof": 15
+  },
+  {
+   "code": "M173",
+   "kk": "Мемлекеттік аудит",
+   "ru": "Государственный аудит",
+   "en": "State Audit",
+   "field": "7M04",
+   "np": 27,
+   "prof": 10
+  },
+  {
+   "code": "M074",
+   "kk": "Қаржы, банк және сақтандыру ісі",
+   "ru": "Финансы, банковское и страховое дело",
+   "en": "Finance, Banking and Insurance",
+   "field": "7M04",
+   "np": 90,
+   "prof": 40
+  },
+  {
+   "code": "M075",
+   "kk": "Маркетинг және жарнама",
+   "ru": "Маркетинг и реклама",
+   "en": "Marketing and Advertising",
+   "field": "7M04",
+   "np": 90,
+   "prof": 5
+  },
+  {
+   "code": "M077",
+   "kk": "Бағалау",
+   "ru": "Оценка",
+   "en": "Valuation",
+   "field": "7M04",
+   "np": 4,
+   "prof": 0
+  },
+  {
+   "code": "M078",
+   "kk": "Құқық",
+   "ru": "Право",
+   "en": "Law",
+   "field": "7M04",
+   "np": 140,
+   "prof": 70
+  },
+  {
+   "code": "M079",
+   "kk": "Сот сараптамасы",
+   "ru": "Судебная экспертиза",
+   "en": "Forensic Expertise",
+   "field": "7M04",
+   "np": 30,
+   "prof": 0
+  },
+  {
+   "code": "M080",
+   "kk": "Биология",
+   "ru": "Биология",
+   "en": "Biology",
+   "field": "7M05",
+   "np": 115,
+   "prof": 0
+  },
+  {
+   "code": "M081",
+   "kk": "Генетика",
+   "ru": "Генетика",
+   "en": "Genetics",
+   "field": "7M05",
+   "np": 15,
+   "prof": 0
+  },
+  {
+   "code": "M082",
+   "kk": "Биотехнология",
+   "ru": "Биотехнология",
+   "en": "Biotechnology",
+   "field": "7M05",
+   "np": 139,
+   "prof": 0
+  },
+  {
+   "code": "M083",
+   "kk": "Геоботаника",
+   "ru": "Геоботаника",
+   "en": "Geobotany",
+   "field": "7M05",
+   "np": 3,
+   "prof": 0
+  },
+  {
+   "code": "M084",
+   "kk": "География",
+   "ru": "География",
+   "en": "Geography",
+   "field": "7M05",
+   "np": 77,
+   "prof": 0
+  },
+  {
+   "code": "M085",
+   "kk": "Гидрология",
+   "ru": "Гидрология",
+   "en": "Hydrology",
+   "field": "7M05",
+   "np": 9,
+   "prof": 0
+  },
+  {
+   "code": "M086",
+   "kk": "Метеорология",
+   "ru": "Метеорология",
+   "en": "Meteorology",
+   "field": "7M05",
+   "np": 13,
+   "prof": 0
+  },
+  {
+   "code": "M087",
+   "kk": "Қоршаған ортаны қорғау технологиясы",
+   "ru": "Технология охраны окружающей среды",
+   "en": "Environmental Protection Technology",
+   "field": "7M05",
+   "np": 77,
+   "prof": 10
+  },
+  {
+   "code": "M088",
+   "kk": "Гидрогеология және инженерлік геология",
+   "ru": "Гидрогеология и инженерная геология",
+   "en": "Hydrogeology and Engineering Geology",
+   "field": "7M05",
+   "np": 15,
+   "prof": 0
+  },
+  {
+   "code": "M089",
+   "kk": "Химия",
+   "ru": "Химия",
+   "en": "Chemistry",
+   "field": "7M05",
+   "np": 66,
+   "prof": 0
+  },
+  {
+   "code": "M090",
+   "kk": "Физика",
+   "ru": "Физика",
+   "en": "Physics",
+   "field": "7M05",
+   "np": 163,
+   "prof": 0
+  },
+  {
+   "code": "M091",
+   "kk": "Сейсмология",
+   "ru": "Сейсмология",
+   "en": "Seismology",
+   "field": "7M05",
+   "np": 5,
+   "prof": 0
+  },
+  {
+   "code": "M092",
+   "kk": "Математика және статистика",
+   "ru": "Математика и статистика",
+   "en": "Mathematics and Statistics",
+   "field": "7M05",
+   "np": 190,
+   "prof": 0
+  },
+  {
+   "code": "M093",
+   "kk": "Механика",
+   "ru": "Механика",
+   "en": "Mechanics",
+   "field": "7M05",
+   "np": 15,
+   "prof": 0
+  },
+  {
+   "code": "M094",
+   "kk": "Ақпараттық технологиялар",
+   "ru": "Информационные технологии",
+   "en": "Information Technology",
+   "field": "7M06",
+   "np": 805,
+   "prof": 55
+  },
+  {
+   "code": "M096",
+   "kk": "Коммуникациялар және коммуникациялық технологиялар",
+   "ru": "Коммуникации и коммуникационные технологии",
+   "en": "Communications and Communication Technologies",
+   "field": "7M06",
+   "np": 102,
+   "prof": 0
+  },
+  {
+   "code": "M095",
+   "kk": "Ақпараттық қауіпсіздік",
+   "ru": "Информационная безопасность",
+   "en": "Information Security",
+   "field": "7M06",
+   "np": 224,
+   "prof": 0
+  },
+  {
+   "code": "M195",
+   "kk": "Криптология",
+   "ru": "Криптология",
+   "en": "Cryptology",
+   "field": "7M06",
+   "np": 10,
+   "prof": 0
+  },
+  {
+   "code": "M097",
+   "kk": "Химиялық инженерия және процестер",
+   "ru": "Химическая инженерия и процессы",
+   "en": "Chemical Engineering and Processes",
+   "field": "7M07",
+   "np": 185,
+   "prof": 0
+  },
+  {
+   "code": "M098",
+   "kk": "Жылу энергетикасы",
+   "ru": "Теплоэнергетика",
+   "en": "Heat Power Engineering",
+   "field": "7M07",
+   "np": 30,
+   "prof": 0
+  },
+  {
+   "code": "M099",
+   "kk": "Энергетика және электр техникасы",
+   "ru": "Энергетика и электротехника",
+   "en": "Power and Electrical Engineering",
+   "field": "7M07",
+   "np": 150,
+   "prof": 15
+  },
+  {
+   "code": "M100",
+   "kk": "Автоматтандыру және басқару",
+   "ru": "Автоматизация и управление",
+   "en": "Automation and Control",
+   "field": "7M07",
+   "np": 190,
+   "prof": 15
+  },
+  {
+   "code": "M101",
+   "kk": "Материалтану және жаңа материалдар технологиясы",
+   "ru": "Материаловедение и технология новых материалов",
+   "en": "Materials Science and New Materials Technology",
+   "field": "7M07",
+   "np": 18,
+   "prof": 0
+  },
+  {
+   "code": "M102",
+   "kk": "Робототехника және мехатроника",
+   "ru": "Робототехника и мехатроника",
+   "en": "Robotics and Mechatronics",
+   "field": "7M07",
+   "np": 24,
+   "prof": 0
+  },
+  {
+   "code": "M103",
+   "kk": "Механика және металл өңдеу",
+   "ru": "Механика и металлообработка",
+   "en": "Mechanics and Metalworking",
+   "field": "7M07",
+   "np": 55,
+   "prof": 15
+  },
+  {
+   "code": "M104",
+   "kk": "Көлік, көлік техникасы және технологиялары",
+   "ru": "Транспорт, транспортная техника и технологии",
+   "en": "Transport, Transport Equipment and Technologies",
+   "field": "7M07",
+   "np": 90,
+   "prof": 15
+  },
+  {
+   "code": "M105",
+   "kk": "Авиациялық техника және технологиялар",
+   "ru": "Авиационная техника и технологии",
+   "en": "Aviation Equipment and Technologies",
+   "field": "7M07",
+   "np": 12,
+   "prof": 0
+  },
+  {
+   "code": "M106",
+   "kk": "Ұшу аппараттары мен қозғалтқыштарын ұшуда пайдалану",
+   "ru": "Летная эксплуатация летательных аппаратов и двигателей",
+   "en": "Flight Operation of Aircraft and Engines",
+   "field": "7M07",
+   "np": 5,
+   "prof": 0
+  },
+  {
+   "code": "M107",
+   "kk": "Ғарыштық инженерия",
+   "ru": "Космическая инженерия",
+   "en": "Space Engineering",
+   "field": "7M07",
+   "np": 40,
+   "prof": 0
+  },
+  {
+   "code": "M108",
+   "kk": "Наноматериалдар және нанотехнологиялар (қолдану салалары бойынша)",
+   "ru": "Наноматериалы и нанотехнологии (по областям применения)",
+   "en": "Nanomaterials and Nanotechnology (by application)",
+   "field": "7M07",
+   "np": 22,
+   "prof": 0
+  },
+  {
+   "code": "M109",
+   "kk": "Мұнай және кен геофизикасы",
+   "ru": "Нефтяная и рудная геофизика",
+   "en": "Petroleum and Ore Geophysics",
+   "field": "7M07",
+   "np": 15,
+   "prof": 0
+  },
+  {
+   "code": "M110",
+   "kk": "Теңіз техникасы және технологиялары",
+   "ru": "Морская техника и технологии",
+   "en": "Marine Engineering and Technologies",
+   "field": "7M07",
+   "np": 5,
+   "prof": 0
+  },
+  {
+   "code": "M210",
+   "kk": "Магистральдық желілер және инфрақұрылым",
+   "ru": "Магистральные сети и инфраструктура",
+   "en": "Trunk Networks and Infrastructure",
+   "field": "7M07",
+   "np": 10,
+   "prof": 0
+  },
+  {
+   "code": "M310",
+   "kk": "Көлік құрылыстары",
+   "ru": "Транспортные сооружения",
+   "en": "Transport Structures",
+   "field": "7M07",
+   "np": 3,
+   "prof": 0
+  },
+  {
+   "code": "M111",
+   "kk": "Тамақ өнімдерін өндіру",
+   "ru": "Производство продуктов питания",
+   "en": "Food Production",
+   "field": "7M07",
+   "np": 65,
+   "prof": 0
+  },
+  {
+   "code": "M114",
+   "kk": "Тоқыма: киім, аяқ киім және былғары бұйымдары",
+   "ru": "Текстиль: одежда, обувь и кожаные изделия",
+   "en": "Textiles: Clothing, Footwear and Leather Goods",
+   "field": "7M07",
+   "np": 15,
+   "prof": 0
+  },
+  {
+   "code": "M115",
+   "kk": "Мұнай инженериясы",
+   "ru": "Нефтяная инженерия",
+   "en": "Petroleum Engineering",
+   "field": "7M07",
+   "np": 90,
+   "prof": 0
+  },
+  {
+   "code": "M116",
+   "kk": "Тау-кен инженериясы",
+   "ru": "Горная инженерия",
+   "en": "Mining Engineering",
+   "field": "7M07",
+   "np": 70,
+   "prof": 0
+  },
+  {
+   "code": "M117",
+   "kk": "Металлургиялық инженерия",
+   "ru": "Металлургическая инженерия",
+   "en": "Metallurgical Engineering",
+   "field": "7M07",
+   "np": 7,
+   "prof": 0
+  },
+  {
+   "code": "M118",
+   "kk": "Пайдалы қазбаларды байыту",
+   "ru": "Обогащение полезных ископаемых",
+   "en": "Mineral Processing",
+   "field": "7M07",
+   "np": 15,
+   "prof": 0
+  },
+  {
+   "code": "M119",
+   "kk": "Фармацевтикалық өндіріс технологиясы",
+   "ru": "Технология фармацевтического производства",
+   "en": "Pharmaceutical Production Technology",
+   "field": "7M07",
+   "np": 50,
+   "prof": 0
+  },
+  {
+   "code": "M120",
+   "kk": "Маркшейдерлік іс",
+   "ru": "Маркшейдерское дело",
+   "en": "Mine Surveying",
+   "field": "7M07",
+   "np": 7,
+   "prof": 0
+  },
+  {
+   "code": "M121",
+   "kk": "Геология",
+   "ru": "Геология",
+   "en": "Geology",
+   "field": "7M07",
+   "np": 59,
+   "prof": 5
+  },
+  {
+   "code": "M122",
+   "kk": "Сәулет",
+   "ru": "Архитектура",
+   "en": "Architecture",
+   "field": "7M07",
+   "np": 105,
+   "prof": 10
+  },
+  {
+   "code": "M123",
+   "kk": "Геодезия",
+   "ru": "Геодезия",
+   "en": "Geodesy",
+   "field": "7M07",
+   "np": 85,
+   "prof": 0
+  },
+  {
+   "code": "M124",
+   "kk": "Құрылыс",
+   "ru": "Строительство",
+   "en": "Construction",
+   "field": "7M07",
+   "np": 195,
+   "prof": 15
+  },
+  {
+   "code": "M125",
+   "kk": "Құрылыс материалдарын, бұйымдарын және конструкцияларын өндіру",
+   "ru": "Производство строительных материалов, изделий и конструкций",
+   "en": "Production of Building Materials, Products and Structures",
+   "field": "7M07",
+   "np": 55,
+   "prof": 0
+  },
+  {
+   "code": "M126",
+   "kk": "Көлік құрылысы",
+   "ru": "Транспортное строительство",
+   "en": "Transport Construction",
+   "field": "7M07",
+   "np": 7,
+   "prof": 7
+  },
+  {
+   "code": "M127",
+   "kk": "Инженерлік жүйелер мен желілер",
+   "ru": "Инженерные системы и сети",
+   "en": "Engineering Systems and Networks",
+   "field": "7M07",
+   "np": 37,
+   "prof": 0
+  },
+  {
+   "code": "M128",
+   "kk": "Жерге орналастыру",
+   "ru": "Землеустройство",
+   "en": "Land Management",
+   "field": "7M07",
+   "np": 37,
+   "prof": 0
+  },
+  {
+   "code": "M129",
+   "kk": "Гидротехникалық құрылыс",
+   "ru": "Гидротехническое строительство",
+   "en": "Hydraulic Engineering Construction",
+   "field": "7M07",
+   "np": 2,
+   "prof": 0
+  },
+  {
+   "code": "M229",
+   "kk": "Гидромелиорация",
+   "ru": "Гидромелиорация",
+   "en": "Hydraulic Land Reclamation",
+   "field": "7M07",
+   "np": 2,
+   "prof": 0
+  },
+  {
+   "code": "M329",
+   "kk": "Сумен жабдықтау және су бұру",
+   "ru": "Водоснабжение и водоотведение",
+   "en": "Water Supply and Sanitation",
+   "field": "7M07",
+   "np": 2,
+   "prof": 0
+  },
+  {
+   "code": "M429",
+   "kk": "Гидротехникалық құрылыс және су ресурстарын басқару",
+   "ru": "Гидротехническое строительство и управление водными ресурсами",
+   "en": "Hydraulic Construction and Water Resources Management",
+   "field": "7M07",
+   "np": 2,
+   "prof": 0
+  },
+  {
+   "code": "M130",
+   "kk": "Стандарттау, сертификаттау және метрология (салалар бойынша)",
+   "ru": "Стандартизация, сертификация и метрология (по отраслям)",
+   "en": "Standardization, Certification and Metrology (by sector)",
+   "field": "7M07",
+   "np": 58,
+   "prof": 10
+  },
+  {
+   "code": "M131",
+   "kk": "Өсімдік шаруашылығы",
+   "ru": "Растениеводство",
+   "en": "Crop Production",
+   "field": "7M08",
+   "np": 120,
+   "prof": 20
+  },
+  {
+   "code": "M132",
+   "kk": "Мал шаруашылығы",
+   "ru": "Животноводство",
+   "en": "Livestock Farming",
+   "field": "7M08",
+   "np": 70,
+   "prof": 15
+  },
+  {
+   "code": "M133",
+   "kk": "Орман шаруашылығы",
+   "ru": "Лесное хозяйство",
+   "en": "Forestry",
+   "field": "7M08",
+   "np": 50,
+   "prof": 0
+  },
+  {
+   "code": "M134",
+   "kk": "Балық шаруашылығы",
+   "ru": "Рыбное хозяйство",
+   "en": "Fisheries",
+   "field": "7M08",
+   "np": 35,
+   "prof": 10
+  },
+  {
+   "code": "M137",
+   "kk": "Су ресурстары және суды пайдалану",
+   "ru": "Водные ресурсы и водопользования",
+   "en": "Water Resources and Water Use",
+   "field": "7M08",
+   "np": 10,
+   "prof": 0
+  },
+  {
+   "code": "M135",
+   "kk": "Ауыл шаруашылығын энергиямен қамтамасыз ету",
+   "ru": "Энергообеспечение сельского хозяйства",
+   "en": "Agricultural Power Supply",
+   "field": "7M08",
+   "np": 5,
+   "prof": 0
+  },
+  {
+   "code": "M136",
+   "kk": "Аграрлық техника және технологиялар",
+   "ru": "Аграрная техника и технологии",
+   "en": "Agricultural Machinery and Technologies",
+   "field": "7M08",
+   "np": 10,
+   "prof": 0
+  },
+  {
+   "code": "M138",
+   "kk": "Ветеринария",
+   "ru": "Ветеринария",
+   "en": "Veterinary Medicine",
+   "field": "7M09",
+   "np": 178,
+   "prof": 20
+  },
+  {
+   "code": "M139",
+   "kk": "Денсаулық сақтаудағы менеджмент",
+   "ru": "Менеджмент в здравоохранении",
+   "en": "Healthcare Management",
+   "field": "7M10",
+   "np": 20,
+   "prof": 50
+  },
+  {
+   "code": "M140",
+   "kk": "Қоғамдық денсаулық сақтау",
+   "ru": "Общественное здравоохранение",
+   "en": "Public Health",
+   "field": "7M10",
+   "np": 40,
+   "prof": 50
+  },
+  {
+   "code": "M141",
+   "kk": "Мейіргер ісі",
+   "ru": "Сестринское дело",
+   "en": "Nursing",
+   "field": "7M10",
+   "np": 40,
+   "prof": 0
+  },
+  {
+   "code": "M142",
+   "kk": "Фармация",
+   "ru": "Фармация",
+   "en": "Pharmacy",
+   "field": "7M10",
+   "np": 50,
+   "prof": 0
+  },
+  {
+   "code": "M143",
+   "kk": "Биомедицина",
+   "ru": "Биомедицина",
+   "en": "Biomedicine",
+   "field": "7M10",
+   "np": 10,
+   "prof": 0
+  },
+  {
+   "code": "M144",
+   "kk": "Медицина",
+   "ru": "Медицина",
+   "en": "Medicine",
+   "field": "7M10",
+   "np": 50,
+   "prof": 0
+  },
+  {
+   "code": "M145",
+   "kk": "Медициналық-профилактикалық іс",
+   "ru": "Медико-профилактическое дело",
+   "en": "Preventive Medicine",
+   "field": "7M10",
+   "np": 15,
+   "prof": 0
+  },
+  {
+   "code": "M146",
+   "kk": "Әлеуметтік жұмыс",
+   "ru": "Социальная работа",
+   "en": "Social Work",
+   "field": "7M11",
+   "np": 29,
+   "prof": 0
+  },
+  {
+   "code": "M147",
+   "kk": "Туризм",
+   "ru": "Туризм",
+   "en": "Tourism",
+   "field": "7M11",
+   "np": 45,
+   "prof": 3
+  },
+  {
+   "code": "M148",
+   "kk": "Тынығу",
+   "ru": "Досуг",
+   "en": "Leisure",
+   "field": "7M11",
+   "np": 1,
+   "prof": 0
+  },
+  {
+   "code": "M149",
+   "kk": "Мейрамхана ісі және қонақ үй бизнесі",
+   "ru": "Ресторанное дело и гостиничный бизнес",
+   "en": "Restaurant and Hotel Business",
+   "field": "7M11",
+   "np": 20,
+   "prof": 3
+  },
+  {
+   "code": "M150",
+   "kk": "Санитариялық-профилактикалық іс-шаралар",
+   "ru": "Санитарно-профилактические мероприятия",
+   "en": "Sanitary and Preventive Measures",
+   "field": "7M11",
+   "np": 70,
+   "prof": 0
+  },
+  {
+   "code": "M151",
+   "kk": "Көлік қызметтері",
+   "ru": "Транспортные услуги",
+   "en": "Transport Services",
+   "field": "7M11",
+   "np": 30,
+   "prof": 5
+  },
+  {
+   "code": "M152",
+   "kk": "Логистика (салалар бойынша)",
+   "ru": "Логистика (по отраслям)",
+   "en": "Logistics (by sector)",
+   "field": "7M11",
+   "np": 57,
+   "prof": 5
+  },
+  {
+   "code": "M154",
+   "kk": "Спорт",
+   "ru": "Спорт",
+   "en": "Sport",
+   "field": "7M11",
+   "np": 12,
+   "prof": 0
+  }
+ ],
+ "totals": {
+  "np": 9662,
+  "prof": 600,
+  "branches": 745,
+  "all_announced": 11007
+ },
+ "other": [
+  {
+   "kk": "Назарбаев Университет (шетел азаматтарын қоса)",
+   "ru": "Назарбаев Университет (включая иностранных граждан)",
+   "en": "Nazarbayev University (incl. international students)",
+   "np": 495
+  },
+  {
+   "kk": "ММУ (М.В. Ломоносов) Қазақстан филиалы",
+   "ru": "Казахстанский филиал МГУ им. М.В. Ломоносова",
+   "en": "Lomonosov MSU Kazakhstan Branch",
+   "np": 110
+  },
+  {
+   "kk": "МГИМО филиалы (ЕҰУ базасында)",
+   "ru": "Филиал МГИМО на базе ЕНУ им. Гумилева",
+   "en": "MGIMO Branch at ENU",
+   "np": 40
+  },
+  {
+   "kk": "НИЯУ «МИФИ» Қазақстан филиалы",
+   "ru": "Казахстанский филиал НИЯУ «МИФИ»",
+   "en": "MEPhI Kazakhstan Branch",
+   "np": 30
+  },
+  {
+   "kk": "City University of Hong Kong филиалы (Сәтбаев университеті базасында)",
+   "ru": "Филиал City University of Hong Kong на базе КазНИТУ им. Сатпаева",
+   "en": "City University of Hong Kong Branch at Satbayev University",
+   "np": 20
+  },
+  {
+   "kk": "Шетел азаматтарына арналған стипендиялық бағдарлама",
+   "ru": "Стипендиальная программа для иностранных граждан",
+   "en": "Scholarship programme for foreign citizens",
+   "np": 50
+  }
+ ],
+ "exam": {
+  "np": {
+   "kk": "Ғылыми-педагогикалық магистратура: кешенді тестілеу (КТ) — шет тілі, оқуға дайындық және бейіндік пәндер; 3 сағат 55 минут; шекті балл — 75.",
+   "ru": "Научно-педагогическая магистратура: комплексное тестирование (КТ) — иностранный язык, готовность к обучению и профильные дисциплины; 3 ч 55 мин; пороговый балл — 75.",
+   "en": "Research and teaching master's: comprehensive test (KT) — foreign language, readiness to study and profile subjects; 3 h 55 min; pass mark 75."
+  },
+  "prof": {
+   "kk": "Бейіндік магистратура: тек бейіндік пәндер бойынша тест; 1 сағат 40 минут; шекті балл — 30.",
+   "ru": "Профильная магистратура: тест только по профильным дисциплинам; 1 ч 40 мин; пороговый балл — 30.",
+   "en": "Professional master's: profile subjects test only; 1 h 40 min; pass mark 30."
+  },
+  "dates": {
+   "kk": "2026 жыл: жазғы КТ-ға өтінім 1 маусым – 8 шілде, тестілеу 20 шілде – 10 тамыз; қысқы КТ-ға өтінім 28 қазан – 10 қараша, тестілеу қараша–желтоқсан. Өтінім: app.testcenter.kz",
+   "ru": "2026 год: заявки на летнее КТ 1 июня – 8 июля, тестирование 20 июля – 10 августа; заявки на зимнее КТ 28 октября – 10 ноября, тестирование ноябрь–декабрь. Подача: app.testcenter.kz",
+   "en": "2026: summer KT applications 1 June – 8 July, testing 20 July – 10 August; winter KT applications 28 Oct – 10 Nov, testing Nov–Dec. Apply at app.testcenter.kz"
+  }
+ },
+ "sources": {
+  "order": "https://testcenter.kz/?lang=ru&page_id=45096",
+  "order_law": "https://adilet.zan.kz/rus/docs/G26HN000330",
+  "total": "https://west.rntb.kz/2026/05/28/obem-gosudarstvennogo-obrazovatelnogo-zakaza-na-2026-2027-uchebnyj-god/",
+  "exam": "https://bes.media/amp/v-kazahstane-28-oktyabrya-startuet-priem-zayavleniy-v-magistraturu-i-doktoranturu/",
+  "exam2": "https://www.gov.kz/memleket/entities/sci/press/news/details/1230606?lang=ru"
+ },
+ "checked": "2026-11-18"
+}

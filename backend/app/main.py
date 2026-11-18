@@ -10,7 +10,9 @@ from __future__ import annotations
 import json
 import os
 import re
-import sqlite3
+import datetime as dt
+import hashlib
+import html as htmlmod
 import time
 import urllib.error
 import urllib.request
@@ -19,15 +21,19 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import FastAPI, Header, HTTPException, Query, Request
+from fastapi.responses import HTMLResponse, PlainTextResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from . import auth, db, telegram_bot
+
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 FRONTEND_DIR = BASE_DIR.parent.parent / "frontend"
-DB_PATH = Path(os.environ.get("BZ_DB_PATH", BASE_DIR.parent / "bilimizde.db"))
+SITE_URL = os.environ.get("BZ_SITE_URL", "").rstrip("/")
+ADMIN_KEY = os.environ.get("BZ_ADMIN_KEY", "").strip()
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 AI_MODEL = os.environ.get("BZ_AI_MODEL", "claude-haiku-5-5")
@@ -121,6 +127,8 @@ def major_detail(m: dict) -> dict:
     return {
         **m,
         "creative": is_creative(m),
+        "salary_sector": (lambda sal, k: {**sal["sectors"][k], "key": k, "period": sal["period"], "source": sal["source"]}
+                          if k else None)(load("salaries"), load("salaries")["major_sector"].get(code)),
         "field": {"key": key, "name": f[0], "about": f[1], "career": f[2]} if f else None,
         "grants": {
             "2025": {"full": g25[0], "reduced": g25[1], "quota": g25[2]} if g25 else None,
@@ -143,7 +151,8 @@ def uni_detail(u: dict) -> dict:
     return {**u, "site": sites().get(code), "other_sites": load("site_extra").get(code, []),
             "programs": ex.get("programs", []), "programs_source": ex.get("programs_src"),
             "dormitory": ex.get("dorm"), "dormitory_source": ex.get("dorm_src"),
-            "military_department": ex.get("military"), "military_source": ex.get("military_src")}
+            "military_department": ex.get("military"), "military_source": ex.get("military_src"),
+            "rankings": load("rankings")["universities"].get(code)}
 
 
 def offering_universities(code: str) -> list[dict]:
@@ -153,30 +162,15 @@ def offering_universities(code: str) -> list[dict]:
             for u in universities() if code in ux.get(u["code"], {}).get("programs", [])]
 
 
-# ---------------- Клуб (SQLite) ----------------
+# ---------------- Дерекқор ----------------
 
-def db() -> sqlite3.Connection:
-    con = sqlite3.connect(DB_PATH)
-    con.row_factory = sqlite3.Row
-    return con
-
-
-def init_db() -> None:
-    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with db() as con:
-        con.execute(
-            """CREATE TABLE IF NOT EXISTS club_posts (
-                   id INTEGER PRIMARY KEY AUTOINCREMENT,
-                   topic TEXT NOT NULL,
-                   text TEXT NOT NULL,
-                   created_at TEXT NOT NULL DEFAULT (datetime('now'))
-               )"""
-        )
+def now_iso() -> str:
+    return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
 
 def club_count() -> int:
-    with db() as con:
-        return con.execute("SELECT COUNT(*) FROM club_posts").fetchone()[0]
+    r = db.one("SELECT COUNT(*) AS n FROM club_posts")
+    return int(r["n"]) if r else 0
 
 
 # Бір IP-ден 10 минутта 5 жазбадан артық емес (спамнан қорғау)
@@ -252,7 +246,7 @@ app = FastAPI(
     version="2.0.0",
 )
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "POST"], allow_headers=["*"])
-init_db()
+db.init()
 
 
 @app.get("/api/health", tags=["Жүйе"])
@@ -261,12 +255,34 @@ def health():
 
 
 @app.get("/api/bootstrap", tags=["Жүйе"])
-def bootstrap():
-    """Сайт ашылғанда керек барлық мәлімет бір сұраныспен."""
+def bootstrap(lang: str = "kk"):
+    """Сайт ашылғанда керек барлық мәлімет бір сұраныспен. lang=ru|en болса, шетелдік ЖОО аудармасы да қосылады."""
     names = ["majors", "universities", "fields", "sites", "site_extra", "grants_2025", "grants_other_years",
              "grants_2026", "quotas_2026", "quota_names_2026", "passing_scores", "major_universities",
-             "foreign", "foreign_wiki", "foreign_history", "faq", "university_extra", "i18n"]
-    return {**{n: load(n) for n in names}, "ai_enabled": bool(ANTHROPIC_API_KEY), "club_count": club_count()}
+             "foreign", "foreign_wiki", "foreign_history", "faq", "university_extra", "i18n",
+             "rankings", "masters", "salaries"]
+    out = {n: load(n) for n in names}
+    if lang in ("ru", "en"):
+        out["foreign_i18n"] = {k: v.get(lang) for k, v in load("foreign_i18n").items()}
+    return {**out, "ai_enabled": bool(ANTHROPIC_API_KEY), "club_count": club_count()}
+
+
+@app.get("/api/masters", tags=["Деректер"])
+def masters_api():
+    """Магистратура: топтар, 2026–2027 мемлекеттік тапсырыс, кешенді тестілеу."""
+    return load("masters")
+
+
+@app.get("/api/salaries", tags=["Деректер"])
+def salaries_api():
+    """Салалар бойынша орташа айлық жалақы (Ұлттық статистика бюросы)."""
+    return load("salaries")
+
+
+@app.get("/api/rankings", tags=["Деректер"])
+def rankings_api():
+    """QS рейтингтеріндегі Қазақстан ЖОО-лары."""
+    return load("rankings")
 
 
 @app.get("/api/stats", tags=["Жүйе"])
@@ -403,28 +419,198 @@ def ask(body: AskBody, request: Request):
     return {"answer": answer}
 
 
+# --- Тіркелу (Firebase) ---
+
+def current_user(authorization: Optional[str]) -> Optional[dict]:
+    """Authorization: Bearer <Firebase ID token> болса, қолданушыны қайтарады."""
+    if not authorization or not authorization.lower().startswith("bearer "):
+        return None
+    try:
+        return auth.verify(authorization.split(" ", 1)[1].strip())
+    except ValueError:
+        return None
+
+
+def require_user(authorization: Optional[str]) -> dict:
+    u = current_user(authorization)
+    if not u:
+        raise HTTPException(401, "Кіру қажет")
+    return u
+
+
+@app.get("/api/config", tags=["Жүйе"])
+def config():
+    """Frontend үшін: қандай мүмкіндіктер қосулы."""
+    return {"auth_enabled": auth.ENABLED, "firebase": auth.WEB_CONFIG if auth.ENABLED else None,
+            "ai_enabled": bool(ANTHROPIC_API_KEY), "telegram": telegram_bot.ENABLED}
+
+
+@app.post("/api/auth/me", tags=["Тіркелу"])
+def auth_me(authorization: Optional[str] = Header(None)):
+    """Кіргеннен кейін шақырылады: жаңа қолданушыны тіркейді немесе соңғы кіру уақытын жаңартады."""
+    u = require_user(authorization)
+    t = now_iso()
+    if db.one("SELECT id FROM users WHERE id = ?", (u["id"],)):
+        db.execute("UPDATE users SET name = ?, email = ?, phone = ?, provider = ?, last_login = ? WHERE id = ?",
+                   (u["name"], u["email"], u["phone"], u["provider"], t, u["id"]))
+    else:
+        db.execute("INSERT INTO users (id, name, email, phone, provider, created_at, last_login) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                   (u["id"], u["name"], u["email"], u["phone"], u["provider"], t, t))
+    return {"id": u["id"], "name": u["name"], "email": u["email"], "phone": u["phone"]}
+
+
+class PlanBody(BaseModel):
+    majors: list[str] = Field(default_factory=list, max_length=50)
+    unis: list[str] = Field(default_factory=list, max_length=50)
+
+
+@app.get("/api/plan", tags=["Тіркелу"])
+def plan_get(authorization: Optional[str] = Header(None)):
+    u = require_user(authorization)
+    r = db.one("SELECT data FROM plans WHERE user_id = ?", (u["id"],))
+    return json.loads(r["data"]) if r else {"majors": [], "unis": []}
+
+
+@app.put("/api/plan", tags=["Тіркелу"])
+def plan_put(body: PlanBody, authorization: Optional[str] = Header(None)):
+    u = require_user(authorization)
+    ok_m = {m["code"] for m in majors()}
+    ok_u = {x["code"] for x in universities()}
+    data = json.dumps({"majors": [c for c in body.majors if c in ok_m], "unis": [c for c in body.unis if c in ok_u]})
+    if db.one("SELECT user_id FROM plans WHERE user_id = ?", (u["id"],)):
+        db.execute("UPDATE plans SET data = ?, updated_at = ? WHERE user_id = ?", (data, now_iso(), u["id"]))
+    else:
+        db.execute("INSERT INTO plans (user_id, data, updated_at) VALUES (?, ?, ?)", (u["id"], data, now_iso()))
+    return json.loads(data)
+
+
 # --- Клуб ---
 
 @app.get("/api/club", tags=["Клуб"])
 def club_list(limit: int = Query(100, ge=1, le=500)):
-    with db() as con:
-        rows = con.execute(
-            "SELECT id, topic, text, created_at FROM club_posts ORDER BY id DESC LIMIT ?", (limit,)
-        ).fetchall()
-    return [dict(r) for r in rows]
+    return db.query("SELECT id, topic, text, author, created_at FROM club_posts ORDER BY id DESC LIMIT ?", (limit,))
 
 
 @app.post("/api/club", tags=["Клуб"], status_code=201)
-def club_add(post: ClubPost, request: Request):
+def club_add(post: ClubPost, request: Request, authorization: Optional[str] = Header(None)):
     topic, text = post.topic.strip() or "Пікір", post.text.strip()
     if not text:
         raise HTTPException(422, "Мәтін бос")
     check_rate(client_ip(request))
-    with db() as con:
-        cur = con.execute("INSERT INTO club_posts (topic, text) VALUES (?, ?)", (topic, text))
-        row = con.execute("SELECT id, topic, text, created_at FROM club_posts WHERE id = ?",
-                          (cur.lastrowid,)).fetchone()
-    return dict(row)
+    u = current_user(authorization)
+    author = (u["name"] or "Тіркелген қолданушы") if u else None
+    new_id = db.execute("INSERT INTO club_posts (topic, text, author, user_id, created_at) VALUES (?, ?, ?, ?, ?) RETURNING id",
+                        (topic, text, author, u["id"] if u else None, now_iso()))
+    return db.one("SELECT id, topic, text, author, created_at FROM club_posts WHERE id = ?", (new_id,))
+
+
+# --- Аналитика (сыртқы қызметсіз, IP сақталмайды) ---
+
+class TrackBody(BaseModel):
+    kind: str = Field(..., pattern="^(page|search|ai)$")
+    value: str = Field(..., min_length=1, max_length=120)
+    lang: str = Field("kk", max_length=5)
+
+
+@app.post("/api/track", tags=["Аналитика"], status_code=204)
+def track(body: TrackBody, request: Request):
+    check_rate(client_ip(request), limit=120, window=600, bucket="track")
+    db.execute("INSERT INTO events (day, kind, value, lang) VALUES (?, ?, ?, ?)",
+               (dt.date.today().isoformat(), body.kind, body.value.strip().lower()[:120], body.lang[:5]))
+    return Response(status_code=204)
+
+
+@app.get("/api/admin/stats", tags=["Аналитика"])
+def admin_stats(key: str = "", days: int = Query(30, ge=1, le=365)):
+    """Статистика: BZ_ADMIN_KEY орнатылғанда ғана, ?key=... арқылы."""
+    if not ADMIN_KEY or not hashlib.sha256(key.encode()).digest() == hashlib.sha256(ADMIN_KEY.encode()).digest():
+        raise HTTPException(403, "Рұқсат жоқ")
+    since = (dt.date.today() - dt.timedelta(days=days - 1)).isoformat()
+    top = lambda k: db.query("SELECT value, COUNT(*) AS n FROM events WHERE kind = ? AND day >= ? GROUP BY value ORDER BY n DESC LIMIT 30", (k, since))
+    return {
+        "days": days,
+        "per_day": db.query("SELECT day, COUNT(*) AS n FROM events WHERE kind = 'page' AND day >= ? GROUP BY day ORDER BY day", (since,)),
+        "pages": top("page"), "searches": top("search"), "ai_questions": top("ai"),
+        "langs": db.query("SELECT lang, COUNT(*) AS n FROM events WHERE day >= ? GROUP BY lang ORDER BY n DESC", (since,)),
+        "users": club_users(), "club_posts": club_count(),
+    }
+
+
+def club_users() -> int:
+    r = db.one("SELECT COUNT(*) AS n FROM users")
+    return int(r["n"]) if r else 0
+
+
+# --- Telegram-бот ---
+
+@app.post("/api/telegram/{secret}", include_in_schema=False)
+async def telegram_webhook(secret: str, request: Request):
+    if not telegram_bot.ENABLED or secret != telegram_bot.SECRET:
+        raise HTTPException(404)
+    upd = await request.json()
+    msg = upd.get("message") or upd.get("edited_message") or {}
+    chat = (msg.get("chat") or {}).get("id")
+    if chat:
+        telegram_bot.send(chat, telegram_bot.answer(msg.get("text", ""), majors(), universities(), is_creative))
+    return {"ok": True}
+
+
+# --- SEO: іздеу жүйелеріне арналған беттер ---
+
+def _page(title: str, desc: str, body: str, app_link: str) -> HTMLResponse:
+    e = htmlmod.escape
+    canon = f'<link rel="canonical" href="{SITE_URL}{app_link}">' if SITE_URL else ""
+    return HTMLResponse(f"""<!DOCTYPE html><html lang="kk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)} · BilimIzde</title>
+<meta name="description" content="{e(desc)}">{canon}
+<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="website">
+<link rel="icon" href="/icon.svg"><link rel="manifest" href="/manifest.webmanifest">
+<style>body{{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.55;color:#1f2328}}a{{color:#b45309}}.btn{{display:inline-block;margin:18px 0;padding:12px 18px;border-radius:12px;background:#111;color:#fff;text-decoration:none}}li{{margin:3px 0}}</style>
+</head><body><p><a href="/">BilimIzde</a></p>{body}<a class="btn" href="/#{app_link}">Сайтта толық ашу →</a></body></html>""")
+
+
+@app.get("/u/{code}", include_in_schema=False)
+def seo_uni(code: str):
+    u = next((x for x in universities() if x["code"] == code), None)
+    if not u:
+        raise HTTPException(404)
+    e = htmlmod.escape
+    ex = uni_extra(code)
+    mm = {m["code"]: m["name"] for m in majors()}
+    progs = "".join(f"<li>{p} {e(mm.get(p, ''))}</li>" for p in ex.get("programs", []) if p in mm)
+    body = (f"<h1>{e(u['name'])}</h1><p>{e(u['type'])}, {e(u['city'])}. ЖОО коды: {u['code']}.</p>"
+            f"<p>Грант балдары: {e(u['grantScore'])}. Оқу ақысы: {e(u['tuition'])}.</p>"
+            f"<p>Жатақхана: {'бар' if ex.get('dorm') else 'нақтылау керек'}. Әскери кафедра: {'бар' if ex.get('military') else 'жоқ'}.</p>"
+            + (f"<h2>Мамандықтар</h2><ul>{progs}</ul>" if progs else ""))
+    return _page(u["name"], f"{u['name']} ({u['city']}): ЖОО коды {u['code']}, грант балдары {u['grantScore']}, оқу ақысы, мамандықтар, жатақхана.", body, f"/uni/{code}")
+
+
+@app.get("/m/{code}", include_in_schema=False)
+def seo_major(code: str):
+    m = next((x for x in majors() if x["code"].lower() == code.lower()), None)
+    if not m:
+        raise HTTPException(404)
+    e = htmlmod.escape
+    unis = offering_universities(m["code"])
+    li = "".join(f"<li>{x['code']} {e(x['name'])}, {e(x['city'])}</li>" for x in unis)
+    body = (f"<h1>{m['code']} {e(m['name'])}</h1><p>Шектік бал: {m['grantScore']}. ҰБТ пәндері: {e(m.get('combo') or '—')}.</p>"
+            + (f"<h2>Оқытатын университеттер ({len(unis)})</h2><ul>{li}</ul>" if li else ""))
+    return _page(f"{m['code']} {m['name']}", f"{m['code']} {m['name']}: шектік бал {m['grantScore']}, ҰБТ пәндері, грант саны және оқытатын {len(unis)} университет.", body, f"/major/{m['code']}")
+
+
+@app.get("/sitemap.xml", include_in_schema=False)
+def sitemap(request: Request):
+    base = SITE_URL or str(request.base_url).rstrip("/")
+    urls = [f"{base}/"] + [f"{base}/u/{u['code']}" for u in universities()] + [f"{base}/m/{m['code']}" for m in majors()]
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
+          "".join(f"<url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n"
+    return Response(xml, media_type="application/xml")
+
+
+@app.get("/robots.txt", include_in_schema=False)
+def robots(request: Request):
+    base = SITE_URL or str(request.base_url).rstrip("/")
+    return PlainTextResponse(f"User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: {base}/sitemap.xml\n")
 
 
 # Frontend (сайттың өзі) — API маршруттарынан кейін тіркеледі

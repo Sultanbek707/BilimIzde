@@ -546,3 +546,47 @@ footer .fnav a{align-self:flex-start}
 .ofr{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surf2);color:var(--ink)}
 .ofr:hover{border-color:var(--acc)}.ofr .code{grid-row:span 2}.ofr b{font-size:14px;font-weight:600}.ofr small{color:var(--mut);font-size:12px}
 .ofr[hidden]{display:none}
+
+/* ===== Менің жоспарым ===== */
+.plan-score,.plan-add{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 14px}
+.plan-score label{display:flex;gap:8px;align-items:center;font-weight:600}
+.plan-score input,.plan-add input{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surf2);color:var(--ink);font:inherit}
+.plan-score input{width:110px}.plan-add input{flex:1;min-width:240px}
+.tw{overflow-x:auto}
+.ptable{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 10px}
+.ptable th,.ptable td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.ptable th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.ptable a{color:var(--acc)}
+.xbtn{border:0;background:none;color:var(--mut);cursor:pointer;font-size:15px;padding:4px 8px;border-radius:8px}.xbtn:hover{background:var(--surf2);color:var(--ink)}
+.chance{font-size:12.5px;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.chance.hi{background:rgba(34,197,94,.16);color:#16a34a}.chance.mid{background:rgba(234,179,8,.18);color:#b45309}
+.chance.low{background:rgba(239,68,68,.14);color:#dc2626}.chance.no{background:rgba(239,68,68,.22);color:#b91c1c}.chance.unk{background:rgba(148,163,184,.18);color:var(--mut)}
+[data-theme=dark] .chance.hi{color:#4ade80}[data-theme=dark] .chance.mid{color:#facc15}[data-theme=dark] .chance.low,[data-theme=dark] .chance.no{color:#f87171}
+.plan-dates{padding-left:20px}.plan-dates li{margin:6px 0}.plan-dates b{display:inline-block;min-width:92px}
+.plan-actions{display:flex;gap:10px;margin-top:16px}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.chance-box{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0;padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surf2)}
+.chance-box span{font-weight:600}.chance-box a{color:var(--acc)}.chance-box small{flex-basis:100%;margin:0}
+.planb{margin-left:8px}
+@media print{header,.rail,footer,.plan-add,.plan-score button,.plan-actions,.xbtn,nav{display:none!important}body{padding:0!important}}
+
+/* ===== Кіру ===== */
+.authb{white-space:nowrap}
+.authdlg{border:1px solid var(--line);border-radius:18px;padding:0;background:var(--surf);color:var(--ink);max-width:420px;width:92vw}
+.authdlg::backdrop{background:rgba(0,0,0,.55)}
+.authbox{display:flex;flex-direction:column;gap:10px;padding:24px;position:relative}
+.authbox h3{margin:0}.authbox label{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.authbox input{padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surf2);color:var(--ink);font:inherit}
+.authbox .x{position:absolute;top:12px;right:12px;border:0;background:none;color:var(--mut);font-size:18px;cursor:pointer}
+.authbox .or{text-align:center;color:var(--mut);font-size:13px}
+.gbtn{background:#fff!important;color:#1f1f1f!important;border:1px solid #dadce0!important;font-weight:600}
+
+/* ===== Магистратура, колледж, ҰБТ сынақ, рейтинг, жалақы ===== */
+.xl{margin:.4rem 0 1rem 1.2rem;line-height:1.6}
+.untq{padding-left:1.3rem;display:grid;gap:14px}
+.untq li{border:1px solid var(--line,#e2e2e2);border-radius:12px;padding:12px 14px}
+.untq li p{margin:.3rem 0 .5rem;white-space:normal}
+.untq label{display:block;padding:4px 0;cursor:pointer}
+.untq .subj{opacity:.7;font-size:.8rem}
+.ufb{margin-top:6px;font-size:.9rem}.ufb.ok{color:#1a7f37}.ufb.no{color:#b42318}
+.pct{display:block;margin-top:4px;font-size:.85rem}.pct.up{color:#1a7f37}.pct.dn{color:#9a6700}
+a.dbox{text-decoration:none;color:inherit}

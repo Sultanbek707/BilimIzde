@@ -71,6 +71,43 @@ set ANTHROPIC_API_KEY=sk-ant-...        # Windows (cmd)
 # export ANTHROPIC_API_KEY=sk-ant-...   # macOS / Linux
 ```
 
+## Қосымша мүмкіндіктер (айнымалы арқылы қосылады)
+
+Барлығы міндетті емес: айнымалы болмаса, сайт сол функциясыз қалыпты жұмыс істейді.
+Render → сервис → **Environment** бөлімінде қосылады.
+
+| Айнымалы | Не үшін |
+|---|---|
+| `BZ_SITE_URL` | Сайттың толық адресі (мысалы `https://bilimizde.onrender.com`). sitemap.xml, SEO беттері, Telegram-бот сілтемелері үшін |
+| `BZ_ADMIN_KEY` | `/admin.html` статистика бетінің құпия кілті (өзің ойлап тап) |
+| `DATABASE_URL` | Render PostgreSQL адресі. Болмаса — SQLite (тегін Render-де қайта іске қосқанда тазаланады) |
+| `FIREBASE_PROJECT_ID`, `FIREBASE_WEB_CONFIG` | Google және телефон арқылы кіру. WEB_CONFIG — Firebase Console → Project settings → Web app конфигі (JSON бір жолмен) |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET` | Telegram-бот (@BotFather-ден токен; secret — кез келген ұзын сөз) |
+| `ANTHROPIC_API_KEY` | AI-көмекші |
+
+**Firebase:** console.firebase.google.com → жоба ашу → Authentication → Sign-in method: Google және Phone қосу →
+Settings → Authorized domains-ке Render доменін қосу → Project settings → Web app тіркеу → конфигті `FIREBASE_WEB_CONFIG`-ке салу.
+Service-account JSON **керек емес** және оны ешкімге берме.
+
+**Telegram webhook** (бір рет, браузерде ашу):
+`https://api.telegram.org/bot<TOKEN>/setWebhook?url=<BZ_SITE_URL>/api/telegram/<SECRET>`
+
+**Беттер:** `#/plan` — Менің жоспарым (балл, грант мүмкіндігі, мерзімдер, PDF);
+`/u/029`, `/m/B057` — іздеу жүйелеріне арналған беттер; `/sitemap.xml`; `/admin.html` — статистика (IP сақталмайды).
+Сайт телефонға қосымша ретінде орнатылады (PWA, https-те ғана).
+
+## Деректер (2-кезең, 2026 ж. қараша)
+
+| Файл | Не бар | Дереккөз |
+|---|---|---|
+| `university_extra.json` | Жатақхана: 81 ЖОО-ның 70-і расталған, әрқайсысында дереккөз сілтемесі; қалған 11 — «Белгісіз» | ЖОО ресми сайттары, gov.kz, БАҚ |
+| `rankings.json` | QS World 2026 (20 ЖОО), QS World 2027 (жарияланған орындар), QS Asia 2027 | QS нәтижелері туралы ресми хабарламалар |
+| `masters.json` | Магистратура: 132 топ, 2026–2027 гранттары, КТ форматы мен мерзімдері | testcenter.kz, adilet.zan.kz |
+| `salaries.json` | Салалар бойынша орташа жалақы (2026 II тоқсан), әр мамандыққа сала сәйкестігі | stat.gov.kz |
+| `foreign_i18n.json` | 44 шетелдік ЖОО беттерінің RU/EN аудармасы | foreign.json аудармасы |
+
+Жаңа беттер: `#/masters`, `#/colleges`, `#/unt` (ҰБТ құрылымы, ресми сынаққа сілтеме, 12 жаттығу сұрағы).
+
 ## API
 
 | Сұраныс | Не береді |
