@@ -61,7 +61,7 @@ pip install -r backend/requirements.txt
 uvicorn backend.app.main:app --reload
 ```
 
-- Сайт: http://127.0.0.1:8000
+- Сайт: https://bilimizde.onrender.com
 - API құжаттамасы: http://127.0.0.1:8000/docs
 
 AI-ды тіл моделімен іске қосу үшін (міндетті емес):
