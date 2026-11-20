@@ -635,3 +635,33 @@ footer.aboutf .wrap.fw{padding-top:8px}
 body.bz-lock main,body.bz-lock .rail,body.bz-lock header,body.bz-lock section{filter:blur(6px);pointer-events:none;user-select:none}
 .authdlg.must::backdrop{background:rgba(10,10,14,.82);backdrop-filter:blur(4px)}
 .authbox .note.small{font-size:12px;margin:4px 0 0}
+
+/* Грант тарихы карточкалары */
+.hgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+.hy{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--surf2)}
+.hy h5{margin:0 0 4px;font-size:14px;font-weight:700}
+.hy .hg{display:block;margin:10px 0 0;font-size:13px;color:var(--mut)}.hy .hg b{color:var(--ink)}
+.acc.hist summary small{font-weight:500;color:var(--mut);margin-left:6px}
+.acc.sub{margin:10px 0 0;background:var(--surf2)}.acc.sub summary{font-weight:600;font-size:14px}
+@media(max-width:900px){.hgrid{grid-template-columns:repeat(2,1fr)}}
+
+/* Университет пікірлері мен талқылауы */
+.urev{margin-top:26px}
+.rfil{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.rfil .ch{border:1px solid var(--line);background:var(--surf);color:var(--ink);border-radius:999px;padding:7px 12px;font:inherit;font-size:13px;cursor:pointer}
+.rfil .ch small{color:var(--mut);margin-left:4px}.rfil .ch.on{background:var(--ink);color:var(--bg)}.rfil .ch.on small{color:inherit;opacity:.7}
+.rf{display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:16px;padding:14px;background:var(--surf);margin-bottom:16px}
+.rf textarea,.rf select{font:inherit;color:var(--ink);background:var(--surf2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;resize:vertical}
+.rsel{display:flex;gap:8px;flex-wrap:wrap}.rsel select{flex:1;min-width:160px}
+.rfa{display:flex;justify-content:space-between;align-items:center;gap:10px}.rmsg{color:var(--mut)}
+.rv{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:var(--surf);margin-bottom:12px}
+.rv .rh{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px}
+.rv .rh time{margin-left:auto;color:var(--mut);font-size:12px}
+.rv .rr,.rv .rk{font-size:12px;padding:3px 8px;border-radius:999px;background:var(--surf2);color:var(--mut)}
+.rv .k-plus{color:#3fb950}.rv .k-minus{color:#f85149}.rv .k-q{color:var(--acc)}
+.rv>p{margin:10px 0 6px;line-height:1.55;overflow-wrap:anywhere}
+.rv .rft{display:flex;gap:12px}
+.rb{border:0;background:none;color:var(--mut);font:inherit;font-size:13px;cursor:pointer;padding:0}.rb:hover{color:var(--ink)}.rb.del:hover{color:#f85149}
+.rps{margin-top:10px;padding-left:14px;border-left:2px solid var(--line)}
+.rv.rp{background:var(--surf2);padding:10px 12px;margin-bottom:8px}
+.rf-r{margin:8px 0 0;padding:10px;background:var(--surf2)}

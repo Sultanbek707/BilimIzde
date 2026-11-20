@@ -37,6 +37,7 @@
       <button type="button" class="btn" id="aVerify">${T('Растау')}</button></div>
     <p class="note" id="aMsg" role="status"></p><div id="aRecaptcha"></div></form>`;
   document.body.appendChild(dlg);
+  window.BZ_LOGIN = () => { if (!dlg.open) dlg.showModal(); };
   const MUST = !!cfg.auth_required;
   if (!cfg.auth_phone) dlg.querySelectorAll('.or, label:has(#aPhone), #aSend, #aCodeBox').forEach(n => n.remove());
   if (MUST) {
@@ -84,6 +85,7 @@
   fa.onAuthStateChanged(async user => {
     window.BZ_USER = user || null;
     window.BZ_AUTH_HEADERS = user ? authHeaders : null;
+    dispatchEvent(new Event('bz-auth'));
     document.body.classList.toggle('bz-lock', MUST && !user);
     if (!user) {
       btn.textContent = T('Кіру'); btn.onclick = () => dlg.showModal();

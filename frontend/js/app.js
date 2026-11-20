@@ -9,7 +9,7 @@ const isCre=m=>(m.combo_kk||m.combo||'').startsWith('Шығарма');
 function renderMajors(d){
  $('mCount').textContent=d.length+' бағыт · толық ақпарат үшін басыңыз';
  $('majorsGrid').innerHTML=d.length?d.map(m=>{const n=parseInt(m.grantScore);
-  return `<article class="major" role="button" tabindex="0" aria-label="${m.name}: толық ақпарат" onclick="openMajor('${m.code}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMajor('${m.code}')}"><span class="code">${m.code}</span><div class="mn"><h3>${m.name}</h3>${m.combo?`<p class="combo"><b>Пәндер:</b> ${m.combo}</p>`:''}</div><div class="mts"><div class="mt"><span>Шектік балл</span><b>${n}</b></div><div class="mt${G26[m.code]?'':' dim'}"><span>Грант 2026</span><b>${G26[m.code]?fmt(G26[m.code][1]):'—'}</b></div></div><span class="chev" aria-hidden="true">›</span></article>`}).join(''):'<div class="empty">Ештеңе табылмады. Басқа шифр немесе атау енгізіңіз.</div>';
+  return `<article class="major" role="button" tabindex="0" aria-label="${m.name}: толық ақпарат" onclick="openMajor('${m.code}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMajor('${m.code}')}"><span class="code">${m.code}</span><div class="mn"><h3>${m.name}</h3>${m.combo?`<p class="combo"><b>Пәндер:</b> ${m.combo}</p>`:''}</div><div class="mts"><div class="mt"><span>Шектік балл</span><b>${n}</b></div></div><span class="chev" aria-hidden="true">›</span></article>`}).join(''):'<div class="empty">Ештеңе табылмады. Басқа шифр немесе атау енгізіңіз.</div>';
 }
 function openMajor(c){
  const m=majors.find(x=>x.code===c);if(!m)return;const n=parseInt(m.grantScore),f=FIELDS[fieldOf(c)],cr=isCre(m),sc=parseInt($('score').value);
@@ -28,12 +28,13 @@ function openMajor(c){
 }
 const lgM=u=>{const w=u.name.replace(/[«»"()]/g,' ').split(/\s+/).filter(x=>/^[A-ZА-ЯӘҒҚҢӨҰҮҺІ]/.test(x)&&!/^(Қазақ|Қазақстан|Қазақстандық|Халықаралық|Ұлттық|Мемлекеттік)$/.test(x));return((w[0]||u.name)[0]+((w[1]||'')[0]||'')).toUpperCase()};
 const doms=c=>SITES[c]?[SITES[c]]:(SITE_EXTRA[c]||[]);
-const LGU=d=>[`https://${d}/apple-touch-icon.png`,`https://www.google.com/s2/favicons?domain=${d}&sz=128`,`https://icons.duckduckgo.com/ip3/${d}.ico`,`https://${d}/favicon.ico`];
+/* Ресми логотип (ЖОО сайтынан, logos.json) бірінші; болмаса сайт белгісі. DuckDuckGo сұр «>» белгісін бермеуі үшін алынды. */
+const LGU=d=>/^https?:/.test(d)?[d]:[`https://${d}/apple-touch-icon.png`,`https://www.google.com/s2/favicons?domain=${d}&sz=128`,`https://${d}/favicon.ico`];
 const LGL=a=>a.flatMap(LGU);
 function lgNext(im){const L=LGL(im.dataset.d.split(',')),i=+im.dataset.i+1;if(i>=L.length){im.remove();return}im.dataset.i=i;im.src=L[i]}
 function lgOk(im){const L=LGL(im.dataset.d.split(','));if(im.naturalWidth<32&&+im.dataset.i<L.length-1){lgNext(im);return}if(im.naturalWidth<16)im.remove();else im.classList.add('ok')}
 const lgImg=(a,h,t)=>`<span class="lg" style="--h:${h}"><b class="lgm">${t}</b>${a.length?`<img data-d="${a.join(',')}" data-i="0" src="${LGL(a)[0]}" alt="" loading="lazy" referrerpolicy="no-referrer" onload="lgOk(this)" onerror="lgNext(this)">`:''}</span>`;
-const lg=u=>lgImg(doms(u.code),(+u.code*47)%360,lgM(u));
+const lg=u=>lgImg([...((window.LOGO||{})[u.code]?[LOGO[u.code]]:[]),...doms(u.code)],(+u.code*47)%360,lgM(u));
 const lgD=(d,t,h)=>lgImg([d],h,t);
 const flg=f=>{let d='';try{d=new URL(f.site).hostname.replace(/^www\./,'')}catch(e){}const w=f.name.split(' (')[0].split(/\s+/).filter(x=>/^[A-Z]/.test(x));return d?lgD(d,((w[0]||'U')[0]+((w[1]||'')[0]||'')).toUpperCase(),(f.name.length*37)%360):''};
 /* ===== Ресми деректер: univision.kz (ҚР Ғылым және жоғары білім министрлігінің грант нәтижелері негізінде) ===== */
@@ -60,15 +61,17 @@ function grantHtml(c){const a=GC[c],b=G26[c],f=fieldOf(c);
  <p class="note">2026–2027: ҚР ҒЖБМ 2024 жылғы 26 сәуірдегі №193 бұйрығы (17.07.2026 өзгерістерімен), республикалық бюджет, жалпы тізім. 2026 жылы квоталар топқа емес, бүкіл салаға бөлінеді${Q26[f]?` («${Q26N[f]}» саласына барлығы ${fmt(Q26[f])} квоталық грант)`:''}. 2025–2026: univision.kz-тегі ҰТО конкурс кестесі${['B084','B085','BM086','BM088','BM089'].includes(c)?' (денсаулық сақтау топтары — №193 бұйрықтың 2025–2026 қосымшасы)':''}. Батыс өңірлер, «Серпін», екі дипломды және облыстық бюджет гранттары бұл санға кірмейді. 2024 жылғы сандар бұйрықта тек конкурстан кейін қайта бөлінген түрде сақталған, сондықтан шатастырмау үшін қосылмады.<br><a href="${SRC_GR.dec}" target="_blank" rel="noopener noreferrer">№193 бұйрық (zakon.uchet.kz)</a> · <a href="${SRC_GR.nct}" target="_blank" rel="noopener noreferrer">ҰТО: 2026–2027 тапсырыс</a> · <a href="${SRC_GR.u25}" target="_blank" rel="noopener noreferrer">univision.kz: 2025</a></p>`}
 
 /* PS[шифр]={gen:{жыл:[max,min]},rural:{жыл:[max,min]}} — грантқа өту балдары (тек тексерілгендері) */
-/* MU[шифр]={жыл:[[ЖОО коды немесе атауы, өту балы, грант саны],...]} — жалпы конкурс */
-const muTable=c=>{const D=MU[c];if(!D)return `<p class="note">Бұл мамандық бойынша ЖОО кестесі жақында қосылады. Қазір нақты тізімді <a href="https://univision.kz/grant/passing.html" target="_blank" rel="noopener noreferrer">univision.kz</a> сайтынан қараңыз.</p>`;
- return Object.keys(D).sort().reverse().map(y=>`<h4 class="dsec">${y} жыл: грантқа өту балы ЖОО бойынша (жалпы конкурс)</h4><div class="xs"><table class="xt"><tr><th>ЖОО</th><th>Қала</th><th>Өту балы</th><th>Грант саны</th></tr>${[...D[y]].sort((a,b)=>a[1]-b[1]||b[2]-a[2]).map(([k,sc,g])=>{const u=/^\d{3}$/.test(k)?universities.find(x=>x.code===k):null;return `<tr><td>${u?`<a href="#/uni/${k}">${u.name}</a>`:k}</td><td>${u?u.city:'—'}</td><td><b>${sc}</b></td><td>${g}</td></tr>`}).join('')}</table></div><p class="note">Әр ЖОО бойынша грантқа түскен ең төменгі балл. Дереккөз: univision.kz, ${y} жыл.</p>`).join('')};
 const gcYear=(c,y)=>y===2025?GC[c]:(GY[c]||{})[y];
-const muHtml=c=>{const d=PS[c]||{};
- const g=`<div class="yc">${YRS.map(y=>{const v=gcYear(c,y);return `<div>${y}:<b class="n">${v?v[0]:'—'}</b><small>${v?`қысқартылған ${v[1]} · квота ${v[2]}`:'дерек қосылмаған'}</small></div>`}).join('')}</div>`;
- const mm=(k,t)=>{const ys=YRS.filter(y=>(d[k]||{})[y]);if(!ys.length)return '';return `<div class="yc">${ys.map(y=>{const r=(d[k]||{})[y]||[];return `<div><b>${t}: ${y}</b><div class="mm"><span>Max: <b>${vv(r[0])}</b></span><span>Min: <b>${vv(r[1])}</b></span></div></div>`}).join('')}</div>`};
- const src=`<p class="note">Дереккөз: univision.kz (ҚР Ғылым және жоғары білім министрлігінің грант нәтижелері). Грант саны — «очная толық» оқу нысаны бойынша.${d.gen?'':' Бұл мамандық бойынша өту балдарының Min/Max мәні жақында қосылады.'}</p>`;
- return `<details class="acc" open><summary>Мемлекеттік грант саны: 2025 және 2026</summary><div class="ab">${grantHtml(c)}</div></details><details class="acc" open><summary>Грантқа түскен балдар (Min/Max)</summary><div class="ab">${d.gen||d.rural?`${mm('gen','Жалпы конкурс')}<div style="height:12px"></div>${mm('rural','Ауылдық квота')}${src}`:`<div class="nodata"><p>Бұл мамандық бойынша грантқа өту балдары базаға әлі енгізілмеген.</p><p>Шектік балл: <b>${(majors.find(x=>x.code===c)||{}).grantScore||'—'}</b>. Бұл — конкурсқа қатысу үшін ең төменгі балл, грантқа түсу балы әдетте жоғарырақ.</p><a class="btn" href="https://univision.kz/kk/grant/passing.html" target="_blank" rel="noopener noreferrer">${c} өту балын univision.kz-тен қарау ↗</a></div>`}</div></details><details class="acc" open><summary>Қай ЖОО-да оқытылады</summary><div class="ab">${muTable(c)}</div></details>`};
+/* Грант тарихы: әр жыл — жалпы конкурс (грант саны, Max, Min) және ауылдық квота (Max, Min). Белгісіз мән — «—». */
+const gcFull=(c,y)=>y===2026?(G26[c]?G26[c][1]:null):y===2025?(GC[c]?GC[c][0]:null):(((GY[c]||{})[y])||[])[0]??null;
+const muHtml=c=>{const d=PS[c]||{},g=d.gen||{},r=d.rural||{};
+ const mm=(a)=>`<div class="mm"><span>Max: <b>${vv((a||[])[0])}</b></span><span>Min: <b>${vv((a||[])[1])}</b></span></div>`;
+ const gen=YRS.map(y=>{const n=gcFull(c,y);return `<div class="hy"><h5>Жалпы конкурс: ${y}</h5>${mm(g[y])}<p class="hg">Грант саны: <b>${n==null?'—':fmt(n)}</b></p></div>`}).join('');
+ const rur=YRS.map(y=>`<div class="hy"><h5>Ауылдық квота: ${y}</h5>${mm(r[y])}</div>`).join('');
+ const any=YRS.some(y=>g[y]||r[y]);
+ return `<details class="acc hist" open><summary>Грантқа өту балдары (Min/Max) және грант саны</summary><div class="ab"><div class="hgrid">${gen}</div><div class="hgrid">${rur}</div>
+ <p class="note">Max — грантқа түскендердің ең жоғары балы, Min — ең төменгі балы. Грант саны — республикалық бюджеттен күндізгі толық оқуға жалпы конкурсқа бөлінген гранттар.${any?'':' Бұл мамандық бойынша өту балдары әзірге ресми дереккөзден тексеріліп енгізілмеген («—»).'}</p>
+ <details class="acc sub"><summary>2025 және 2026 жылғы грант бөлінісі толығырақ</summary><div class="ab">${grantHtml(c)}</div></details></div></details>`};
 function renderUnis(d){
  $('uCount').textContent=d.length+' ЖОО · толық ақпарат үшін басыңыз';
  $('uniList').innerHTML=d.length?d.map(u=>`<div class="ur" role="button" tabindex="0" aria-label="${u.name}: толық ақпарат" onclick="openUni('${u.code}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openUni('${u.code}')}"><span class="c">${lg(u)}<em>${u.code}</em></span><span class="n">${u.name}<small>${u.type}</small></span><span>${u.city}</span><span class="chev" aria-hidden="true">›</span></div>`).join(''):'<div class="empty">Ештеңе табылмады. Басқа код немесе қала атауын енгізіңіз.</div>';
@@ -110,7 +113,7 @@ function openUni(c){
  $('dBody').innerHTML=`${lg(u)}<span class="code" style="margin-left:10px">ЖОО коды ${u.code}</span><h3 id="dName">${u.name}</h3><p class="meta">${u.type}, ${u.city}</p>
  <div class="dgrid"><div class="dbox"><span>Грант балдары</span><b>${u.grantScore}</b>${bar}</div><div class="dbox"><span>Оқу ақысы</span><b>${u.tuition}</b></div></div>
  ${uniFacts(c)}${uniRank(c)}${uniPrograms(c)}
- <p class="note">Көрсетілген мәліметтер анықтамалық. Нақты шарттарды ЖОО-ның ресми сайтынан тексеріңіз.</p>${link}`;
+ <p class="note">Көрсетілген мәліметтер анықтамалық. Нақты шарттарды ЖОО-ның ресми сайтынан тексеріңіз.</p>${link}<section class="urev" data-uni="${c}"></section>`;
  $('uniDlg').showModal();
 }
 ['uniDlg','majDlg','forDlg'].forEach(i=>$(i).addEventListener('click',e=>{if(e.target===$(i))$(i).close()}));

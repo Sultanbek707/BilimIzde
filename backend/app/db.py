@@ -26,6 +26,18 @@ SCHEMA = [
         user_id TEXT,
         created_at TEXT NOT NULL
     )""",
+    """CREATE TABLE IF NOT EXISTS uni_posts (
+        id {pk},
+        uni_code TEXT NOT NULL,
+        parent_id INTEGER,
+        kind TEXT NOT NULL,
+        role TEXT NOT NULL,
+        text TEXT NOT NULL,
+        author TEXT,
+        user_id TEXT NOT NULL,
+        created_at TEXT NOT NULL
+    )""",
+    """CREATE INDEX IF NOT EXISTS uni_posts_code ON uni_posts (uni_code)""",
     """CREATE TABLE IF NOT EXISTS users (
         id TEXT PRIMARY KEY,
         name TEXT,

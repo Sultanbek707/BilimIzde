@@ -266,7 +266,7 @@ def health():
 @app.get("/api/bootstrap", tags=["Жүйе"])
 def bootstrap(lang: str = "kk"):
     """Сайт ашылғанда керек барлық мәлімет бір сұраныспен. lang=ru|en болса, шетелдік ЖОО аудармасы да қосылады."""
-    names = ["majors", "universities", "fields", "sites", "site_extra", "grants_2025", "grants_other_years",
+    names = ["majors", "universities", "fields", "sites", "site_extra", "logos", "grants_2025", "grants_other_years",
              "grants_2026", "quotas_2026", "quota_names_2026", "passing_scores", "major_universities",
              "foreign", "foreign_wiki", "foreign_history", "faq", "university_extra", "i18n",
              "rankings", "salaries"]
@@ -509,6 +509,77 @@ def club_add(post: ClubPost, request: Request, authorization: Optional[str] = He
     new_id = db.execute("INSERT INTO club_posts (topic, text, author, user_id, created_at) VALUES (?, ?, ?, ?, ?) RETURNING id",
                         (topic, text, author, u["id"] if u else None, now_iso()))
     return db.one("SELECT id, topic, text, author, created_at FROM club_posts WHERE id = ?", (new_id,))
+
+
+# --- Әр университеттің пікірлері мен талқылауы ---
+
+UNI_CODES = {u["code"] for u in load("universities")}
+
+
+class UniPost(BaseModel):
+    text: str = Field(..., min_length=1, max_length=1500)
+    kind: str = Field("exp", pattern="^(plus|minus|q|exp)$")  # жақсы жағы / кемшілігі / сұрақ / тәжірибе
+    role: str = Field("student", pattern="^(student|grad|applicant)$")  # студент / түлек / талапкер
+    parent_id: Optional[int] = None
+
+
+def _uni_rows(code: str) -> list[dict]:
+    return db.query("SELECT id, parent_id, kind, role, text, author, user_id, created_at FROM uni_posts "
+                    "WHERE uni_code = ? ORDER BY id DESC LIMIT 1000", (code,))
+
+
+@app.get("/api/uni/{code}/posts", tags=["Пікірлер"])
+def uni_posts(code: str, authorization: Optional[str] = Header(None)):
+    """Университет туралы пікірлер (жаңасы жоғарыда) және оларға жауаптар (ескісі жоғарыда)."""
+    if code not in UNI_CODES:
+        raise HTTPException(404, "ЖОО табылмады")
+    u = current_user(authorization)
+    me = u["id"] if u else None
+    rows = _uni_rows(code)
+    out, replies = [], {}
+    for r in rows:
+        r["mine"] = bool(me and r["user_id"] == me)
+        del r["user_id"]
+        (replies.setdefault(r["parent_id"], []) if r["parent_id"] else out).append(r)
+    for r in out:
+        r["replies"] = sorted(replies.get(r["id"], []), key=lambda x: x["id"])
+    counts = {k: sum(1 for r in out if r["kind"] == k) for k in ("plus", "minus", "q", "exp")}
+    return {"posts": out, "counts": counts, "total": len(out)}
+
+
+@app.post("/api/uni/{code}/posts", tags=["Пікірлер"], status_code=201)
+def uni_post_add(code: str, post: UniPost, request: Request, authorization: Optional[str] = Header(None)):
+    """Пікір немесе жауап жазу. Тек тіркелген қолданушы жаза алады."""
+    if code not in UNI_CODES:
+        raise HTTPException(404, "ЖОО табылмады")
+    u = require_user(authorization)
+    text = post.text.strip()
+    if not text:
+        raise HTTPException(422, "Мәтін бос")
+    check_rate(client_ip(request), limit=20, bucket="uni")
+    parent = None
+    if post.parent_id:
+        parent = db.one("SELECT id, parent_id FROM uni_posts WHERE id = ? AND uni_code = ?", (post.parent_id, code))
+        if not parent:
+            raise HTTPException(404, "Пікір табылмады")
+        if parent["parent_id"]:  # жауапқа жауап — сол пікірдің астына
+            parent = {"id": parent["parent_id"]}
+    author = u["name"] or (u["email"] or "").split("@")[0] or "Қолданушы"
+    db.execute("INSERT INTO uni_posts (uni_code, parent_id, kind, role, text, author, user_id, created_at) "
+               "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id",
+               (code, parent["id"] if parent else None, "exp" if parent else post.kind, post.role, text, author, u["id"], now_iso()))
+    return uni_posts(code, authorization)
+
+
+@app.delete("/api/uni/{code}/posts/{pid}", tags=["Пікірлер"])
+def uni_post_del(code: str, pid: int, authorization: Optional[str] = Header(None)):
+    """Өз пікіріңді өшіру (жауаптарымен бірге)."""
+    u = require_user(authorization)
+    row = db.one("SELECT user_id FROM uni_posts WHERE id = ? AND uni_code = ?", (pid, code))
+    if not row or row["user_id"] != u["id"]:
+        raise HTTPException(403, "Тек өз пікіріңді өшіре аласың")
+    db.execute("DELETE FROM uni_posts WHERE id = ? OR parent_id = ?", (pid, pid))
+    return uni_posts(code, authorization)
 
 
 # --- Аналитика (сыртқы қызметсіз, IP сақталмайды) ---
