@@ -35,8 +35,9 @@ function ui() {
   const box = $('calcOut'); if (!box || $('cxBox')) return;
   const st = LS.g('bz-calc', {});
   const pairs = [...new Map((window.majors || []).filter(m => m.combo_kk).map(m => [m.combo_kk, m.combo])).entries()].sort((a, b) => cre({ combo_kk: a[0] }) - cre({ combo_kk: b[0] }) || a[1].localeCompare(b[1]));
-  box.insertAdjacentHTML('beforebegin', `<div id="cxBox" class="cx">
+  $('score').closest('.row').insertAdjacentHTML('afterend', `<div id="cxBox" class="cx">
    <div class="cxt" role="tablist"><button type="button" data-m="sum" class="${st.mode !== 'sub' ? 'on' : ''}">${t3('Жалпы балл', 'Общий балл', 'Total score')}</button><button type="button" data-m="sub" class="${st.mode === 'sub' ? 'on' : ''}">${t3('Пәндер бойынша', 'По предметам', 'By subject')}</button></div>
+   <div class="cxr"><input type="range" id="cxR" min="0" max="140" step="1" value="${LS.g('bz-score', 100)}" aria-label="${t3('ҰБТ балы', 'Балл ЕНТ', 'UNT score')}"><div class="cxq">${[70, 90, 100, 110, 120, 130].map(v => `<button type="button" data-v="${v}">${v}</button>`).join('')}</div></div>
    <div class="cxs" ${st.mode === 'sub' ? '' : 'hidden'}>${SUB.map(([k, n, mx, mn]) => `<label>${n[li()]} <small>(0–${mx}, ${t3('шегі', 'порог', 'min')} ${mn})</small><input type="number" class="cxi" data-k="${k}" min="0" max="${mx}" value="${st.s && st.s[k] != null ? st.s[k] : ''}" placeholder="0–${mx}"></label>`).join('')}<div class="cxsum"></div></div>
    <div class="cxf"><label>${t3('Бейіндік пәндер жұбы', 'Пара профильных предметов', 'Profile subject pair')}<select id="cxPair"><option value="">${t3('Барлық жұп', 'Все пары', 'All pairs')}</option>${pairs.map(([k, v]) => `<option value="${esc(k)}" ${st.pair === k ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select></label>
    <label class="cxc"><input type="checkbox" id="cxG" ${st.onlyG ? 'checked' : ''}> ${t3('Тек 2026 жылы гранты бар', 'Только с грантами 2026', 'Only with 2026 grants')}</label>
@@ -48,6 +49,13 @@ function ui() {
   S.querySelectorAll('.cxi').forEach(i => i.oninput = () => { subSum(); save(); });
   [$('cxPair'), $('cxG'), $('cxN')].forEach(x => x.onchange = () => { save(); if ($('score').value !== '') window.calc(); });
   if (st.mode === 'sub') { $('score').readOnly = true; subSum(true); }
+  /* Тірі есептеу: балды жазғанда не жүгірткіні жылжытқанда нәтиже бірден жаңарады */
+  const sc = $('score'), R = $('cxR'); let tm = 0;
+  const live = () => { clearTimeout(tm); tm = setTimeout(() => { const v = parseInt(sc.value); if (!isNaN(v) && v >= 0 && v <= 140) window.calc(); }, 180); };
+  sc.addEventListener('input', () => { const v = parseInt(sc.value); if (!isNaN(v) && v >= 0 && v <= 140) R.value = v; live(); });
+  R.addEventListener('input', () => { if (sc.readOnly) return; sc.value = R.value; live(); });
+  S.querySelector('.cxq').onclick = e => { const b = e.target.closest('button'); if (!b || sc.readOnly) return; sc.value = R.value = b.dataset.v; window.calc(); };
+  if (sc.value === '' && st.mode !== 'sub') { const v = LS.g('bz-score', null); if (v != null) { sc.value = R.value = v; setTimeout(window.calc, 0); } }
 }
 
 /* Пәндер бойынша қосынды және шекті балл тексеру */
@@ -86,6 +94,12 @@ window.calc = function () {
   const list = rows.slice(0, LIM).map(({ m, c, g }) => `<a class="crow" href="#/major/${m.code}"><code>${m.code}</code><span>${esc(m.name)}<small class="cmeta">${m.combo ? esc(m.combo) + ' · ' : ''}${t3('шегі', 'порог', 'min')} ${need(m)}</small></span><span class="g">${g ? t3(`${g.y}: ${fmt(g.n)} грант`, `${g.y}: ${fmt(g.n)} грантов`, `${g.y}: ${fmt(g.n)} grants`) : t3('грант жоқ', 'нет грантов', 'no grants')}</span><span class="tag ${c.k}">${c.t}</span></a>`).join('');
   o.innerHTML = `<div class="cres">
    ${chk.ok ? '' : `<p class="warn"><b>${t3('Назар аудар:', 'Внимание:', 'Note:')}</b> ${t3('бір пәннен шекті балл жиналмаса, жалпы балл жеткілікті болса да грант конкурсына қатыса алмайсың', 'если по одному предмету не набран порог, участвовать в конкурсе на грант нельзя, даже при достаточном общем балле', 'if you miss the minimum in any subject, you cannot enter the grant competition even with a high total')} (${esc(chk.fails.join(', '))}).</p>`}
+   <div class="cxk">
+    <div class="k-ok"><b>${ok.length}</b><span>${t3('шектен өтесің', 'порог пройден', 'thresholds passed')}</span></div>
+    <div class="k-hi"><b>${rows.filter(r => r.c.k === 'hi' || r.c.k === 'mid').length}</b><span>${t3('өткен жылғы өту балына жетеді', 'хватает по прошлому году', 'reach last year’s passing score')}</span></div>
+    <div class="k-g"><b>${fmt(totalG)}</b><span>${t3('2026 жылғы грант (осы мамандықтарда)', 'грантов 2026 (по этим специальностям)', '2026 grants (these majors)')}</span></div>
+    ${no.length ? `<div class="k-up"><b>+${reg.filter(m => need(m) > s && need(m) <= s + 10).length}</b><span>${t3('мамандық ашылады, егер +10 балл жинасаң', 'специальностей откроется при +10 баллах', 'more majors open with +10 points')}</span></div>` : `<div class="k-up"><b>${crOk.length}</b><span>${t3('шығармашылық емтиханы бар мамандық та қолжетімді', 'специальностей с творческим экзаменом тоже доступны', 'majors with a creative exam are also open')}</span></div>`}
+   </div>
    <p class="sum">${t3(`Балың <b>${s}</b>. Шектік балдан өтетін мамандықтар: <b>${ok.length}</b> / ${reg.length}`, `Твой балл <b>${s}</b>. Порог пройден по <b>${ok.length}</b> из ${reg.length} специальностей`, `Your score is <b>${s}</b>. You pass the threshold for <b>${ok.length}</b> of ${reg.length} majors`)}${pair ? t3(' (таңдалған пәндер жұбы бойынша)', ' (по выбранной паре предметов)', ' (for the selected subject pair)') : ''}.${crOk.length ? t3(` Шығармашылық емтиханы бар: <b>${crOk.length}</b>.`, ` С творческим экзаменом: <b>${crOk.length}</b>.`, ` With a creative exam: <b>${crOk.length}</b>.`) : ''}${totalG ? t3(` Бұл мамандықтарға 2026 жылы барлығы <b>${fmt(totalG)}</b> грант бөлінген.`, ` На эти специальности в 2026 году выделено всего <b>${fmt(totalG)}</b> грантов.`, ` These majors had <b>${fmt(totalG)}</b> grants in total in 2026.`) : ''}</p>
    ${rows.length ? `<div class="clist">${list}</div>${rows.length > LIM ? `<button class="cmore" onclick="window.bzMore()">${t3(`Барлығын көрсету (${rows.length})`, `Показать все (${rows.length})`, `Show all (${rows.length})`)}</button>` : ''}` : `<p class="warn">${t3('Бұл сүзгі бойынша шекке жететін мамандық жоқ. Ақылы бөлімді, ҰБТ-ны қайта тапсыруды немесе басқа пәндер жұбын қарастыр.', 'По этому фильтру нет специальностей с пройденным порогом. Рассмотри платное отделение, пересдачу ЕНТ или другую пару предметов.', 'No majors pass the threshold with this filter. Consider paid study, retaking the UNT or another subject pair.')}</p>`}
    ${near.length ? `<h4 class="dsec">${t3('Шекке жақын мамандықтар', 'Близко к порогу', 'Close to the threshold')}</h4><div class="chips">${near.map(({ m, d }) => `<a href="#/major/${m.code}"><span>${m.code} ${esc(m.name.length > 40 ? m.name.slice(0, 38) + '…' : m.name)} · +${d}</span></a>`).join('')}</div>` : ''}

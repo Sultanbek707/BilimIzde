@@ -3,7 +3,7 @@ chcp 65001 >nul
 cd /d "%~dp0"
 echo BilimIzde: GitHub-qa zhukteu...
 git add -A
-git commit -m "BilimIzde: lupa ozi ushady, alyn saqina, iz, zharqyl, derekter"
+git commit -m "BilimIzde: karta v2, grant esepteGish v3, otken zhyldar beti, Tagy maziri, Sait turaly, ishki better boshlygy"
 echo GitHub-tagy ozgeristerdi alu...
 git pull --rebase --autostash
 git push

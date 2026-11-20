@@ -60,9 +60,9 @@ function translateData(d, lang) {
       BZ_AI: d.ai_enabled, BZ_CLUB_N: d.club_count,
       RANK: d.rankings, SAL: d.salaries, LOGO: d.logos || {},
     });
-    for (const src of ['js/plan.js', 'js/test.js', 'js/more.js', 'js/app.js', 'js/extras.js', 'js/calc.js', 'js/auth.js', 'js/reviews.js', 'js/track.js']) {
+    for (const src of ['js/plan.js', 'js/test.js', 'js/more.js', 'js/app.js', 'js/extras.js', 'js/calc.js', 'js/auth.js', 'js/reviews.js', 'js/pages2.js', 'js/track.js']) {
       const s = document.createElement('script');
-      s.src = src + '?v=20261121b'; s.async = false;
+      s.src = src + '?v=20261121c'; s.async = false;
       document.body.appendChild(s);
     }
   } catch (e) {
