@@ -1,5 +1,5 @@
-/* BilimIzde — қосымша беттер: Магистратура, Колледждер, ҰБТ сынақ тесті.
-   Мәтіндер үш тілде осы файлда (kk / ru / en). Деректер: backend/app/data/masters.json */
+/* BilimIzde — қосымша бет: ҰБТ сынақ тесті.
+   Мәтіндер үш тілде осы файлда (kk / ru / en).  */
 (() => {
 const L = () => window.BZ_LANG || 'kk';
 const t3 = (kk, ru, en) => ({ kk, ru, en }[L()] || kk);
@@ -7,70 +7,6 @@ const e3 = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&am
 const nm = o => o[L()] || o.kk;
 const fmt = n => Number(n).toLocaleString('ru-RU').replace(/,/g, ' ');
 const src = (u, l) => `<a class="src" href="${u}" target="_blank" rel="noopener noreferrer">${l || t3('дереккөз', 'источник', 'source')} ↗</a>`;
-
-/* ===== Магистратура ===== */
-window.BZ_MASTERS = el => {
-  const M = window.MAST; if (!M) { el.textContent = '—'; return; }
-  const S = M.sources;
-  el.innerHTML = `
-  <div class="dgrid">
-   <div class="dbox"><span>${t3('Ғылыми-педагогикалық магистратура гранты', 'Гранты: научно-педагогическая магистратура', 'Grants: research & teaching master\'s')}</span><b>${fmt(M.totals.np)}</b></div>
-   <div class="dbox"><span>${t3('Бейіндік магистратура гранты', 'Гранты: профильная магистратура', 'Grants: professional master\'s')}</span><b>${fmt(M.totals.prof)}</b></div>
-   <div class="dbox"><span>${t3('Шетел ЖОО филиалдары мен НУ', 'Филиалы зарубежных вузов и НУ', 'Foreign branches and NU')}</span><b>${fmt(M.totals.branches)}</b></div>
-  </div>
-  <p class="note">${t3(`2026–2027 оқу жылына магистратураға барлығы ${fmt(M.totals.all_announced)} грант жарияланды (министрлік деректері).`, `На 2026–2027 учебный год объявлено всего ${fmt(M.totals.all_announced)} грантов в магистратуру (данные министерства).`, `A total of ${fmt(M.totals.all_announced)} master's grants were announced for 2026–2027 (ministry data).`)} ${src(S.total)}</p>
-  <h4 class="dsec">${t3('Кешенді тестілеу (КТ)', 'Комплексное тестирование (КТ)', 'Comprehensive test (KT)')}</h4>
-  <ul class="xl"><li>${e3(nm(M.exam.np))}</li><li>${e3(nm(M.exam.prof))}</li><li>${e3(nm(M.exam.dates))}</li></ul>
-  <p class="note">${src(S.exam)} ${src(S.exam2)}</p>
-  <h4 class="dsec">${t3('Топтар бойынша гранттар (2026–2027)', 'Гранты по группам (2026–2027)', 'Grants by group (2026–2027)')}</h4>
-  <div class="xr"><input id="msQ" type="search" placeholder="${t3('Іздеу: M094, ақпараттық…', 'Поиск: M094, информационные…', 'Search: M094, information…')}" aria-label="search">
-  <select id="msF"><option value="">${t3('Барлық бағыт', 'Все направления', 'All fields')}</option>${M.fields.map(f => `<option value="${f.code}">${f.code} ${e3(nm(f))}</option>`).join('')}</select></div>
-  <div id="msT" class="xs"></div>
-  <p class="note">${t3('Дереккөз: Ұлттық тестілеу орталығы жариялаған мемлекеттік білім беру тапсырысы; ЖОО бойынша бөлу — Әділет ақпараттық жүйесіндегі бұйрық.', 'Источник: государственный образовательный заказ, опубликованный НЦТ; распределение по вузам — приказ в ИПС «Әділет».', 'Source: state educational order published by the National Testing Center; distribution by university — order in the Adilet legal system.')} ${src(S.order)} ${src(S.order_law, 'Әділет')}</p>
-  <h4 class="dsec">${t3('Жеке бағдарламалар', 'Отдельные программы', 'Separate programmes')}</h4>
-  <table class="xt">${M.other.map(o => `<tr><td>${e3(nm(o))}</td><td><b>${fmt(o.np)}</b></td></tr>`).join('')}</table>`;
-  const q = el.querySelector('#msQ'), f = el.querySelector('#msF');
-  const draw = () => {
-    const s = q.value.trim().toLowerCase(), fv = f.value;
-    const G = M.groups.filter(g => (!fv || g.field === fv) && (!s || g.code.toLowerCase().includes(s) || [g.kk, g.ru, g.en].some(x => x.toLowerCase().includes(s))));
-    el.querySelector('#msT').innerHTML = G.length ? `<table class="xt ptable"><tr><th>${t3('Код', 'Код', 'Code')}</th><th>${t3('Топ', 'Группа', 'Group')}</th><th>${t3('Ғыл.-пед.', 'Науч.-пед.', 'Research')}</th><th>${t3('Бейіндік', 'Профильная', 'Professional')}</th></tr>${G.map(g => `<tr><td><b>${g.code}</b></td><td>${e3(nm(g))}</td><td>${g.np || '—'}</td><td>${g.prof || '—'}</td></tr>`).join('')}</table>` : `<p class="xm">${t3('Ештеңе табылмады.', 'Ничего не найдено.', 'Nothing found.')}</p>`;
-  };
-  q.oninput = draw; f.onchange = draw; draw();
-};
-
-/* ===== Колледждер ===== */
-window.BZ_COLLEGES = el => {
-  const D = [
-    [t3('Жұмысшы біліктіліктері', 'Рабочие квалификации', 'Worker qualifications'), t3('25 маусым – 27 тамыз', '25 июня – 27 августа', 'June 25 – August 27')],
-    [t3('Орта буын мамандары (9 және 11 сынып негізінде)', 'Специалисты среднего звена (на базе 9 и 11 классов)', 'Mid-level specialists (after grade 9 and 11)'), t3('25 маусым – 22 тамыз', '25 июня – 22 августа', 'June 25 – August 22')],
-    [t3('Шығармашылық мамандықтар', 'Творческие специальности', 'Creative specialties'), t3('25 маусым – 20 шілде', '25 июня – 20 июля', 'June 25 – July 20')],
-    [t3('Медициналық мамандықтар, 9 сынып негізінде', 'Медицинские специальности, на базе 9 классов', 'Medical specialties, after grade 9'), t3('25 маусым – 10 тамыз', '25 июня – 10 августа', 'June 25 – August 10')],
-    [t3('Медициналық мамандықтар, 11 сынып және ТжКБ негізінде', 'Медицинские, на базе 11 классов и ТиПО', 'Medical, after grade 11 or TVET'), t3('25 маусым – 15 тамыз', '25 июня – 15 августа', 'June 25 – August 15')],
-    [t3('Кешкі оқу нысаны', 'Вечерняя форма обучения', 'Evening study'), t3('25 маусым – 20 қыркүйек', '25 июня – 20 сентября', 'June 25 – September 20')],
-  ];
-  el.innerHTML = `
-  <div class="dgrid"><div class="dbox"><span>${t3('2026–2027 оқу жылына колледждерге мемлекеттік тапсырыс', 'Госзаказ для колледжей на 2026–2027 учебный год', 'State-funded college places for 2026–2027')}</span><b>140 000</b></div>
-  <div class="dbox"><span>${t3('Құжат қабылдау басталуы', 'Начало приёма документов', 'Applications open')}</span><b>${t3('25 маусым', '25 июня', 'June 25')}</b></div></div>
-  <h4 class="dsec">${t3('2026 жылғы құжат қабылдау мерзімдері', 'Сроки приёма документов в 2026 году', '2026 application deadlines')}</h4>
-  <table class="xt">${D.map(([a, b]) => `<tr><td>${a}</td><td><b>${b}</b></td></tr>`).join('')}</table>
-  <p class="note">${t3('Мерзімдер жыл сайын жаңартылады: 2027 жылғы күндерді Оқу-ағарту министрлігінің хабарламасынан тексер.', 'Сроки обновляются ежегодно: даты 2027 года проверяйте в сообщении Министерства просвещения.', 'Deadlines change every year: check 2027 dates in the Ministry of Education announcement.')} ${src('https://tengrinews.kz/newseducation/obyyavlenyi-sroki-prima-dokumentov-v-kolledji-kazahstana-602153/')} ${src('https://www.zakon.kz/obshestvo/6522191-obyavleny-sroki-priema-dokumentov-v-kolledzhi-kazakhstana-so-140-tysyachami-grantov.html')}</p>
-  <h4 class="dsec">${t3('Түсу емтихандары', 'Вступительные испытания', 'Entrance assessments')}</h4>
-  <ul class="xl">
-   <li>${t3('Жұмысшы біліктілігіне — әңгімелесу.', 'На рабочие квалификации — собеседование.', 'Worker qualifications — interview.')}</li>
-   <li>${t3('Педагогикалық мамандықтарға — эссе немесе диктант.', 'На педагогические специальности — эссе или диктант.', 'Teaching specialties — essay or dictation.')}</li>
-   <li>${t3('Медициналық және шығармашылық мамандықтарға — арнайы және (немесе) шығармашылық емтихан.', 'На медицинские и творческие специальности — специальные и (или) творческие экзамены.', 'Medical and creative specialties — special and/or creative exams.')}</li>
-  </ul>
-  <h4 class="dsec">${t3('Құжаттар', 'Документы', 'Documents')}</h4>
-  <ul class="xl">
-   <li>${t3('Өтініш: eGov.kz → «Білім» → «Колледждер» → «ТжКБ ұйымдарына құжат қабылдау».', 'Заявление: eGov.kz → «Образование» → «Колледжи» → «Приём документов в организации ТиПО».', 'Application: eGov.kz → "Education" → "Colleges" → "Admission to TVET organisations".')}</li>
-   <li>${t3('Білім туралы құжат (аттестат немесе куәлік).', 'Документ об образовании (аттестат или свидетельство).', 'Education document (certificate).')}</li>
-   <li>${t3('075/у нысанындағы медициналық анықтама.', 'Медицинская справка формы 075/у.', 'Medical certificate, form 075/u.')}</li>
-   <li>${t3('3×4 см фотосурет.', 'Фотография 3×4 см.', '3×4 cm photo.')}</li>
-   <li>${t3('Жеке куәлік; квотаға жататын болсаң — растайтын құжат.', 'Удостоверение личности; при квоте — подтверждающий документ.', 'ID card; a supporting document if you qualify for a quota.')}</li>
-  </ul>
-  <p class="note">${src('https://egov.kz/cms/ru/services/pr_5', 'eGov.kz')} ${src('https://www.gov.kz/situations/752/intro?lang=ru', 'gov.kz')}</p>
-  <p class="note">${t3('Колледждердің толық тізімі мен мамандықтары әзірге BilimIzde-де жоқ: оларды eGov.kz қызметінде таңдауға болады.', 'Полного списка колледжей и их специальностей пока нет в BilimIzde: их можно выбрать в услуге на eGov.kz.', 'A full list of colleges and their specialties is not yet in BilimIzde: you can choose them in the eGov.kz service.')}</p>`;
-};
 
 /* ===== ҰБТ сынақ тесті ===== */
 const Q = [

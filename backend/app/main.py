@@ -260,17 +260,11 @@ def bootstrap(lang: str = "kk"):
     names = ["majors", "universities", "fields", "sites", "site_extra", "grants_2025", "grants_other_years",
              "grants_2026", "quotas_2026", "quota_names_2026", "passing_scores", "major_universities",
              "foreign", "foreign_wiki", "foreign_history", "faq", "university_extra", "i18n",
-             "rankings", "masters", "salaries"]
+             "rankings", "salaries"]
     out = {n: load(n) for n in names}
     if lang in ("ru", "en"):
         out["foreign_i18n"] = {k: v.get(lang) for k, v in load("foreign_i18n").items()}
     return {**out, "ai_enabled": bool(ANTHROPIC_API_KEY), "club_count": club_count()}
-
-
-@app.get("/api/masters", tags=["Деректер"])
-def masters_api():
-    """Магистратура: топтар, 2026–2027 мемлекеттік тапсырыс, кешенді тестілеу."""
-    return load("masters")
 
 
 @app.get("/api/salaries", tags=["Деректер"])

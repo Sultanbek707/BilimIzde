@@ -525,7 +525,20 @@ footer .fnav a{align-self:flex-start}
  .rnav a span{position:absolute;left:60px;top:50%;transform:translateY(-50%) translateX(-4px);white-space:nowrap;padding:7px 11px;border-radius:9px;font-size:13px;font-weight:600;background:var(--ink);color:var(--bg);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
  .rnav a:hover span,.rnav a:focus-visible span{opacity:1;transform:translateY(-50%)}
  body{padding-left:76px}
- header nav>a[href="#/calc"],header nav>a[href="#/majors"],header nav>a[href="#/universities"],header nav>a[href="#/abroad"]{display:none}
+ header nav>a[href="#/calc"],header nav>a[href="#/majors"],header nav>a[href="#/universities"],header nav>a[href="#/abroad"],header nav>a[href="#/ai"],header nav>.more{display:none}
+ .rmore{position:relative}
+ .rmore>button{position:relative;display:grid;place-items:center;width:48px;height:48px;border:0;border-radius:14px;background:transparent;color:var(--mut);cursor:pointer;transition:background .15s,color .15s}
+ .rmore>button svg{width:22px;height:22px}
+ .rmore>button:hover,.rmore>button[aria-expanded="true"],.rmore:has(.rmenu a.on)>button{color:var(--ink);background:var(--surf2)}
+ .rmore>button span{position:absolute;left:60px;top:50%;transform:translateY(-50%) translateX(-4px);white-space:nowrap;padding:7px 11px;border-radius:9px;font-size:13px;font-weight:600;background:var(--ink);color:var(--bg);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
+ .rmore>button:hover span{opacity:1;transform:translateY(-50%)}
+ .rmore>button[aria-expanded="true"] span{opacity:0}
+ .rmenu{position:absolute;left:60px;top:0;min-width:210px;display:flex;flex-direction:column;padding:6px;border-radius:14px;background:var(--surf);border:1px solid var(--line);box-shadow:0 12px 32px rgba(0,0,0,.28);z-index:70}
+ .rmenu[hidden]{display:none}
+ .rnav .rmenu a{display:block;width:auto;height:auto;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:var(--ink);place-items:initial}
+ .rnav .rmenu a:hover{background:var(--surf2)}
+ .rnav .rmenu a.on{background:var(--surf2);box-shadow:none}
+ .rnav .rmenu a.on::before{display:none}
 }
 
 /* ===== ЖОО: жатақхана, әскери кафедра, мамандықтар ===== */
@@ -590,3 +603,22 @@ footer .fnav a{align-self:flex-start}
 .ufb{margin-top:6px;font-size:.9rem}.ufb.ok{color:#1a7f37}.ufb.no{color:#b42318}
 .pct{display:block;margin-top:4px;font-size:.85rem}.pct.up{color:#1a7f37}.pct.dn{color:#9a6700}
 a.dbox{text-decoration:none;color:inherit}
+/* Мамандық тесті */
+.xo .ch.on{outline:2px solid var(--acc,#2563eb)}
+.tres{display:grid;gap:10px;margin:.5rem 0 1rem}
+.trow{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;border:1px solid var(--line,#e2e2e2);border-radius:12px;padding:10px 12px}
+.trow .tm{opacity:.7}.tmeta{font-size:.88rem;opacity:.85;margin-top:4px}.twhy{font-size:.85rem;margin-top:4px;color:#1a7f37}
+.tact{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+@media(max-width:640px){.trow{flex-direction:column}.tact{flex-direction:row}}
+/* Грант есептегіш v2 */
+.cx{margin:12px 0;display:grid;gap:10px}
+.cxt{display:inline-flex;border:1px solid var(--line,#ddd);border-radius:10px;overflow:hidden;width:max-content}
+.cxt button{border:0;background:transparent;padding:7px 14px;cursor:pointer;font:inherit;color:inherit}
+.cxt button.on{background:var(--acc,#2563eb);color:#fff}
+.cxs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.cxs label,.cxf label{display:flex;flex-direction:column;gap:4px;font-size:.88rem}
+.cxs small{opacity:.65}.cxs input,.cxf select{padding:7px 9px;border:1px solid var(--line,#ccc);border-radius:8px;font:inherit}
+.cxsum{grid-column:1/-1;font-size:.95rem}
+.cxf{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end}
+.cxf .cxc{flex-direction:row;align-items:center;gap:6px}
+.crow .cmeta{display:block;font-size:.78rem;opacity:.7}

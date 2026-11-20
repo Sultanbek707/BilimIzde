@@ -20,7 +20,7 @@ function translateData(d, lang) {
   const T = d.i18n || {};
   // ЖОО-ның қазақша атауын (іздеу мен AI үшін) сақтап қоямыз
   d.universities.forEach(u => { u.name_kk = u.name; });
-  d.majors.forEach(m => { m.name_kk = m.name; });
+  d.majors.forEach(m => { m.name_kk = m.name; m.combo_kk = m.combo; });
   if (i < 0) return;
   d.majors.forEach(m => {
     const t = (T.majors || {})[m.code]; if (t) m.name = t[i];
@@ -58,9 +58,9 @@ function translateData(d, lang) {
       Q26: d.quotas_2026, Q26N: d.quota_names_2026, PS: d.passing_scores, MU: d.major_universities,
       FOREIGN: d.foreign, WIKI: d.foreign_wiki, HIST: d.foreign_history, FAQ: d.faq,
       BZ_AI: d.ai_enabled, BZ_CLUB_N: d.club_count,
-      RANK: d.rankings, MAST: d.masters, SAL: d.salaries,
+      RANK: d.rankings, SAL: d.salaries,
     });
-    for (const src of ['js/plan.js', 'js/more.js', 'js/app.js', 'js/extras.js', 'js/auth.js', 'js/track.js']) {
+    for (const src of ['js/plan.js', 'js/test.js', 'js/more.js', 'js/app.js', 'js/extras.js', 'js/calc.js', 'js/auth.js', 'js/track.js']) {
       const s = document.createElement('script');
       s.src = src; s.async = false;
       document.body.appendChild(s);
