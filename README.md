@@ -82,6 +82,8 @@ Render → сервис → **Environment** бөлімінде қосылады.
 | `BZ_ADMIN_KEY` | `/admin.html` статистика бетінің құпия кілті (өзің ойлап тап) |
 | `DATABASE_URL` | Render PostgreSQL адресі. Болмаса — SQLite (тегін Render-де қайта іске қосқанда тазаланады) |
 | `FIREBASE_PROJECT_ID`, `FIREBASE_WEB_CONFIG` | Google және телефон арқылы кіру. WEB_CONFIG — Firebase Console → Project settings → Web app конфигі (JSON бір жолмен) |
+| `AUTH_REQUIRED` | `1` (әдепкі) — Firebase қосулы болса, әр адам Google/телефон арқылы кірмейінше сайтты қолдана алмайды. `0` — кіру міндетті емес |
+| `AUTH_PHONE` | `1` — телефонмен кіру батырмасы көрсетіледі (әдепкі: жасырын). SMS жіберу тек Firebase **Blaze** (төлемді) жоспарында жұмыс істейді |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET` | Telegram-бот (@BotFather-ден токен; secret — кез келген ұзын сөз) |
 | `ANTHROPIC_API_KEY` | AI-көмекші |
 

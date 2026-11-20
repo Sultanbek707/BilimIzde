@@ -445,6 +445,10 @@ def require_user(authorization: Optional[str]) -> dict:
 def config():
     """Frontend үшін: қандай мүмкіндіктер қосулы."""
     return {"auth_enabled": auth.ENABLED, "firebase": auth.WEB_CONFIG if auth.ENABLED else None,
+            # AUTH_REQUIRED=0 болса, кірмей-ақ сайтты қолдануға болады; әдепкіде кіру міндетті
+            "auth_required": auth.ENABLED and os.environ.get("AUTH_REQUIRED", "1") != "0",
+            # Телефонмен кіру Firebase Blaze жоспарын талап етеді; тек AUTH_PHONE=1 болса көрсетіледі
+            "auth_phone": os.environ.get("AUTH_PHONE", "0") == "1",
             "ai_enabled": bool(ANTHROPIC_API_KEY), "telegram": telegram_bot.ENABLED}
 
 

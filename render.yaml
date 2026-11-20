@@ -20,6 +20,10 @@ services:
         sync: false
       - key: FIREBASE_WEB_CONFIG
         sync: false
+      - key: AUTH_REQUIRED          # 1 (әдепкі) — сайтқа кірмей қолдануға болмайды; 0 — кіру міндетті емес
+        value: "1"
+      - key: AUTH_PHONE             # 1 — телефонмен кіру көрсетіледі (SMS үшін Firebase Blaze жоспары керек)
+        value: "0"
       - key: TELEGRAM_BOT_TOKEN     # Telegram-бот
         sync: false
       - key: TELEGRAM_WEBHOOK_SECRET

@@ -630,3 +630,8 @@ footer.aboutf .wrap{max-width:none;padding-left:0;padding-right:0}
 footer.aboutf .wrap.fw{padding-top:8px}
 /* «Тағы» мәзірі экраннан шықпасын */
 .rmenu{position:fixed;left:84px;top:auto;max-height:calc(100vh - 24px);overflow-y:auto}
+
+/* Міндетті тіркелу: кірмейінше сайт бұлыңғыр, терезе жабылмайды */
+body.bz-lock main,body.bz-lock .rail,body.bz-lock header,body.bz-lock section{filter:blur(6px);pointer-events:none;user-select:none}
+.authdlg.must::backdrop{background:rgba(10,10,14,.82);backdrop-filter:blur(4px)}
+.authbox .note.small{font-size:12px;margin:4px 0 0}

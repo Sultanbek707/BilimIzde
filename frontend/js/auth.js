@@ -37,15 +37,28 @@
       <button type="button" class="btn" id="aVerify">${T('Растау')}</button></div>
     <p class="note" id="aMsg" role="status"></p><div id="aRecaptcha"></div></form>`;
   document.body.appendChild(dlg);
+  const MUST = !!cfg.auth_required;
+  if (!cfg.auth_phone) dlg.querySelectorAll('.or, label:has(#aPhone), #aSend, #aCodeBox').forEach(n => n.remove());
+  if (MUST) {
+    dlg.classList.add('must');
+    dlg.querySelector('.x').remove();
+    dlg.addEventListener('cancel', e => e.preventDefault());  // Esc жаппайды
+    dlg.querySelector('h3').insertAdjacentHTML('afterend', `<p class="note">${T('Сайтты қолдану үшін тіркел: бұл бір рет қана, 10 секунд.')}</p>`);
+    document.body.classList.add('bz-lock');
+  }
   const $ = id => document.getElementById(id);
   const msg = t => { $('aMsg').textContent = T(t); };
 
   $('aGoogle').onclick = async () => {
-    try { await fa.signInWithPopup(new firebase.auth.GoogleAuthProvider()); dlg.close(); }
-    catch (e) { msg(e.code === 'auth/popup-closed-by-user' ? 'Терезе жабылды' : 'Кіру мүмкін болмады. Қайталап көріңіз'); }
+    const gp = new firebase.auth.GoogleAuthProvider();
+    try { await fa.signInWithPopup(gp); dlg.close(); }
+    catch (e) {
+      if (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment') { try { await fa.signInWithRedirect(gp); return; } catch (e2) {} }
+      msg(e.code === 'auth/popup-closed-by-user' ? 'Терезе жабылды' : 'Кіру мүмкін болмады. Қайталап көріңіз');
+    }
   };
   let verifier, confirmation;
-  $('aSend').onclick = async () => {
+  if ($('aSend')) $('aSend').onclick = async () => {
     const ph = $('aPhone').value.replace(/[\s()-]/g, '');
     if (!/^\+\d{10,14}$/.test(ph)) { msg('Нөмірді +7 7XX XXX XX XX түрінде жаз'); return; }
     try {
@@ -54,7 +67,7 @@
       $('aCodeBox').hidden = false; msg('Код жіберілді');
     } catch (e) { msg('SMS жіберу мүмкін болмады. Нөмірді тексер немесе Google арқылы кір'); }
   };
-  $('aVerify').onclick = async () => {
+  if ($('aVerify')) $('aVerify').onclick = async () => {
     try { await confirmation.confirm($('aCode').value.trim()); dlg.close(); }
     catch (e) { msg('Код қате'); }
   };
@@ -71,7 +84,13 @@
   fa.onAuthStateChanged(async user => {
     window.BZ_USER = user || null;
     window.BZ_AUTH_HEADERS = user ? authHeaders : null;
-    if (!user) { btn.textContent = T('Кіру'); btn.onclick = () => dlg.showModal(); return; }
+    document.body.classList.toggle('bz-lock', MUST && !user);
+    if (!user) {
+      btn.textContent = T('Кіру'); btn.onclick = () => dlg.showModal();
+      if (MUST && !dlg.open) dlg.showModal();
+      return;
+    }
+    if (dlg.open) dlg.close();
     const name = user.displayName || user.phoneNumber || user.email || T('Профиль');
     btn.innerHTML = `👤 ${esc(name.split(' ')[0])}`;
     btn.title = T('Шығу');
