@@ -3,7 +3,7 @@ chcp 65001 >nul
 cd /d "%~dp0"
 echo BilimIzde: GitHub-qa zhukteu...
 git add -A
-git commit -m "BilimIzde: brauzer eski nuskany korsetpeui ushin cache tuzetu"
+git commit -m "BilimIzde: footer jeke Sait turaly betine koshirildi, Tagy maziri ekranga syiady"
 echo GitHub-tagy ozgeristerdi alu...
 git pull --rebase --autostash
 git push
