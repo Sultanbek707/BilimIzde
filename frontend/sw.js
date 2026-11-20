@@ -1,6 +1,6 @@
 /* BilimIzde service worker: сайт интернетсіз де ашылады (соңғы жүктелген нұсқа). */
-const CACHE = 'bilimizde-v1';
-const SHELL = ['/', '/index.html', '/css/style.css', '/js/i18n.js', '/js/api.js', '/js/plan.js', '/js/app.js',
+const CACHE = 'bilimizde-v2';
+const SHELL = ['/', '/index.html', '/css/style.css', '/js/i18n.js', '/js/api.js', '/js/plan.js', '/js/test.js', '/js/more.js', '/js/app.js', '/js/calc.js',
   '/js/extras.js', '/js/auth.js', '/js/track.js', '/icon.svg', '/manifest.webmanifest'];
 
 self.addEventListener('install', e => {

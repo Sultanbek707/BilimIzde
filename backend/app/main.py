@@ -246,6 +246,15 @@ app = FastAPI(
     version="2.0.0",
 )
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "POST"], allow_headers=["*"])
+
+
+@app.middleware("http")
+async def no_stale_frontend(request, call_next):
+    """Браузер ескі JS/CSS көрсетпесін: әр жолы сервермен тексереді (ETag)."""
+    resp = await call_next(request)
+    if not request.url.path.startswith("/api/"):
+        resp.headers["Cache-Control"] = "no-cache"
+    return resp
 db.init()
 
 
