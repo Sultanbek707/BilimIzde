@@ -302,9 +302,9 @@ function foreignAI(q,low){
 S.fc='';
 function fchips(){const cs=[...new Set(FOREIGN.map(f=>f.country))];$('fChips').innerHTML=['Барлығы',...cs].map(c=>`<button class="${(c==='Барлығы'&&!S.fc)||c===S.fc?'on':''}" onclick="S.fc='${c==='Барлығы'?'':c}';fchips();filterData()">${c}</button>`).join('')}
 fchips();
-/* Лупа шоқжұлдыз-қалпақтағы жасырын белгілерді іздейді */
+/* Лупа: өзі ұшып жүріп, белгілерді бір-бірлеп «табады» (басқарылмайды). Белгіні басса — сол бөлімге өтеді. */
 (()=>{const el=$('seek');if(!el)return;
-const svg=el.querySelector('svg'),base=$('skBase'),litG=$('skLit'),lens=$('lensG'),lc=$('lcc'),cap=$('skCap'),W=480,H=400,R=60,K=1.7,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const svg=el.querySelector('svg'),base=$('skBase'),litG=$('skLit'),lens=$('lensG'),lc=$('lcc'),cap=$('skCap'),fx=$('skFx'),trail=$('skTrail'),W=480,H=400,K=1.75,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const CH=[['B057',22,44,'q','B057'],['ҰБТ 140',330,30,'r','#/calc'],['IELTS 6.5',178,26,'r','#/abroad'],['SDU',22,112,'q','SDU'],['MIT',408,92,'r','#/foreign/mit'],['Медицина',20,318,'q','Медицина'],['Алматы',166,350,'q','Алматы'],['Грант',344,322,'r','#/grants']].map(([t,x,y,k,v],i)=>({t,x,y,k,v,i,w:Math.round(t.length*8.6+26),h:26}));
 const PT={A:[240,92],B:[404,160],C:[240,228],D:[76,160],E:[158,194],F:[158,252],G:[240,284],H:[322,252],I:[322,194],M:[240,160],T1:[404,214],T2:[404,238]};
 const LN=[['A','B'],['B','C'],['C','D'],['D','A'],['A','C'],['D','B'],['E','F'],['F','G'],['G','H'],['H','I'],['B','T1'],['T1','T2']];
@@ -319,25 +319,50 @@ const scene=()=>{let s='';
  CH.forEach(c=>{s+=`<g class="fl" style="animation-delay:-${(c.i*.9).toFixed(1)}s"><g class="chip" data-i="${c.i}" transform="translate(${c.x} ${c.y})"><rect width="${c.w}" height="${c.h}" rx="13"/><text x="${c.w/2}" y="17.5" text-anchor="middle">${c.t}</text></g></g>`});
  return s};
 base.innerHTML=scene();litG.innerHTML=scene();
-const found=new Set();let px=240,py=200,idle=!reduce,tgt=null,fx=240,fy=200,ts=0,pause=0,roam=0,dw=null,dt=0,it=0;
-const upd=()=>{cap.innerHTML=found.size>=CH.length?`Барлығы табылды! <button class="skgo" type="button">Енді шынайы іздеуге өту →</button>`:`Лупаны жүргізіп, жасырын белгілерді тап: <b>${found.size}</b> / ${CH.length} · белгіні басып, іздеуге өтуге болады`};
-cap.addEventListener('click',e=>{if(e.target.closest('.skgo')){const q=$('q');q.focus({preventScroll:true});q.scrollIntoView({block:'center',behavior:'smooth'})}});
-const mark=i=>{if(found.has(i))return;found.add(i);svg.querySelectorAll('.chip[data-i="'+i+'"]').forEach(c=>c.classList.add('found'));upd()};
-const hit=(x,y,pad=14)=>CH.find(c=>x>c.x-pad&&x<c.x+c.w+pad&&y>c.y-pad&&y<c.y+c.h+pad);
-const put=()=>{lens.setAttribute('transform',`translate(${px.toFixed(1)} ${py.toFixed(1)})`);lc.setAttribute('cx',px.toFixed(1));lc.setAttribute('cy',py.toFixed(1));litG.setAttribute('transform',`translate(${px.toFixed(1)} ${py.toFixed(1)}) scale(${K}) translate(${(-px).toFixed(1)} ${(-py).toFixed(1)})`)};
-const dwell=now=>{const c=hit(px,py);lens.classList.toggle('on',!!c);if(c&&!found.has(c.i)){if(reduce)mark(c.i);else if(dw!==c.i){dw=c.i;dt=now}else if(now-dt>350)mark(c.i)}else if(!c)dw=null};
+/* Әр белгіге — сайттың өз деректерінен бір қысқа дерек */
+const L=window.BZ_LANG||'kk',tr=(kk,ru,en)=>({ru,en}[L]||kk);
+const n=v=>(+v).toLocaleString('ru-RU');
+const g57=(window.G26||{}).B057,gSum=Object.values(window.G26||{}).reduce((a,v)=>a+(+v[0]||0),0),alm=(window.universities||[]).filter(u=>/Алматы/.test(u.city||'')).length;
+const FACT=[
+ g57?tr(`B057 Ақпараттық технологиялар: 2026 жылы ${n(g57[1])} грант`,`B057 Информационные технологии: ${n(g57[1])} грантов в 2026 году`,`B057 Information technology: ${n(g57[1])} grants in 2026`):tr('B057 Ақпараттық технологиялар','B057 Информационные технологии','B057 Information technology'),
+ tr('ҰБТ-ның ең жоғары балы — 140. Өз балыңды есептегіште тексер','Максимум ЕНТ — 140 баллов. Проверь свой балл в калькуляторе','The UNT maximum is 140. Check your score in the calculator'),
+ tr('Шетелде оқу үшін көбіне IELTS сертификаты керек','Для учёбы за рубежом чаще всего нужен IELTS','Studying abroad usually requires IELTS'),
+ tr('SDU және басқа университеттердің толық беті бар','У SDU и других вузов есть подробные страницы','SDU and other universities have full pages'),
+ tr('MIT және шетелдік ЖОО — бөлек бөлімде','MIT и зарубежные вузы — в отдельном разделе','MIT and foreign universities have their own section'),
+ tr('Медицина мамандықтарына шектік балл — 75','Пороговый балл на медицину — 75','The medicine threshold is 75'),
+ alm?tr(`Алматыда ${alm} университет`,`В Алматы ${alm} вузов`,`${alm} universities in Almaty`):tr('Алматы университеттері','Вузы Алматы','Universities in Almaty'),
+ gSum?tr(`2026 жылы мамандықтарға ${n(gSum)} грант бөлінді`,`В 2026 году на специальности выделено ${n(gSum)} грантов`,`${n(gSum)} grants for majors in 2026`):tr('Гранттар туралы бәрі','Всё о грантах','All about grants')];
+let px=240,py=200,ang=0,typing=0;
+const put=()=>{lens.setAttribute('transform',`translate(${px.toFixed(1)} ${py.toFixed(1)}) rotate(${ang.toFixed(1)})`);lc.setAttribute('cx',px.toFixed(1));lc.setAttribute('cy',py.toFixed(1));litG.setAttribute('transform',`translate(${px.toFixed(1)} ${py.toFixed(1)}) scale(${K}) translate(${(-px).toFixed(1)} ${(-py).toFixed(1)})`)};
+const say=t=>{clearInterval(typing);let k=0;cap.innerHTML='<span class="sk-t"></span><i class="sk-c"></i>';const sp=cap.firstChild;if(reduce){sp.textContent=t;return}typing=setInterval(()=>{sp.textContent=t.slice(0,++k);if(k>=t.length)clearInterval(typing)},26)};
 const ctr=i=>{const c=CH[i];return[c.x+c.w/2,c.y+c.h/2]};
-const pick=now=>{const rest=CH.map(c=>c.i).filter(i=>!found.has(i));if(!rest.length){tgt=null;return}tgt=rest[Math.floor(Math.random()*rest.length)];fx=px;fy=py;ts=now};
-const frame=now=>{if(idle){if(pause&&now>pause)pause=0;if(tgt==null&&!pause&&found.size<CH.length)pick(now);
-  if(tgt!=null){const c=ctr(tgt),k=Math.min(1,(now-ts)/2300),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;px=fx+(c[0]-fx)*e;py=fy+(c[1]-fy)*e;if(k>=1){mark(tgt);tgt=null;pause=now+650}}
-  else if(!pause&&found.size>=CH.length){roam+=.012;px=240+130*Math.sin(roam);py=200+70*Math.sin(roam*1.7+1)}
-  put()}
- dwell(now);requestAnimationFrame(frame)};
-const setIdle=ms=>{clearTimeout(it);it=setTimeout(()=>{if(!reduce){idle=true;tgt=null;pause=0}},ms)};
-svg.addEventListener('pointermove',e=>{idle=false;const r=svg.getBoundingClientRect();px=Math.max(R*.5,Math.min(W-R*.5,(e.clientX-r.left)/r.width*W));py=Math.max(R*.5,Math.min(H-R*.5,(e.clientY-r.top)/r.height*H));put();if(reduce)dwell(0);setIdle(2600)});
-svg.addEventListener('pointerleave',()=>setIdle(700));
-svg.addEventListener('click',e=>{const r=svg.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*W,y=(e.clientY-r.top)/r.height*H,c=hit(x,y,10);if(!c)return;mark(c.i);if(c.k==='q')hint(c.v);else go(c.v)});
-put();upd();if(!reduce)requestAnimationFrame(frame);
+const NS='http://www.w3.org/2000/svg',mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const burst=(x,y)=>{const g=mk('g',{transform:`translate(${x} ${y})`});
+ g.appendChild(mk('circle',{class:'bw',r:'10'}));g.appendChild(mk('circle',{class:'bw b2',r:'10'}));
+ for(let k=0;k<10;k++){const a=k*Math.PI/5+Math.random()*.4,d=46+Math.random()*30;const s=mk('path',{class:'spk',d:'M0 -4L1.2 -1.2 4 0 1.2 1.2 0 4 -1.2 1.2 -4 0 -1.2 -1.2Z',style:`--dx:${(Math.cos(a)*d).toFixed(1)}px;--dy:${(Math.sin(a)*d).toFixed(1)}px;animation-delay:${(k*.02).toFixed(2)}s`});g.appendChild(s)}
+ fx.appendChild(g);setTimeout(()=>g.remove(),1400)};
+const mark=(i,on)=>svg.querySelectorAll('.chip[data-i="'+i+'"]').forEach(c=>c.classList.toggle('found',on));
+const TR=[];const drawTrail=()=>{trail.innerHTML=TR.map((p,k)=>`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${(1+k*.22).toFixed(2)}" opacity="${(k/TR.length*.55).toFixed(2)}"/>`).join('')};
+/* Маршрут: араласқан тәртіп, әр сапар — иілген Безье қисығы */
+let order=[],step=-1,ph='hold',t0=0,from=[240,200],to=[240,200],cp1=[0,0],cp2=[0,0],dur=1900;
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const next=now=>{step++;if(step>=order.length){ph='lap';t0=now;say(tr('Барлығы BilimIzde-де. Белгіні басып, бөлімге өт','Всё это есть в BilimIzde. Нажми на метку, чтобы перейти','It is all in BilimIzde. Tap a label to open it'));return}
+ const i=order[step];from=[px,py];to=ctr(i);const dx=to[0]-from[0],dy=to[1]-from[1],len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len,b=(Math.random()<.5?-1:1)*Math.min(110,len*.45);
+ cp1=[from[0]+dx*.3+nx*b,from[1]+dy*.3+ny*b];cp2=[from[0]+dx*.7+nx*b*.6,from[1]+dy*.7+ny*b*.6];dur=1500+len*2.2;ph='move';t0=now};
+const bz=(a,b,c,d,t)=>{const u=1-t;return u*u*u*a+3*u*u*t*b+3*u*t*t*c+t*t*t*d};
+const restart=now=>{CH.forEach(c=>mark(c.i,false));order=shuffle(CH.map(c=>c.i));step=-1;next(now)};
+let last=0;
+const frame=now=>{const ox=px,oy=py;
+ if(ph==='move'){const k=Math.min(1,(now-t0)/dur),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;px=bz(from[0],cp1[0],cp2[0],to[0],e);py=bz(from[1],cp1[1],cp2[1],to[1],e);
+  if(k>=1){const i=order[step];mark(i,true);burst(px,py);say(FACT[i]);ph='hold';t0=now}}
+ else if(ph==='hold'){px=to[0]+Math.sin(now/260)*2.5;py=to[1]+Math.cos(now/310)*2.5;if(now-t0>2300)next(now)}
+ else if(ph==='lap'){const k=(now-t0)/1000;px=240+150*Math.sin(k*1.1);py=196+80*Math.sin(k*2.2);if(k>6.5){restart(now)}}
+ const vx=px-ox;ang+=((Math.max(-18,Math.min(18,vx*3)))-ang)*.12;
+ if(now-last>34){TR.push([px,py]);if(TR.length>22)TR.shift();last=now;drawTrail()}
+ put();requestAnimationFrame(frame)};
+svg.addEventListener('click',e=>{const r=svg.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*W,y=(e.clientY-r.top)/r.height*H,c=CH.find(c=>x>c.x-8&&x<c.x+c.w+8&&y>c.y-8&&y<c.y+c.h+8);if(!c)return;if(c.k==='q')hint(c.v);else go(c.v)});
+if(reduce){const i=0;[px,py]=ctr(i);mark(i,true);put();say(FACT[i]);return}
+put();setTimeout(()=>{restart(performance.now());requestAnimationFrame(frame)},900);
 })();
 
 

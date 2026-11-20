@@ -62,7 +62,7 @@ function translateData(d, lang) {
     });
     for (const src of ['js/plan.js', 'js/test.js', 'js/more.js', 'js/app.js', 'js/extras.js', 'js/calc.js', 'js/auth.js', 'js/reviews.js', 'js/track.js']) {
       const s = document.createElement('script');
-      s.src = src + '?v=20261121'; s.async = false;
+      s.src = src + '?v=20261121b'; s.async = false;
       document.body.appendChild(s);
     }
   } catch (e) {
