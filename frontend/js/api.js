@@ -58,11 +58,11 @@ function translateData(d, lang) {
       Q26: d.quotas_2026, Q26N: d.quota_names_2026, PS: d.passing_scores, MU: d.major_universities,
       FOREIGN: d.foreign, WIKI: d.foreign_wiki, HIST: d.foreign_history, FAQ: d.faq,
       BZ_AI: d.ai_enabled, BZ_CLUB_N: d.club_count,
-      RANK: d.rankings, SAL: d.salaries, LOGO: d.logos || {},
+      RANK: d.rankings, SAL: d.salaries, LOGO: d.logos || {}, UT: d.uni_thresholds || {},
     });
     for (const src of ['js/plan.js', 'js/test.js', 'js/more.js', 'js/app.js', 'js/extras.js', 'js/calc.js', 'js/auth.js', 'js/reviews.js', 'js/pages2.js', 'js/track.js']) {
       const s = document.createElement('script');
-      s.src = src + '?v=20261122a'; s.async = false;
+      s.src = src + '?v=20261122b'; s.async = false;
       document.body.appendChild(s);
     }
   } catch (e) {

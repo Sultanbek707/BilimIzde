@@ -269,7 +269,7 @@ def bootstrap(lang: str = "kk"):
     names = ["majors", "universities", "fields", "sites", "site_extra", "logos", "grants_2025", "grants_other_years",
              "grants_2026", "quotas_2026", "quota_names_2026", "passing_scores", "major_universities",
              "foreign", "foreign_wiki", "foreign_history", "faq", "university_extra", "i18n",
-             "rankings", "salaries"]
+             "rankings", "salaries", "uni_thresholds"]
     out = {n: load(n) for n in names}
     if lang in ("ru", "en"):
         out["foreign_i18n"] = {k: v.get(lang) for k, v in load("foreign_i18n").items()}

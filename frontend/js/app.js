@@ -92,9 +92,20 @@ function uniFacts(c){const x=UXU(c);
  const dorm=x.dorm===true?'<b class="yes">Бар</b>':'<b class="unk">Белгісіз, ЖОО-дан нақтылаңыз</b>';
  const mil=x.military===true?'<b class="yes">Бар</b>':x.military===false?'<b class="no">Жоқ</b>':'<b class="unk">Белгісіз, ЖОО-дан нақтылаңыз</b>';
  return `<div class="facts"><div class="fact"><i aria-hidden="true">🏠</i><span>Жатақхана</span>${dorm}${srcA(x.dorm_src)}</div><div class="fact"><i aria-hidden="true">🎖</i><span>Әскери кафедра</span>${mil}${srcA(x.military_src)}</div></div>`}
-function uniPrograms(c){const x=UXU(c),P=x.programs||[];
- const body=P.length?`<div class="chs progs">${P.map(g=>majors.some(m=>m.code===g)?`<a class="ch" href="#/major/${g}"><b>${g}</b> ${esc(grpName(g))}</a>`:`<span class="ch"><b>${g.replace(/^BM/,'B')}</b> ${esc(grpName(g))}</span>`).join('')}</div>`:`<p class="note">Тізілімде бакалавриат бағдарламалары табылмады. Нақты тізімді ЖОО-дан сұраңыз.</p>`;
- return `<h4 class="relh">Осы университеттегі мамандықтар${P.length?` <small>${P.length} мамандық тобы</small>`:''}</h4>${body}<p class="note">Дереккөз: Білім беру бағдарламаларының тізілімі (ЕПВО)${srcA(x.programs_src)} · тексерілді 16.11.2026</p>`}
+/* Грант конкурсына шекті балл: ЖОО-ның өз кестесі (uni_thresholds.json), болмаса министрлік бекіткен ең төменгі шек */
+const NATU=c=>{const u=universities.find(x=>x.code===c);return !!u&&/ұлттық/i.test(u.name)};
+function thrMin(uc,g){const m=majors.find(x=>x.code===g);let b=+(m&&m.grantScore)||50;const f=fieldOf(g);
+ if(b===50&&NATU(uc)&&f!=='agr'&&f!=='vet')b=65;return b}
+function thrOf(uc,g){const U=((window.UT||{}).unis||{})[uc];const v=U&&U.t&&U.t[g];
+ if(v&&v[0]!=null)return{v:v[0],own:true,src:U.src};return{v:thrMin(uc,g),own:false}}
+function uniPrograms(c){const x=UXU(c),P=x.programs||[];const U=((window.UT||{}).unis||{})[c];
+ const tag=g=>{const m=majors.find(y=>y.code===g);const k=m&&(m.combo_kk||m.combo)||'';return k?(k.startsWith('Шығарма')?'Шығармашылық':k.replace(/\s*\+\s*/,' – ')):''};
+ const rows=P.map(g=>{const t=thrOf(c,g),has=majors.some(m=>m.code===g),T=tag(g);
+  const name=`<b class="tp-n">${esc(grpName(g))}</b>${T?`<span class="tp-t${T==='Шығармашылық'?' cr':''}">${esc(T)}</span>`:''}`;
+  return `<${has?`a href="#/major/${g}"`:'div'} class="tp-r"><span class="tp-c">${g.replace(/^BM/,'B')}</span><span class="tp-m">${name}</span><span class="tp-v${t.own?'':' min'}" title="${t.own?'ЖОО белгілеген шекті балл (грант конкурсы)':'Министрлік бекіткен ең төменгі шекті балл. ЖОО өз шегін жоғарырақ қоюы мүмкін.'}">${t.v}${t.own?'':'<small>мин.</small>'}</span></${has?'a':'div'}>`}).join('');
+ const body=P.length?`<div class="tp"><div class="tp-h"><span>Код</span><span>Мамандық (БББТ)</span><span>Шекті балл<small>грант конкурсы үшін</small></span></div>${rows}</div>`:`<p class="note">Тізілімде бакалавриат бағдарламалары табылмады. Нақты тізімді ЖОО-дан сұраңыз.</p>`;
+ const note=U?`Шекті балл: ЖОО-ның 2026-2027 оқу жылына бекіткен кестесі${srcA(U.src)}. «мин.» белгісі — ЖОО кестесінде жоқ топ, министрлік бекіткен ең төменгі шек көрсетілді.`:`Шекті балл: министрлік бекіткен ең төменгі шек (жалпы 50, ұлттық ЖОО 65, педагогика мен құқық 75, денсаулық сақтау 70, ауыл шаруашылығы мен ветеринария 50). ЖОО өз шегін жоғарырақ қоюы мүмкін — оны ЖОО-ның «Талапкерге» бөлімінен тексеріңіз.`;
+ return `<h4 class="relh">Осы университеттегі мамандықтар${P.length?` <small>${P.length} мамандық тобы</small>`:''}</h4>${body}<p class="note">${note}</p><p class="note">Мамандықтар тізімі: Білім беру бағдарламаларының тізілімі (ЕПВО)${srcA(x.programs_src)} · тексерілді 16.11.2026</p>`}
 /* ===== Мамандық: оны оқытатын ЖОО-лар ===== */
 function offeredHtml(code){const ux=(window.UX||{}).universities||{};
  const L=universities.filter(u=>(ux[u.code]&&ux[u.code].programs||[]).includes(code));
