@@ -111,6 +111,48 @@
     B.onclick = ev => { const tr = ev.target.closest('tr[data-c]'); if (!tr) return; ST.sel = tr.dataset.c; draw(); detail(ST.sel); };
     draw(); if (ST.sel) detail(ST.sel);
   };
+
+  /* ===== ЖОО жаңалықтары ===== */
+  const NEWS = { data: null, at: 0, tag: 'all', q: '' };
+  const ago = ts => {
+    if (!ts) return '';
+    const m = Math.max(1, Math.round((Date.now() / 1000 - ts) / 60));
+    if (m < 60) return t3(`${m} мин бұрын`, `${m} мин назад`, `${m} min ago`);
+    const h = Math.round(m / 60);
+    if (h < 24) return t3(`${h} сағ бұрын`, `${h} ч назад`, `${h} h ago`);
+    const d = Math.round(h / 24);
+    if (d < 7) return t3(`${d} күн бұрын`, `${d} дн. назад`, `${d} d ago`);
+    return new Date(ts * 1000).toLocaleDateString(['kk-KZ', 'ru-RU', 'en-GB'][L()], { day: 'numeric', month: 'long' });
+  };
+  const TAGN = { grant: ['Грант', 'Гранты', 'Grants'], ent: ['ҰБТ', 'ЕНТ', 'UNT'], uni: ['Университеттер', 'Вузы', 'Universities'], magistr: ['Магистратура', 'Магистратура', 'Graduate'] };
+  window.BZ_NEWS = e => {
+    e.innerHTML = `<div class="nw">
+      <p class="nw-lead">${t3('Қазақстандағы ЖОО, ҰБТ және гранттар туралы соңғы жаңалықтар. Тақырыпты бассаң, мақала түпнұсқа сайтта ашылады.', 'Свежие новости о вузах, ЕНТ и грантах Казахстана. Нажмите на заголовок — статья откроется на сайте источника.', 'Latest news on Kazakhstan’s universities, UNT and grants. Click a headline to read it on the source site.')}</p>
+      <div class="nw-bar"><div class="nw-ch">${['all', 'grant', 'ent', 'uni', 'magistr'].map(k => `<button type="button" data-t="${k}"${NEWS.tag === k ? ' class="on"' : ''}>${k === 'all' ? t3('Барлығы', 'Все', 'All') : TAGN[k][L()]}</button>`).join('')}</div>
+      <input id="nwQ" type="search" placeholder="${t3('Жаңалықтардан іздеу…', 'Поиск по новостям…', 'Search news…')}" value="${esc(NEWS.q)}"></div>
+      <div id="nwL" class="nw-l"><div class="nw-sk"></div><div class="nw-sk"></div><div class="nw-sk"></div></div>
+      <p class="note" id="nwN"></p></div>`;
+    const Lst = e.querySelector('#nwL'), N = e.querySelector('#nwN');
+    const draw = () => {
+      const d = NEWS.data;
+      if (!d) return;
+      const q = NEWS.q.trim().toLowerCase();
+      const it = (d.items || []).filter(x => (NEWS.tag === 'all' || (x.tags || []).includes(NEWS.tag)) && (!q || x.title.toLowerCase().includes(q) || (x.source || '').toLowerCase().includes(q)));
+      const now = Date.now() / 1000;
+      Lst.innerHTML = it.length ? it.map(x => `<a class="nw-i" href="${esc(x.link)}" target="_blank" rel="noopener noreferrer nofollow">
+        <div class="nw-m">${(x.tags || []).map(t => `<span class="nw-t ${t}">${TAGN[t] ? TAGN[t][L()] : t}</span>`).join('')}${x.ts && now - x.ts < 86400 ? `<span class="nw-new">${t3('ЖАҢА', 'НОВОЕ', 'NEW')}</span>` : ''}</div>
+        <h3>${esc(x.title)}</h3>
+        <div class="nw-s"><b>${esc(x.source || '')}</b>${x.ts ? `<span>·</span><time>${ago(x.ts)}</time>` : ''}<i>↗</i></div></a>`).join('')
+        : `<div class="nw-empty">${(d.items || []).length ? t3('Бұл сүзгі бойынша жаңалық табылмады.', 'По этому фильтру новостей нет.', 'No news for this filter.') : t3('Жаңалықтар әзірге жүктелмеді. Бірнеше минуттан соң қайта кіріп көр.', 'Новости пока не загрузились. Загляните через несколько минут.', 'News has not loaded yet. Try again in a few minutes.')}</div>`;
+      N.textContent = t3('Жаңалықтар ақпарат агенттіктері мен БАҚ-тан автоматты түрде сағатына бір рет жиналады. BilimIzde тек тақырып пен сілтемені көрсетеді; мазмұнға дереккөз жауап береді.', 'Новости собираются автоматически из СМИ раз в час. BilimIzde показывает только заголовок и ссылку; за содержание отвечает источник.', 'Headlines are collected automatically from news media once an hour. BilimIzde shows only the headline and link; the source is responsible for the content.') + (d.updated ? ' ' + t3('Соңғы жаңарту: ', 'Обновлено: ', 'Updated: ') + ago(d.updated) + '.' : '');
+    };
+    e.querySelector('.nw-ch').onclick = ev => { const b = ev.target.closest('button'); if (!b) return; NEWS.tag = b.dataset.t; e.querySelectorAll('.nw-ch button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+    e.querySelector('#nwQ').oninput = ev => { NEWS.q = ev.target.value; draw(); };
+    if (NEWS.data && Date.now() - NEWS.at < 10 * 60e3) return draw();
+    fetch((window.BZ_API || '').replace(/\/$/, '') + '/api/news').then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(d => { NEWS.data = d; NEWS.at = Date.now(); draw(); })
+      .catch(() => { NEWS.data = NEWS.data || { items: [] }; draw(); });
+  };
   /* Скрипт кешірек жүктелсе, ашық тұрған бетті қайта салу */
-  if (/^(about|results)$/.test(document.body.dataset.page || '') && typeof route === 'function') route();
+  if (/^(about|results|news)$/.test(document.body.dataset.page || '') && typeof route === 'function') route();
 })();

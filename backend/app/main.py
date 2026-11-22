@@ -27,7 +27,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from . import auth, db, telegram_bot
+from . import auth, db, news as newsmod, telegram_bot
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -280,6 +280,12 @@ def bootstrap(lang: str = "kk"):
 def salaries_api():
     """Салалар бойынша орташа айлық жалақы (Ұлттық статистика бюросы)."""
     return load("salaries")
+
+
+@app.get("/api/news", tags=["Деректер"])
+def news_api():
+    """ЖОО, ҰБТ және гранттар туралы соңғы жаңалықтар (тақырып + сілтеме, сағатына бір рет жаңарады)."""
+    return newsmod.get_news()
 
 
 @app.get("/api/rankings", tags=["Деректер"])
