@@ -18,43 +18,52 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 TTL = 60 * 60          # 1 сағат
-TIMEOUT = 8
+TIMEOUT = 7
 MAX_ITEMS = 80
 CACHE_FILE = Path("/tmp/bilimizde_news.json")
 UA = "Mozilla/5.0 (compatible; BilimIzdeNews/1.0; +https://bilimizde.onrender.com)"
 
 
-def _gnews(q: str, lang: str = "ru") -> str:
+def _unused_gnews(q: str, lang: str = "ru") -> str:
     hl = "ru" if lang == "ru" else "kk"
     return ("https://news.google.com/rss/search?q=" + urllib.parse.quote(q + " when:30d")
             + f"&hl={hl}&gl=KZ&ceid=KZ:{hl}")
 
 
 FEEDS = [
-    ("gn-grant", _gnews("грант ЕНТ вуз Казахстан")),
-    ("gn-ent", _gnews("ЕНТ 2027 Национальный центр тестирования")),
-    ("gn-vuz", _gnews("вузы Казахстана Минобрнауки")),
-    ("gn-magistr", _gnews("магистратура Казахстан грант")),
-    ("gn-kk-grant", _gnews("ҰБТ грант ЖОО", "kk")),
-    ("gn-kk-uni", _gnews("университет Ғылым және жоғары білім министрлігі", "kk")),
     ("tengri", "https://tengrinews.kz/news.rss"),
+    ("tengri-kk", "https://kaz.tengrinews.kz/news.rss"),
     ("inform-ru", "https://www.inform.kz/rss/ru.xml"),
-    ("inform-kz", "https://www.inform.kz/rss/kz.xml"),
+    ("inform-kk", "https://www.inform.kz/rss/kk.xml"),
+    ("zakon", "https://www.zakon.kz/rss/all.xml"),
+    ("orda", "https://orda.kz/feed/"),
+    ("kursiv", "https://kz.kursiv.media/feed/"),
+    ("informburo", "https://informburo.kz/rss"),
+    ("vlast", "https://vlast.kz/rss/"),
 ]
+NAMES = {"tengri": "Tengrinews", "tengri-kk": "Tengrinews", "inform-ru": "Kazinform", "inform-kk": "Kazinform",
+         "zakon": "Zakon.kz", "orda": "Orda.kz", "kursiv": "Kursiv", "informburo": "Informburo", "vlast": "Власть"}
 
-# Тақырыпта осы сөздердің біреуі болса ғана аламыз
-KEEP = re.compile(
-    r"(ЕНТ|ҰБТ|грант|вуз|ВУЗ|ЖОО|универси|абитуриент|талапкер|студент|магистр|"
-    r"докторантур|бакалавр|стипенди|шәкіртақы|высш\w* образован|жоғары білім|"
-    r"Минобрнауки|МНВО|ҒЖБМ|Ғылым және жоғары|тестирован|тестілеу|Болашак|Болашақ|"
-    r"колледж|оқу орн|учебн\w* завед|поступ|түсу|квот)", re.I)
-DROP = re.compile(r"(футбол|хоккей|гороскоп|погода|ауа райы|курс валют|ДТП|убий|өлтір)", re.I)
+# Аббревиатуралар — бас әріппен, бөлек сөз ретінде ғана («Президент» ішіндегі «ент» емес)
+ABBR = r"\b(?:ЕНТ|ҰБТ|ЖОО|ВУЗ\w*|МНВО|ҒЖБМ|НЦТ|ҰТО|КТ)\b"
+WORDS = (r"\b(?:грант\w*|вуз\w*|универси\w*|абитуриент\w*|талапкер\w*|студент\w*|магистр\w*|докторант\w*|"
+         r"бакалавр\w*|стипенди\w*|шәкіртақы\w*|высше\w* образовани\w*|жоғары білім\w*|Минобрнауки|"
+         r"Министерств\w* науки и высшего|Ғылым және жоғары|Наццентр\w*|Национальн\w* центр\w* тестировани\w*|"
+         r"Ұлттық тестілеу|Болашак\w*|Болашақ\w*|поступлени\w*|оқуға түс\w*|ауылдық квот\w*|сельск\w* квот\w*|"
+         r"выпускник\w*|түлек\w*)")
+_abbr, _words = re.compile(ABBR), re.compile(WORDS, re.I)
+DROP = re.compile(r"(футбол|хоккей|UFC|бокс|гороскоп|погод|ауа райы|курс валют|ДТП|убий|өлтір|колледж\w*)", re.I)
+
+
+def _keep(t: str) -> bool:
+    return bool(_abbr.search(t) or _words.search(t))
+
 
 TAGS = [
-    ("grant", re.compile(r"(грант|квот|стипенди|шәкіртақы|Болаша)", re.I)),
-    ("ent", re.compile(r"(ЕНТ|ҰБТ|тестирован|тестілеу|НЦТ|ҰТО)", re.I)),
-    ("magistr", re.compile(r"(магистр|докторант|PhD)", re.I)),
-    ("uni", re.compile(r"(вуз|ВУЗ|ЖОО|универси|институт|академи)", re.I)),
+    ("grant", re.compile(r"\b(?:грант\w*|стипенди\w*|шәкіртақы\w*|Болаша\w*|\w* квот\w*)", re.I)),
+    ("ent", re.compile(r"\b(?:ЕНТ|ҰБТ|НЦТ|ҰТО)\b|\b(?:Наццентр\w*|тестировани\w*|тестілеу\w*)", re.I if False else 0)),
+    ("magistr", re.compile(r"\b(?:магистр\w*|докторант\w*|PhD)", re.I)),
+    ("uni", re.compile(r"\b(?:ВУЗ\w*|ЖОО)\b|\b(?:вуз\w*|универси\w*|институт\w*|академи\w*)", re.I)),
 ]
 
 _lock = threading.Lock()
@@ -85,7 +94,7 @@ def _parse(feed: str, raw: bytes) -> list[dict]:
         if source and title.endswith(" - " + source):
             title = title[: -len(source) - 3].strip()
         if not source:
-            source = {"tengri": "Tengrinews", "inform-ru": "Kazinform", "inform-kz": "Kazinform"}.get(feed, "")
+            source = NAMES.get(feed, "")
         ts = 0
         pd = _text(it, "pubDate")
         if pd:
@@ -120,7 +129,7 @@ def _refresh() -> None:
     for name, got, err in results:
         status[name] = err or len(got)
         for x in got:
-            if not KEEP.search(x["title"]) or DROP.search(x["title"]):
+            if not _keep(x["title"]) or DROP.search(x["title"]):
                 continue
             if x["ts"] and now - x["ts"] > 45 * 86400:
                 continue
@@ -131,6 +140,13 @@ def _refresh() -> None:
             x["tags"] = [t for t, rx in TAGS if rx.search(x["title"])] or ["uni"]
             x["lang"] = _lang(x["title"])
             items.append(x)
+    for x in _cache["items"]:  # бұрынғы жиналғандарды да сақтаймыз
+        if x["link"] in seen or _norm(x["title"]) in seen:
+            continue
+        if not _keep(x["title"]) or DROP.search(x["title"]) or (x["ts"] and now - x["ts"] > 45 * 86400):
+            continue
+        seen.update((_norm(x["title"]), x["link"]))
+        items.append(x)
     items.sort(key=lambda x: x["ts"], reverse=True)
     items = items[:MAX_ITEMS]
     if items:
