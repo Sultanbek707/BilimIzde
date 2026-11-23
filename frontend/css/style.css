@@ -863,3 +863,12 @@ a.tp-r:hover{border-color:var(--mut);transform:translateY(-1px)}
 .ms-o{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:12px}
 .ms-o div{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surf);font-size:14px}.ms-o b{font-variant-numeric:tabular-nums}
 @media(max-width:800px){.ms-ex{grid-template-columns:1fr}.rs-k{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Есептегіш: ұсынылатын мамандықтар және ЖОО-лар */
+.cpick{display:grid;gap:6px}
+.cuni{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 4px 74px}
+.cuni a,.cuni span{font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surf);color:var(--ink);text-decoration:none}
+.cuni a:hover{border-color:var(--acc)}.cuni a b{color:#6fcf97;margin-left:4px}[data-theme=light] .cuni a b{color:#16733f}
+.cuni span{color:var(--mut)}
+.cres .dsec small{font-weight:500;color:var(--mut);margin-left:6px}
+@media(max-width:600px){.cuni{padding-left:0}}
