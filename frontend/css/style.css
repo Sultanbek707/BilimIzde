@@ -214,7 +214,7 @@ section.block{padding:96px 0 8px}
 #foreignList .ur.fo .ctag{color:#F6F4EF;border-color:rgba(255,255,255,.4);background:rgba(0,0,0,.25);border-radius:99px}
 #foreignList .ur.fo .vt{border-color:#F6F4EF}#foreignList .ur.fo .vt.v2{background:#F2C98A;border-color:#F2C98A}#foreignList .ur.fo .vt.v1{background:linear-gradient(90deg,#F2C98A 50%,transparent 50%);border-color:#F2C98A}
 #foreignList .ur.fo .chev{display:none}
-@media(min-width:900px){#foreignList .ur.fo:nth-child(even){margin-top:56px}}
+
 /* университет тізімі */
 .ur:hover{background:var(--surf2)}
 .aiside{background:linear-gradient(160deg,#241c18,#3a2a22);color:#F1F0EC;border-radius:24px}
@@ -766,7 +766,7 @@ body:not([data-page=home]):not([data-page=search]) .head h2{font-size:clamp(28px
 .km-card ul li a span{display:flex;flex-direction:column;line-height:1.35}
 .km-card ul li a small{color:var(--mut);font-size:12px}
 body:not([data-page=home]):not([data-page=search]) main{padding-top:36px}
-@media(min-width:1001px){header nav a[href="#/results"]{display:none}}
+@media(min-width:1001px){header nav a[href="#/results"],header nav a[href="#/news"]{display:none}}
 /* Грант есептегіш v3 */
 .cxr{margin:4px 0 14px}
 .cxr input[type=range]{width:100%;accent-color:var(--acc);height:28px}
@@ -830,3 +830,36 @@ a.tp-r:hover{border-color:var(--mut);transform:translateY(-1px)}
 .tp-v.min{background:var(--surf2);color:var(--ink);opacity:.85}
 .tp-v small{display:block;font-size:10px;font-weight:600;color:var(--mut);margin-top:3px}
 @media(max-width:600px){.tp-h{display:none}.tp-r{grid-template-columns:60px 1fr auto;gap:10px;padding:10px 12px}.tp-c{height:34px;font-size:13px}.tp-n{font-size:14px}}
+
+.det-acts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}.det-acts .btn{margin:0}
+@media(max-width:600px){.det-acts .btn{flex:1 1 0;min-width:0;padding:10px 8px;font-size:13.5px;white-space:nowrap;text-align:center}}
+/* ашық тақырыпта контраст */
+[data-theme=light] .tp-c{color:#9a6100;background:rgba(230,160,40,.16)}
+[data-theme=light] .tp-v{color:#16733f;background:rgba(22,115,63,.12)}
+[data-theme=light] .tp-t{color:#16733f;background:rgba(22,115,63,.1)}
+[data-theme=light] .tp-t.cr{color:#6b3fb8;background:rgba(107,63,184,.1)}
+[data-theme=light] .nw-t.grant{color:#9a6100;background:rgba(230,160,40,.16)}
+[data-theme=light] .nw-t.ent{color:#1d5fd6;background:rgba(29,95,214,.1)}
+[data-theme=light] .nw-t.magistr{color:#6b3fb8;background:rgba(107,63,184,.1)}
+[data-theme=light] .nw-t.uni{color:#16733f;background:rgba(22,115,63,.1)}
+
+/* Тізім беттеріндегі іздеу */
+.lsearch{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.lsearch input{flex:1 1 260px;min-width:0;background:var(--surf);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font:inherit;font-size:15px}
+.lsearch select{background:var(--surf);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;font-size:14px}
+.lsearch input:focus,.lsearch select:focus{outline:2px solid var(--acc,#e6b450);outline-offset:1px}
+
+/* Шетелдік ЖОО карточкасы: «Тарихы» батырмасы сурет үстінде анық көрінсін */
+#foreignList .ur.fo .hb{position:relative;z-index:2;background:rgba(0,0,0,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+
+/* ===== Магистратура ===== */
+.ms{max-width:1000px}
+.ms-ex{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:4px 0 22px}
+.ms-ex>div{border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--surf)}
+.ms-ex h4{margin:0 0 8px;font-size:15px}.ms-ex p{margin:0 0 10px;color:var(--mut);font-size:14px;line-height:1.5}
+.ms-t{width:100%;border-collapse:collapse;font-size:14.5px}.ms-t th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);padding:8px 10px;border-bottom:1px solid var(--line)}
+.ms-t td{padding:10px;border-bottom:1px solid var(--line)}.ms-t td.n,.ms-t th:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ms-c{color:#e6b450}[data-theme=light] .ms-c{color:#9a6100}
+.ms-o{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:12px}
+.ms-o div{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surf);font-size:14px}.ms-o b{font-variant-numeric:tabular-nums}
+@media(max-width:800px){.ms-ex{grid-template-columns:1fr}.rs-k{grid-template-columns:repeat(2,minmax(0,1fr))}}

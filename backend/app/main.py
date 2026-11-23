@@ -45,8 +45,13 @@ MIN_SCORE, MAX_SCORE = 0, 140
 
 @lru_cache
 def load(name: str):
-    with open(DATA_DIR / f"{name}.json", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(DATA_DIR / f"{name}.json", encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, FileNotFoundError):
+        if name == "uni_thresholds":  # қолмен өзгертілген файлда қате болса, сайт бұзылмасын
+            return {"unis": {}}
+        raise
 
 
 def majors() -> list[dict]:
@@ -260,7 +265,7 @@ db.init()
 
 @app.get("/api/health", tags=["Жүйе"])
 def health():
-    return {"status": "ok", "ai_enabled": bool(ANTHROPIC_API_KEY)}
+    return {"status": "ok", "ai_enabled": bool(ANTHROPIC_API_KEY), "db": "postgres" if db.IS_PG else "sqlite"}
 
 
 @app.get("/api/bootstrap", tags=["Жүйе"])
@@ -269,7 +274,7 @@ def bootstrap(lang: str = "kk"):
     names = ["majors", "universities", "fields", "sites", "site_extra", "logos", "grants_2025", "grants_other_years",
              "grants_2026", "quotas_2026", "quota_names_2026", "passing_scores", "major_universities",
              "foreign", "foreign_wiki", "foreign_history", "faq", "university_extra", "i18n",
-             "rankings", "salaries", "uni_thresholds"]
+             "rankings", "salaries", "uni_thresholds", "masters"]
     out = {n: load(n) for n in names}
     if lang in ("ru", "en"):
         out["foreign_i18n"] = {k: v.get(lang) for k, v in load("foreign_i18n").items()}

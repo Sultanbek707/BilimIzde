@@ -43,7 +43,7 @@ if(more){
 
 /* ---------- Плиткадағы сандарды жаңарту ---------- */
 const LSg=k=>{try{return JSON.parse(localStorage.getItem(k))||[]}catch(e){return[]}};
-addEventListener('hashchange',()=>{const f=document.querySelector('[data-n="fav"]'),c=document.querySelector('[data-n="club"]');if(f)f.textContent=LSg('bz-fav').length;if(c)c.textContent=window.BZ_CLUB_N||0});
+addEventListener('hashchange',()=>{const f=document.querySelector('[data-n="fav"]'),c=document.querySelector('[data-n="club"]');if(f)f.textContent=LSg('bz-fav').length||'＋';if(c)c.textContent=window.BZ_CLUB_N||'＋'});
 
 /* ---------- Тіл ауыстыру: интерфейс мәтіндері ---------- */
 const I={

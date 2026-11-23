@@ -9,8 +9,8 @@
 <script>try{var t=localStorage.getItem('bz-theme')||'dark';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}</script>
 <meta name="description" content="BilimIzde: Қазақстан мен шетелдегі университеттер, мамандықтар, ҰБТ грант балдары, салыстыру, тест және AI кеңесші."><meta property="og:title" content="BilimIzde: университетіңді ізде, мамандығыңды тап"><meta property="og:type" content="website"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"BilimIzde","inLanguage":"kk","description":"Қазақстан мен шетелдегі университеттер мен мамандықтар порталы"}</script>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#111418"><link rel="apple-touch-icon" href="icon.svg">
-<link rel="stylesheet" href="css/style.css?v=20261122b">
-<script src="js/i18n.js?v=20261122b"></script>
+<link rel="stylesheet" href="css/style.css?v=20261123c">
+<script src="js/i18n.js?v=20261123c"></script>
 </head>
 <body>
 <aside class="rail" aria-label="Бөлімдер">
@@ -47,7 +47,7 @@
 <a class="tile" href="#/universities"><small>02</small><h3>Университеттер</h3><b id="tU"></b><span>код, қала және грант балдары</span><i>→</i></a>
 <a class="tile" href="#/abroad"><small>03</small><h3>Шетелдік ЖОО</h3><b id="tF"></b><span>талаптар, баға, тарих</span><i>→</i></a>
 <a class="tile" href="#/calc"><small>04</small><h3>Грант есептегіш</h3><b>140</b><span>ҰБТ балыңызды тексеріңіз</span><i>→</i></a>
-<a class="tile" href="#/ai"><small>05</small><h3>AI кеңесші</h3><b>?</b><span>ЖОО, мамандық және грант туралы сұрақтар</span><i>→</i></a></div></div></section>
+<a class="tile" href="#/ai"><small>05</small><h3>AI кеңесші</h3><b>AI</b><span>ЖОО, мамандық және грант туралы сұрақтар</span><i>→</i></a></div></div></section>
 <section class="band" id="analyzer"><div class="wrap calc">
  <div><h2>ҰБТ балыңызға қарай мүмкіндікті бағалаңыз</h2><p>Жалпы балыңызды енгізіңіз. Шектік балдан өтетін мамандықтарды, 2026 жылғы грант санын және белгілі болса өткен жылғы өту балын көрсетеміз.</p></div>
  <div><div class="row"><input type="number" id="score" min="0" max="140" placeholder="ҰБТ балы, мысалы 110" aria-label="ҰБТ балы"><button class="btn" onclick="calc()">Тексеру</button></div></div><div id="calcOut" aria-live="polite"></div>
@@ -63,16 +63,20 @@
 </ol></div></section>
 <section class="block" id="majors"><div class="wrap">
  <div class="head"><h2>Барлық мамандықтар мен шифрлар</h2><span id="mCount"></span></div>
+<div class="lsearch"><input id="mQ" type="search" placeholder="Мамандық атауы, шифры (B057) немесе пән" autocomplete="off"></div>
+<div class="hints" id="mChips" style="margin:0 0 18px"></div>
 <div class="grid" id="majorsGrid"></div>
 </div></section>
 
 <section class="block" id="universities"><div class="wrap">
  <div class="head"><h2>Барлық университеттер мен кодтары</h2><span id="uCount"></span></div>
+ <div class="lsearch"><input id="uQ" type="search" placeholder="Университет атауы, коды немесе қала" autocomplete="off"><select id="uT"><option value="">Барлық түрі</option></select></div>
  <div class="hints" id="uChips" style="margin:0 0 18px"></div><div class="uni" id="uniList"></div>
 </div></section>
 
 <section class="block" id="abroad"><div class="wrap"><div class="head"><h2>Шетелдік университеттер</h2><span id="fCount"></span></div>
 <p class="fnote">Бұл бөлім Қазақстан ЖОО тізімінен бөлек. Әр атаудың жанындағы белгі деректің қаншалықты тексерілгенін көрсетеді: толық нүкте — ресми беттен толық тексерілген, жарты нүкте — мерзім мен талаптар тексерілген, бос нүкте — нақтылау қажет. Дереккөздер әр университеттің терезесінде берілген. Суреттер Wikimedia Commons-тан алынады. Оқу ақысы мен талаптар жыл сайын өзгереді, сондықтан өтініш бермес бұрын ресми бетті тағы бір тексеріңіз.</p>
+<div class="lsearch"><input id="fQ" type="search" placeholder="Университет, ел немесе қала" autocomplete="off"></div>
 <div class="hints" id="fChips" style="margin:0 0 18px"></div><div class="uni" id="foreignList"></div></div></section>
 <section class="block" id="ai-helper"><div class="wrap"><div class="head"><h2>BilimIzde AI көмекшісі</h2><span>Қазақша және орысша жаза беріңіз</span></div>
 <div class="aiw"><aside class="aiside"><h3>Көмекші не істей алады</h3><ul><li>Шетелдік ЖОО тарихын айтады және жалпы сұрақтарға жауап береді (виза, IELTS, UCAS, Common App, грант)</li><li>Мамандықты шифр немесе атау бойынша табады</li><li>ЖОО-ны код, атау және қала бойынша іздейді</li><li>ҰБТ балыңызға қарай мамандықтарды сүзеді</li><li>Пәндер жұбы бойынша мамандық ұсынады</li><li>Ең арзан және қымбат ЖОО-ны көрсетеді</li><li>Екі ЖОО-ны немесе екі мамандықты салыстырады</li><li>Шетелдік ЖОО-ны ел, баға және IELTS бойынша табады</li><li>Екі шетелдік университетті салыстырады</li><li>Тест арқылы саған сай мамандық таңдайды</li></ul><button class="btn" onclick="startQuiz()">Мамандық таңдау тесті</button><button class="ghost" onclick="clearChat()">Чатты тазалау</button></aside>
@@ -92,6 +96,6 @@
 <div class="fc"><h4 data-i="fCon">Кері байланыс</h4><a href="#/club" data-i="fBug">Қате таптыңыз ба? Пікір қалдырыңыз</a><a href="#/faq" data-i="fFaq">Жиі қойылатын сұрақтар</a></div>
 </div><div class="wrap fb"><span>© 2026 BilimIzde</span><span data-i="fUpd">Деректер: univision.kz, ҚР Ғылым және жоғары білім министрлігі, ЖОО ресми сайттары · 2026</span></div></footer>
 
-<script src="js/api.js?v=20261122b"></script>
+<script src="js/api.js?v=20261123c"></script>
 </body>
 </html>

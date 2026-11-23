@@ -112,6 +112,48 @@
     draw(); if (ST.sel) detail(ST.sel);
   };
 
+
+  /* ===== Магистратура ===== */
+  const MSS = { q: '', f: '', sort: 'np' };
+  window.BZ_MASTERS = e => {
+    const D = window.MS || {}, G = D.groups || [], F = D.fields || [], T = D.totals || {}, X = D.exam || {}, S = D.sources || {};
+    const pk = o => o ? (o[['kk', 'ru', 'en'][L()]] || o.kk || '') : '';
+    if (!G.length) { e.innerHTML = `<p class="note">${t3('Магистратура деректері жүктелмеді.', 'Данные о магистратуре не загрузились.', 'Master’s data did not load.')}</p>`; return; }
+    e.innerHTML = `<div class="ms">
+      <p class="nw-lead">${t3('2026–2027 оқу жылына магистратураға бөлінген мемлекеттік гранттар, түсу емтиханы (КТ) және мерзімдер. Деректер — ҰТО мен ҒЖБМ-нің ресми құжаттарынан.', 'Государственные гранты в магистратуру на 2026–2027 учебный год, вступительный экзамен (КТ) и сроки. Данные — из официальных документов НЦТ и МНВО.', 'State master’s grants for 2026–2027, the entrance exam (KT) and deadlines, from official NTC and Ministry documents.')}</p>
+      <div class="rs-k">
+        <div><span>${t3('Барлық гранттар', 'Всего грантов', 'Total grants')}</span><b>${fmt(T.all_announced)}</b></div>
+        <div><span>${t3('Ғылыми-педагогикалық', 'Научно-педагогическая', 'Research & teaching')}</span><b>${fmt(T.np)}</b></div>
+        <div><span>${t3('Бейіндік', 'Профильная', 'Professional')}</span><b>${fmt(T.prof)}</b></div>
+        <div><span>${t3('Филиалдар мен басқа ЖОО', 'Филиалы и другие вузы', 'Branches & others')}</span><b>${fmt(T.branches)}</b></div>
+      </div>
+      <div class="ms-ex">
+        <div><h4>${t3('Ғылыми-педагогикалық магистратура', 'Научно-педагогическая магистратура', 'Research & teaching master’s')}</h4><p>${esc(pk(X.np))}</p></div>
+        <div><h4>${t3('Бейіндік магистратура', 'Профильная магистратура', 'Professional master’s')}</h4><p>${esc(pk(X.prof))}</p></div>
+        <div><h4>${t3('Мерзімдер', 'Сроки', 'Dates')}</h4><p>${esc(pk(X.dates))}</p><a class="btn" href="https://app.testcenter.kz" target="_blank" rel="noopener noreferrer">app.testcenter.kz ↗</a></div>
+      </div>
+      <h4 class="dsec">${t3('Білім беру бағдарламалары топтары бойынша гранттар', 'Гранты по группам образовательных программ', 'Grants by programme group')}</h4>
+      <div class="lsearch"><input id="msQ" type="search" placeholder="${t3('Топ атауы немесе коды (M094)', 'Название или код группы (M094)', 'Group name or code (M094)')}" value="${esc(MSS.q)}">
+        <select id="msF"><option value="">${t3('Барлық сала', 'Все области', 'All fields')}</option>${F.map(f => `<option value="${f.code}"${MSS.f === f.code ? ' selected' : ''}>${esc(pk(f))}</option>`).join('')}</select>
+        <select id="msS"><option value="np">${t3('Грант саны бойынша', 'По числу грантов', 'By grants')}</option><option value="code"${MSS.sort === 'code' ? ' selected' : ''}>${t3('Код бойынша', 'По коду', 'By code')}</option></select></div>
+      <div class="rs-tw"><table class="ms-t"><thead><tr><th>${t3('Код', 'Код', 'Code')}</th><th>${t3('Топ', 'Группа', 'Group')}</th><th>${t3('Ғыл.-пед.', 'Науч.-пед.', 'Research')}</th><th>${t3('Бейіндік', 'Профильная', 'Prof.')}</th></tr></thead><tbody id="msB"></tbody></table></div>
+      <p class="note" id="msN"></p>
+      ${(D.other || []).length ? `<h4 class="dsec">${t3('Жеке бөлінген гранттар', 'Отдельно выделенные гранты', 'Separately allocated grants')}</h4><div class="ms-o">${D.other.map(o => `<div><span>${esc(pk(o))}</span><b>${fmt(o.np)}</b></div>`).join('')}</div>` : ''}
+      <p class="note">${t3('Дереккөздер', 'Источники', 'Sources')}: ${Object.values(S).map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">[${i + 1}] ${esc(u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0])} ↗</a>`).join(' ')} · ${t3('тексерілді', 'проверено', 'checked')} ${esc(D.checked || '')}</p>
+    </div>`;
+    const B = e.querySelector('#msB'), N = e.querySelector('#msN');
+    const draw = () => {
+      const q = MSS.q.trim().toLowerCase();
+      let r = G.filter(g => (!MSS.f || g.field === MSS.f) && (!q || g.code.toLowerCase().includes(q) || [g.kk, g.ru, g.en].join(' ').toLowerCase().includes(q)));
+      r = r.slice().sort(MSS.sort === 'code' ? (a, b) => a.code.localeCompare(b.code) : (a, b) => (b.np + b.prof) - (a.np + a.prof));
+      B.innerHTML = r.map(g => `<tr><td><b class="ms-c">${esc(g.code)}</b></td><td>${esc(pk(g))}</td><td class="n">${g.np ? fmt(g.np) : '—'}</td><td class="n">${g.prof ? fmt(g.prof) : '—'}</td></tr>`).join('') || `<tr><td colspan="4">${t3('Ештеңе табылмады.', 'Ничего не найдено.', 'Nothing found.')}</td></tr>`;
+      N.textContent = t3(`${r.length} топ · ғылыми-педагогикалық: ${fmt(r.reduce((a, g) => a + g.np, 0))}, бейіндік: ${fmt(r.reduce((a, g) => a + g.prof, 0))} грант`, `${r.length} групп · научно-педагогическая: ${fmt(r.reduce((a, g) => a + g.np, 0))}, профильная: ${fmt(r.reduce((a, g) => a + g.prof, 0))}`, `${r.length} groups · research: ${fmt(r.reduce((a, g) => a + g.np, 0))}, professional: ${fmt(r.reduce((a, g) => a + g.prof, 0))}`);
+    };
+    e.querySelector('#msQ').oninput = ev => { MSS.q = ev.target.value; draw(); };
+    e.querySelector('#msF').onchange = ev => { MSS.f = ev.target.value; draw(); };
+    e.querySelector('#msS').onchange = ev => { MSS.sort = ev.target.value; draw(); };
+    draw();
+  };
   /* ===== ЖОО жаңалықтары ===== */
   const NEWS = { data: null, at: 0, tag: 'all', q: '' };
   const ago = ts => {
@@ -154,5 +196,5 @@
       .catch(() => { NEWS.data = NEWS.data || { items: [] }; draw(); });
   };
   /* Скрипт кешірек жүктелсе, ашық тұрған бетті қайта салу */
-  if (/^(about|results|news)$/.test(document.body.dataset.page || '') && typeof route === 'function') route();
+  if (/^(about|results|news|masters)$/.test(document.body.dataset.page || '') && typeof route === 'function') route();
 })();
