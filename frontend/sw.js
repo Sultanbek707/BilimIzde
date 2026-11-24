@@ -1,5 +1,5 @@
 /* BilimIzde service worker: сайт интернетсіз де ашылады (соңғы жүктелген нұсқа). */
-const CACHE = 'bilimizde-v15';
+const CACHE = 'bilimizde-v16';
 const SHELL = ['/', '/index.html', '/css/style.css', '/js/i18n.js', '/js/api.js', '/js/plan.js', '/js/test.js', '/js/more.js', '/js/app.js', '/js/calc.js',
   '/js/extras.js', '/js/auth.js', '/js/reviews.js', '/js/pages2.js', '/js/track.js', '/icon.svg', '/manifest.webmanifest'];
 
