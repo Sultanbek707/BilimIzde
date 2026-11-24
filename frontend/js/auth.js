@@ -35,20 +35,28 @@
     <button type="button" class="btn" id="aSend">${T('SMS-код жіберу')}</button>
     <div id="aCodeBox" hidden><label>${T('SMS-код')}<input id="aCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code"></label>
       <button type="button" class="btn" id="aVerify">${T('Растау')}</button></div>
+    <div class="or">${T('немесе')}</div>
+    <button type="button" class="btn guestb" id="aGuest">👤&nbsp; ${T('Қонақ ретінде кіру')}</button>
+    <p class="note gnote">${T('Қонақ ретінде сайтты толық қарай аласың. Пікір жазу және жоспарды басқа құрылғыда сақтау үшін кейін тіркелуге болады.')}</p>
     <p class="note" id="aMsg" role="status"></p><div id="aRecaptcha"></div></form>`;
   document.body.appendChild(dlg);
   window.BZ_LOGIN = () => { if (!dlg.open) dlg.showModal(); };
   const MUST = !!cfg.auth_required;
-  if (!cfg.auth_phone) dlg.querySelectorAll('.or, label:has(#aPhone), #aSend, #aCodeBox').forEach(n => n.remove());
   if (MUST) {
     dlg.classList.add('must');
     dlg.querySelector('.x').remove();
-    dlg.addEventListener('cancel', e => e.preventDefault());  // Esc жаппайды
+    dlg.addEventListener('cancel', e => { if (!isGuest()) e.preventDefault(); });  // Esc жаппайды
     dlg.querySelector('h3').insertAdjacentHTML('afterend', `<p class="note">${T('Сайтты қолдану үшін тіркел: бұл бір рет қана, 10 секунд.')}</p>`);
     document.body.classList.add('bz-lock');
   }
   const $ = id => document.getElementById(id);
   const msg = t => { $('aMsg').textContent = T(t); };
+  const isGuest = () => { try { return localStorage.getItem('bz-guest') === '1'; } catch (e) { return false; } };
+  const guestUI = () => { btn.innerHTML = `👤 ${T('Қонақ')}`; btn.title = T('Тіркелу'); btn.onclick = () => dlg.showModal(); };
+  $('aGuest').onclick = () => {
+    try { localStorage.setItem('bz-guest', '1'); } catch (e) {}
+    document.body.classList.remove('bz-lock'); dlg.close(); if (!fa.currentUser) guestUI();
+  };
 
   $('aGoogle').onclick = async () => {
     const gp = new firebase.auth.GoogleAuthProvider();
@@ -66,7 +74,7 @@
       verifier = verifier || new firebase.auth.RecaptchaVerifier('aRecaptcha', { size: 'invisible' });
       confirmation = await fa.signInWithPhoneNumber(ph, verifier);
       $('aCodeBox').hidden = false; msg('Код жіберілді');
-    } catch (e) { msg('SMS жіберу мүмкін болмады. Нөмірді тексер немесе Google арқылы кір'); }
+    } catch (e) { msg(e && e.code === 'auth/operation-not-allowed' ? 'Телефон арқылы кіру әзірге қосылмаған. Google арқылы немесе қонақ ретінде кір' : 'SMS жіберу мүмкін болмады. Нөмірді тексер немесе Google арқылы кір'); }
   };
   if ($('aVerify')) $('aVerify').onclick = async () => {
     try { await confirmation.confirm($('aCode').value.trim()); dlg.close(); }
@@ -86,12 +94,14 @@
     window.BZ_USER = user || null;
     window.BZ_AUTH_HEADERS = user ? authHeaders : null;
     dispatchEvent(new Event('bz-auth'));
-    document.body.classList.toggle('bz-lock', MUST && !user);
+    document.body.classList.toggle('bz-lock', MUST && !user && !isGuest());
     if (!user) {
+      if (isGuest()) { guestUI(); return; }
       btn.textContent = T('Кіру'); btn.onclick = () => dlg.showModal();
       if (MUST && !dlg.open) dlg.showModal();
       return;
     }
+    try { localStorage.removeItem('bz-guest'); } catch (e) {}
     if (dlg.open) dlg.close();
     const name = user.displayName || user.phoneNumber || user.email || T('Профиль');
     btn.innerHTML = `👤 ${esc(name.split(' ')[0])}`;

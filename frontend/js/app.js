@@ -27,7 +27,7 @@ function openMajor(c){
  $('majDlg').showModal();
 }
 const lgM=u=>{const w=u.name.replace(/[«»"()]/g,' ').split(/\s+/).filter(x=>/^[A-ZА-ЯӘҒҚҢӨҰҮҺІ]/.test(x)&&!/^(Қазақ|Қазақстан|Қазақстандық|Халықаралық|Ұлттық|Мемлекеттік)$/.test(x));return((w[0]||u.name)[0]+((w[1]||'')[0]||'')).toUpperCase()};
-const doms=c=>SITES[c]?[SITES[c]]:(SITE_EXTRA[c]||[]);
+const doms=c=>[...new Set([...(SITES[c]?[SITES[c]]:[]),...(SITE_EXTRA[c]||[])])];
 /* Ресми логотип (ЖОО сайтынан, logos.json) бірінші; болмаса сайт белгісі. DuckDuckGo сұр «>» белгісін бермеуі үшін алынды. */
 const LGU=d=>/^https?:/.test(d)?[d]:[`https://${d}/apple-touch-icon.png`,`https://www.google.com/s2/favicons?domain=${d}&sz=128`,`https://${d}/favicon.ico`];
 const LGL=a=>a.flatMap(LGU);
