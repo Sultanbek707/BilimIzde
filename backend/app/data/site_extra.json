@@ -7,14 +7,13 @@
   "abu.edu.kz"
  ],
  "143": [
-  "tashenev.edu.kz",
   "syrdariya.edu.kz"
  ],
  "158": [
   "aku.edu.kz"
  ],
  "196": [
-  "okmpi.kz",
+  "okmpu.edu.kz",
   "ukpu.kz"
  ],
  "202": [
@@ -28,9 +27,11 @@
   "bolashak.edu.kz"
  ],
  "414": [
+  "univershu.kz",
   "shu.edu.kz"
  ],
  "503": [
+  "nmu.kz",
   "nurmubarak.edu.kz"
  ],
  "526": [
@@ -52,8 +53,7 @@
   "zhu.edu.kz"
  ],
  "009": [
-  "aogu.edu.kz",
-  "aogu.kz"
+  "aogu.edu.kz"
  ],
  "033": [
   "tttu.edu.kz",
@@ -91,6 +91,7 @@
   "medkrmu.kz"
  ],
  "004": [
+  "zkmu.kz",
   "zkgmu.kz"
  ],
  "010": [
@@ -116,5 +117,14 @@
  ],
  "908": [
   "ksph.edu.kz"
+ ],
+ "005": [
+  "arsu.kz"
+ ],
+ "069": [
+  "uib.kz"
+ ],
+ "145": [
+  "kosstu.kz"
  ]
 }
