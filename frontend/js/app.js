@@ -89,8 +89,8 @@ function salHtml(c){const S=window.SAL;if(!S)return '';const k=(S.major_sector||
  const pct=Math.round(sec.wage/all.wage*100);
  return `<h4 class="dsec">Жалақы: сала бойынша орташа</h4><div class="dgrid"><div class="dbox"><span>${esc(nm(sec))}</span><b>${f(sec.wage)} ₸ / ай</b><div class="gbar" aria-hidden="true"><i style="left:0;width:${Math.min(100,sec.wage/1200000*100)}%"></i></div></div><div class="dbox"><span>Ел бойынша орташа</span><b>${f(all.wage)} ₸ / ай</b><small class="pct ${pct>=100?'up':'dn'}">Ел орташасымен салыстырғанда: ${pct}%</small></div></div><p class="note">${esc((S.note||{})[L]||S.note.kk)} Кезең: ${esc(L==='ru'?S.period_ru:L==='en'?S.period_en:S.period)}${srcA(S.source)}</p>`}
 function uniFacts(c){const x=UXU(c);
- const dorm=x.dorm===true?'<b class="yes">Бар</b>':'<b class="unk">Белгісіз, ЖОО-дан нақтылаңыз</b>';
- const mil=x.military===true?'<b class="yes">Бар</b>':x.military===false?'<b class="no">Жоқ</b>':'<b class="unk">Белгісіз, ЖОО-дан нақтылаңыз</b>';
+ const dorm=x.dorm===true?'<b class="yes">Бар</b>':'<b class="unk">Расталмады</b>';
+ const mil=x.military===true?'<b class="yes">Бар</b>':x.military===false?'<b class="no">Жоқ</b>':'<b class="unk">Расталмады</b>';
  return `<div class="facts"><div class="fact"><i aria-hidden="true">🏠</i><span>Жатақхана</span>${dorm}${srcA(x.dorm_src)}</div><div class="fact"><i aria-hidden="true">🎖</i><span>Әскери кафедра</span>${mil}${srcA(x.military_src)}</div></div>`}
 /* Грант конкурсына шекті балл: ЖОО-ның өз кестесі (uni_thresholds.json), болмаса министрлік бекіткен ең төменгі шек */
 const NATU=c=>{const u=universities.find(x=>x.code===c);return !!u&&/ұлттық/i.test(u.name)};

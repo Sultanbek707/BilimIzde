@@ -18,11 +18,7 @@
     "B091",
     "B094"
    ],
-   "programs_src": "https://univision.kz/univ/56-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.gov.kz/memleket/entities/aktobe/press/news/details/829813?lang=ru",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/56-x/edu-program"
   },
   "116": {
    "programs": [
@@ -35,11 +31,7 @@
     "B049",
     "B085"
    ],
-   "programs_src": "https://univision.kz/univ/1-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/1-x/edu-program"
   },
   "133": {
    "programs": [
@@ -65,11 +57,7 @@
     "B059",
     "B091"
    ],
-   "programs_src": "https://univision.kz/univ/100-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/100-x/edu-program"
   },
   "141": {
    "programs": [
@@ -98,8 +86,6 @@
     "B096"
    ],
    "programs_src": "https://univision.kz/univ/43-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/43-x/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -132,10 +118,8 @@
     "B057"
    ],
    "programs_src": "https://univision.kz/univ/101-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "dorm": true,
+   "dorm_src": null
   },
   "157": {
    "programs": [
@@ -144,8 +128,6 @@
     "B167"
    ],
    "programs_src": "https://univision.kz/univ/3-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://informburo.kz/novosti/novoe-studenceskoe-obshhezitie-otkryli-v-almaty",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -177,8 +159,6 @@
     "B140"
    ],
    "programs_src": "https://univision.kz/univ/74-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/74-x/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -196,11 +176,7 @@
     "B090",
     "B091"
    ],
-   "programs_src": "https://univision.kz/univ/54-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://new.esil.edu.kz/en/students-house",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/54-x/edu-program"
   },
   "174": {
    "programs": [
@@ -217,8 +193,6 @@
     "B140"
    ],
    "programs_src": "https://univision.kz/univ/44-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://kazguu.kz/en/dormitory/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -238,11 +212,7 @@
     "B091",
     "B093"
    ],
-   "programs_src": "https://univision.kz/univ/103-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.gov.kz/memleket/entities/astana/press/news/details/836748?lang=ru",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/103-x/edu-program"
   },
   "185": {
    "programs": [
@@ -276,11 +246,7 @@
     "B091",
     "B140"
    ],
-   "programs_src": "https://univision.kz/univ/120-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://aiu.kz/en/social-edu/dormitory",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/120-x/edu-program"
   },
   "190": {
    "programs": [
@@ -293,8 +259,6 @@
     "B157"
    ],
    "programs_src": "https://univision.kz/univ/85-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.inform.kz/ru/v-almati-otkrili-novoe-studencheskoe-obshezhitie-03ca16",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -326,8 +290,6 @@
     "B050"
    ],
    "programs_src": "https://univision.kz/univ/113-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/113-x/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -361,11 +323,7 @@
     "B073",
     "B074"
    ],
-   "programs_src": "https://univision.kz/univ/57-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/57-x/edu-program"
   },
   "205": {
    "programs": [
@@ -373,11 +331,7 @@
     "B024",
     "B028"
    ],
-   "programs_src": "https://univision.kz/univ/38-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.inform.kz/ru/1-sentyabrya-v-astane-otkroetsya-kazahskaya-nacional-naya-akademiya-horeografii-foto_a2922816",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/38-x/edu-program"
   },
   "302": {
    "programs": [
@@ -408,11 +362,7 @@
     "B140",
     "B157"
    ],
-   "programs_src": "https://univision.kz/univ/104-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://sdu.edu.kz/?p=3221",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/104-x/edu-program"
   },
   "305": {
    "programs": [
@@ -448,11 +398,7 @@
     "B095",
     "B271"
    ],
-   "programs_src": "https://univision.kz/univ/97-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/97-x/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/97-x/edu-program"
   },
   "414": {
    "programs": [
@@ -479,11 +425,7 @@
     "B050",
     "B057"
    ],
-   "programs_src": "https://univision.kz/univ/111-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/111-x/edu-program"
   },
   "416": {
    "programs": [
@@ -505,11 +447,7 @@
     "B095",
     "B271"
    ],
-   "programs_src": "https://univision.kz/univ/6-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.gov.kz/memleket/entities/aktobe/press/news/details/829813?lang=ru",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/6-x/edu-program"
   },
   "421": {
    "programs": [
@@ -524,11 +462,7 @@
     "B066",
     "B071"
    ],
-   "programs_src": "https://univision.kz/univ/63-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.nur.kz/society/2052535-kbtu-otkryl-studencheskoe-obschezhitie-pochti-na-tysyachu-chelovek-i-sportkompleks/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/63-x/edu-program"
   },
   "501": {
    "programs": [
@@ -562,8 +496,6 @@
     "B271"
    ],
    "programs_src": "https://univision.kz/univ/29-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -572,11 +504,7 @@
     "B033",
     "B036"
    ],
-   "programs_src": "https://univision.kz/univ/25-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/25-x/edu-program"
   },
   "522": {
    "programs": [
@@ -589,8 +517,6 @@
     "B063"
    ],
    "programs_src": "https://univision.kz/univ/119-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://newtimes.kz/obshchestvo/213739-s-nachala-goda-v-astane-sdali-shest-studencheskikh-obshchezhitii-na-1-5-tys-mest",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -601,10 +527,8 @@
     "B093"
    ],
    "programs_src": "https://univision.kz/univ/121-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "dorm": true,
+   "dorm_src": null
   },
   "526": {
    "programs": [
@@ -635,11 +559,7 @@
     "B057",
     "B091"
    ],
-   "programs_src": "https://univision.kz/univ/115-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/115-x/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/115-x/edu-program"
   },
   "979": {
    "programs": [
@@ -656,11 +576,7 @@
     "B049",
     "B057"
    ],
-   "programs_src": "https://univision.kz/univ/99-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.kimep.kz/current-students/en/student-affairs/housing/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/99-x/edu-program"
   },
   "001": {
    "programs": [
@@ -671,8 +587,6 @@
     "BM089"
    ],
    "programs_src": "https://univision.kz/univ/81-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.gov.kz/memleket/entities/astana/press/news/details/836748?lang=ru",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -703,8 +617,6 @@
     "B183"
    ],
    "programs_src": "https://univision.kz/univ/41-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://kazatu.edu.kz/page/studenceskie-obsezitia",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -750,8 +662,6 @@
     "B140"
    ],
    "programs_src": "https://univision.kz/univ/71-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://yu.edu.kz/en/?p=7014",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -807,9 +717,7 @@
    ],
    "programs_src": "https://univision.kz/univ/5-x/edu-program",
    "dorm": true,
-   "dorm_src": "https://www.gov.kz/memleket/entities/aktobe/press/news/details/829813?lang=ru",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "dorm_src": "https://www.gov.kz/memleket/entities/aktobe/press/news/details/829813?lang=ru"
   },
   "004": {
    "programs": [
@@ -821,8 +729,6 @@
     "BM089"
    ],
    "programs_src": "https://univision.kz/univ/30-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/30-x/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -837,11 +743,7 @@
     "B100",
     "B101"
    ],
-   "programs_src": "https://univision.kz/univ/39-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://informburo.kz/novosti/v-almaty-proverili-studencheskie-obshchezhitiya-samoe-opasnoe-u-konservatorii-im-kurmangazy.html",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/39-x/edu-program"
   },
   "007": {
    "programs": [
@@ -900,8 +802,6 @@
     "B145"
    ],
    "programs_src": "https://univision.kz/univ/55-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://kaznpu.kz/en/14990/press/docs/gazeta_abai/jurnal_july_2022.pdf",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -924,11 +824,7 @@
     "B017",
     "B018"
    ],
-   "programs_src": "https://univision.kz/univ/11-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://au.edu.kz/index.php/en/component/content/article/42-news/2009-02-28-18-06-24/4041-nauryznama-in-the-students-house",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/11-x/edu-program"
   },
   "009": {
    "programs": [
@@ -948,11 +844,7 @@
     "B126",
     "B271"
    ],
-   "programs_src": "https://univision.kz/univ/14-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.inform.kz/ru/evakuaciya-studentov-iz-obschezhitiya-provedena-v-atyrau_a4030731",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/14-x/edu-program"
   },
   "012": {
    "programs": [
@@ -1034,8 +926,6 @@
     "B091"
    ],
    "programs_src": "https://univision.kz/univ/12-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.inform.kz/ru/evakuaciya-studentov-iz-obschezhitiya-provedena-v-atyrau_a4030731",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1100,8 +990,6 @@
     "B162"
    ],
    "programs_src": "https://univision.kz/univ/23-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://newtimes.kz/obshchestvo/213739-s-nachala-goda-v-astane-sdali-shest-studencheskikh-obshchezhitii-na-1-5-tys-mest",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1124,11 +1012,7 @@
     "B074",
     "B094"
    ],
-   "programs_src": "https://univision.kz/univ/27-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://zhezu.edu.kz/en/blog-of-the-president-rector-2/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/27-x/edu-program"
   },
   "011": {
    "programs": [
@@ -1176,8 +1060,6 @@
     "B140"
    ],
    "programs_src": "https://univision.kz/univ/16-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://vku.edu.kz/?p=157",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1216,8 +1098,6 @@
     "B094"
    ],
    "programs_src": "https://univision.kz/univ/28-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.inform.kz/ru/dva-novyh-studencheskih-obschezhitiya-otkryli-v-taldykorgane_a3727293",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1267,11 +1147,7 @@
     "B109",
     "B140"
    ],
-   "programs_src": "https://univision.kz/univ/31-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://kazpravda.kz/n/novyy-dom-dlya-studentov/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/31-x/edu-program"
   },
   "017": {
    "programs": [
@@ -1293,11 +1169,7 @@
     "B108",
     "B109"
    ],
-   "programs_src": "https://univision.kz/univ/40-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://kaznai.kz/en/%D0%B6%D0%B0%D1%82%D0%B0%D2%9B%D1%85%D0%B0%D0%BD%D0%B0/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/40-x/edu-program"
   },
   "018": {
    "programs": [
@@ -1324,11 +1196,7 @@
     "B108",
     "B109"
    ],
-   "programs_src": "https://univision.kz/univ/49-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://kaznui.edu.kz/std/dormitory",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/49-x/edu-program"
   },
   "019": {
    "programs": [
@@ -1352,11 +1220,7 @@
     "B166",
     "B265"
    ],
-   "programs_src": "https://univision.kz/univ/36-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://bes.media/news/pomosch-s-obschezhitiem-v-kazahstane-zapustili-goryachuyu-liniyu-dlya-studentov/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/36-x/edu-program"
   },
   "020": {
    "programs": [
@@ -1365,11 +1229,7 @@
     "B093",
     "B098"
    ],
-   "programs_src": "https://univision.kz/univ/35-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://kazast.edu.kz/ru/%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%B1%D0%B0%D0%B7%D0%B0-%D0%B0%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/35-x/edu-program"
   },
   "021": {
    "programs": [
@@ -1392,8 +1252,6 @@
     "B140"
    ],
    "programs_src": "https://univision.kz/univ/107-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://tengrinews.kz/article/universitet-narhoz-otkryil-obschejitie-novogo-formata-2546/amp/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1417,11 +1275,7 @@
     "B140",
     "B174"
    ],
-   "programs_src": "https://univision.kz/univ/82-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://kapital.kz/real_estate/151765/deficit-mest-v-studencheskih-obshezhitiyah-sohranyaetsya-tolko-v-almaty.html",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/82-x/edu-program"
   },
   "023": {
    "programs": [
@@ -1479,11 +1333,7 @@
     "B091",
     "B092"
    ],
-   "programs_src": "https://univision.kz/univ/42-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://qyzpu.edu.kz/ru/obshchie-svedeniya",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/42-x/edu-program"
   },
   "024": {
    "programs": [
@@ -1587,8 +1437,6 @@
     "B234"
    ],
    "programs_src": "https://univision.kz/univ/50-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/50-x/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1604,8 +1452,6 @@
     "BM089"
    ],
    "programs_src": "https://univision.kz/univ/48-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://informburo.kz/novosti/deputat-9-11-celovek-prozivayut-v-odnoi-komnate-obshhezitiya-meduniversiteta-v-astane",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1643,8 +1489,6 @@
     "B271"
    ],
    "programs_src": "https://univision.kz/univ/47-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://tengrinews.kz/kazakhstan_news/poka-studentyi-yutilis-obschejitie-vuza-sdavali-biznes-570648/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1660,8 +1504,6 @@
     "BM089"
    ],
    "programs_src": "https://univision.kz/univ/67-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/67-x/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1728,8 +1570,6 @@
     "B140"
    ],
    "programs_src": "https://univision.kz/univ/69-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://buketov.edu.kz/ru/media/doma-studentov-buiketov-university-gotovyat-k-novomu-uebnomu-godu-635",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1762,8 +1602,6 @@
     "B271"
    ],
    "programs_src": "https://univision.kz/univ/68-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.kstu.kz/obshhezhitie/?lang=ru",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1789,11 +1627,7 @@
     "B171",
     "B172"
    ],
-   "programs_src": "https://univision.kz/univ/66-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://docs.google.com/document/d/1EXO5o66QpNXe7_LMMbivH8D6dslViRE2/export?format=pdf",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/66-x/edu-program"
   },
   "035": {
    "programs": [
@@ -1846,7 +1680,7 @@
    "programs_src": "https://univision.kz/univ/73-x/edu-program",
    "dorm": true,
    "dorm_src": "https://shokan.edu.kz/en/student-life/obshezhitiya/",
-   "military": false,
+   "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
   "036": {
@@ -1899,8 +1733,6 @@
     "B183"
    ],
    "programs_src": "https://univision.kz/univ/76-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://ksu.edu.kz/en/studencheskaya-zhizn/obwezhitie/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -1954,8 +1786,6 @@
     "B183"
    ],
    "programs_src": "https://univision.kz/univ/79-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://korkyt.edu.kz/files/documents/strat_plan_r.pdf",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -2010,9 +1840,7 @@
    ],
    "programs_src": "https://univision.kz/univ/84-x/edu-program",
    "dorm": true,
-   "dorm_src": "https://ayu.edu.kz/birimler/ru/0-ahmet-yesevi-universitesi/yurtlar",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "dorm_src": "https://ayu.edu.kz/birimler/ru/0-ahmet-yesevi-universitesi/yurtlar"
   },
   "038": {
    "programs": [
@@ -2066,8 +1894,6 @@
     "B271"
    ],
    "programs_src": "https://univision.kz/univ/88-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://tou.edu.kz/ru/?id=4726&option=com_content&view=article",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -2088,11 +1914,7 @@
     "B162",
     "B171"
    ],
-   "programs_src": "https://univision.kz/univ/90-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.rii.kz/ru/%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F-2/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/90-x/edu-program"
   },
   "040": {
    "programs": [
@@ -2160,8 +1982,6 @@
     "BM089"
    ],
    "programs_src": "https://univision.kz/univ/17-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/17-x/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -2212,11 +2032,7 @@
     "B095",
     "B134"
    ],
-   "programs_src": "https://univision.kz/univ/18-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://shakarim.edu.kz/ru/pages/index?pathway=molodezhnaya-politika&slug=opisaniye-obshchezhitiya",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/18-x/edu-program"
   },
   "043": {
    "programs": [
@@ -2274,8 +2090,6 @@
     "B183"
    ],
    "programs_src": "https://univision.kz/univ/93-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://dulaty.kz/ru/studencheskie-obshchezhitiya/obshchie-svedeniya.html",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -2290,8 +2104,6 @@
     "BM089"
    ],
    "programs_src": "https://univision.kz/univ/112-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/112-x/",
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -2377,11 +2189,7 @@
   },
   "048": {
    "programs": [],
-   "programs_src": "https://univision.kz/univ/37-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/37-x/edu-program"
   },
   "047": {
    "programs": [
@@ -2395,11 +2203,7 @@
     "B046",
     "B049"
    ],
-   "programs_src": "https://univision.kz/univ/22-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://egi.edu.kz/en/students/students-campus/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/22-x/edu-program"
   },
   "049": {
    "programs": [
@@ -2420,11 +2224,7 @@
     "B091",
     "B094"
    ],
-   "programs_src": "https://univision.kz/univ/58-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/58-x/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/58-x/edu-program"
   },
   "053": {
    "programs": [
@@ -2448,11 +2248,7 @@
     "B093",
     "B110"
    ],
-   "programs_src": "https://univision.kz/univ/8-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/8-x/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/8-x/edu-program"
   },
   "057": {
    "programs": [
@@ -2469,11 +2265,7 @@
     "B162",
     "B183"
    ],
-   "programs_src": "https://univision.kz/univ/9-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://univision.kz/univ/9-x/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/9-x/edu-program"
   },
   "069": {
    "programs": [
@@ -2491,11 +2283,7 @@
     "B095",
     "B140"
    ],
-   "programs_src": "https://univision.kz/univ/106-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/106-x/edu-program"
   },
   "079": {
    "programs": [
@@ -2513,11 +2301,7 @@
     "BM086",
     "B094"
    ],
-   "programs_src": "https://univision.kz/univ/72-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://cu.edu.kz/student-house-ang/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/72-x/edu-program"
   },
   "080": {
    "programs": [
@@ -2528,8 +2312,6 @@
     "BM089"
    ],
    "programs_src": "https://univision.kz/univ/65-x/edu-program",
-   "dorm": null,
-   "dorm_src": null,
    "military": true,
    "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
   },
@@ -2545,11 +2327,7 @@
     "B095",
     "B140"
    ],
-   "programs_src": "https://univision.kz/univ/64-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://dku.kz/ru/statya/informaciya-po-zaseleniyu-v-obshchezhitie-jastar-apartments",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/64-x/edu-program"
   },
   "083": {
    "programs": [
@@ -2567,11 +2345,7 @@
     "B095",
     "B140"
    ],
-   "programs_src": "https://univision.kz/univ/10-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://almau.edu.kz/ru/obshhezhitie/",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/10-x/edu-program"
   },
   "093": {
    "programs": [
@@ -2594,11 +2368,7 @@
     "B095",
     "B140"
    ],
-   "programs_src": "https://univision.kz/univ/102-x/edu-program",
-   "dorm": true,
-   "dorm_src": "https://www.inform.kz/ru/v-almati-otkrili-novoe-studencheskoe-obshezhitie-03ca16",
-   "military": false,
-   "military_src": "https://egov.kz/cms/ru/articles/military_service/senior_devision"
+   "programs_src": "https://univision.kz/univ/102-x/edu-program"
   },
   "078": {
    "programs": [
@@ -2613,7 +2383,8 @@
     "B068",
     "B090"
    ],
-   "programs_src": "ҒЖБМ 2026 грант иегерлерінің тізімі"
+   "programs_src": "ҒЖБМ 2026 грант иегерлерінің тізімі",
+   "dorm": true
   },
   "146": {
    "programs": [
@@ -2698,7 +2469,10 @@
     "B005"
    ],
    "programs_src": "ҒЖБМ 2026 грант иегерлерінің тізімі"
-  }
+  },
+  "135": {},
+  "145": {},
+  "908": {}
  },
  "extra_groups": {
   "B022": [
