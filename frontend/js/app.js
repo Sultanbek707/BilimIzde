@@ -31,12 +31,12 @@ const doms=c=>[...new Set([...(SITES[c]?[SITES[c]]:[]),...(SITE_EXTRA[c]||[])])]
 /* Ресми логотип (ЖОО сайтынан, logos.json) бірінші; болмаса сайт белгісі. DuckDuckGo сұр «>» белгісін бермеуі үшін алынды. */
 const LGU=d=>/^https?:/.test(d)?[d]:[`https://${d}/apple-touch-icon.png`,`https://www.google.com/s2/favicons?domain=${d}&sz=128`,`https://${d}/favicon.ico`];
 const LGL=a=>a.flatMap(LGU);
-function lgNext(im){const L=LGL(im.dataset.d.split(',')),i=+im.dataset.i+1;if(i>=L.length){im.remove();return}im.dataset.i=i;im.src=L[i]}
-function lgOk(im){const L=LGL(im.dataset.d.split(','));if(im.naturalWidth<32&&+im.dataset.i<L.length-1){lgNext(im);return}if(im.naturalWidth<16)im.remove();else im.classList.add('ok')}
-const lgImg=(a,h,t)=>`<span class="lg" style="--h:${h}"><b class="lgm">${t}</b>${a.length?`<img data-d="${a.join(',')}" data-i="0" src="${LGL(a)[0]}" alt="" loading="lazy" referrerpolicy="no-referrer" onload="lgOk(this)" onerror="lgNext(this)">`:''}</span>`;
+function lgNext(im){const L=LGL(im.dataset.d.split('|')),i=+im.dataset.i+1;if(i>=L.length){im.remove();return}im.dataset.i=i;im.src=L[i]}
+function lgOk(im){const L=LGL(im.dataset.d.split('|'));if(im.naturalWidth<32&&+im.dataset.i<L.length-1){lgNext(im);return}if(im.naturalWidth<16)im.remove();else im.classList.add('ok')}
+const lgImg=(a,h,t)=>`<span class="lg" style="--h:${h}"><b class="lgm">${t}</b>${a.length?`<img data-d="${a.join('|')}" data-i="0" src="${LGL(a)[0]}" alt="" loading="lazy" referrerpolicy="no-referrer" onload="lgOk(this)" onerror="lgNext(this)">`:''}</span>`;
 const lg=u=>lgImg([...((window.LOGO||{})[u.code]?[LOGO[u.code]]:[]),...doms(u.code)],(+u.code*47)%360,lgM(u));
 const lgD=(d,t,h)=>lgImg([d],h,t);
-const flg=f=>{let d='';try{d=new URL(f.site).hostname.replace(/^www\./,'')}catch(e){}const w=f.name.split(' (')[0].split(/\s+/).filter(x=>/^[A-Z]/.test(x));return d?lgD(d,((w[0]||'U')[0]+((w[1]||'')[0]||'')).toUpperCase(),(f.name.length*37)%360):''};
+const flg=f=>{let d='';try{d=new URL(f.site).hostname.replace(/^www\./,'')}catch(e){}const w=f.name.split(' (')[0].split(/\s+/).filter(x=>/^[A-Z]/.test(x));const lo=(window.LOGO||{})['f:'+f.id];return (d||lo)?lgImg([...(lo?[lo]:[]),...(d?[d]:[])],(f.name.length*37)%360,((w[0]||'U')[0]+((w[1]||'')[0]||'')).toUpperCase()):''};
 /* ===== Ресми деректер: univision.kz (ҚР Ғылым және жоғары білім министрлігінің грант нәтижелері негізінде) ===== */
 const YRS=[2023,2024,2025,2026],vv=x=>x==null?'—':x;
 /* GC[шифр]=[очная толық, қысқартылған, квота] — 2025 жылғы мемлекеттік грант саны */

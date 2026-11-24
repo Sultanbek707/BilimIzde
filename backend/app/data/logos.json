@@ -59,5 +59,13 @@
  "145": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://kosstu.edu.kz&size=256",
  "196": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://okmpu.kz&size=256",
  "414": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://shymkentuniversity.kz&size=256",
- "503": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://nmu.edu.kz&size=256"
+ "503": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://nmu.edu.kz&size=256",
+ "f:princeton": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.princeton.edu&size=256",
+ "f:tsinghua": "https://commons.wikimedia.org/wiki/Special:FilePath/Tsinghua_University_Logo.svg?width=256",
+ "f:toronto": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.utoronto.ca&size=256",
+ "f:tokyo": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.u-tokyo.ac.jp&size=256",
+ "f:edinburgh": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.ed.ac.uk&size=256",
+ "f:cornell": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.cornell.edu&size=256",
+ "f:mcgill": "https://commons.wikimedia.org/wiki/Special:FilePath/Mcgill_univ_ca_logo.png?width=256",
+ "f:kaist": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.kaist.ac.kr&size=256"
 }

@@ -3,7 +3,7 @@ chcp 65001 >nul
 cd /d "%~dp0"
 echo BilimIzde: GitHub-qa zhukteu...
 git add -A
-git commit -m "Sheteldik JOO tarihy keneitildi, logotiptar tolyqtyryldy"
+git commit -m "Sheteldik JOO logotiptary, logotip tizbegi tuzetildi"
 echo GitHub-tagy ozgeristerdi alu...
 git pull --rebase --autostash
 git push
